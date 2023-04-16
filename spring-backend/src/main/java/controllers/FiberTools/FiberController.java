@@ -3,7 +3,7 @@ package controllers.FiberTools;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/fiber")
+@CrossOrigin(origins = "http://localhost:3000")
 public class FiberController {
 
     @GetMapping("/fiber/{count}")
