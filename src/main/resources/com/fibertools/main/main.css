@@ -1,0 +1,61 @@
+/* main.css */
+
+#mainScene {
+    -fx-background-color: #141313;
+    -fx-background-radius: 10;
+}
+
+/* Styling for the sidebar */
+#sideBar {
+    -fx-background-color: #C74634;
+    -fx-background-radius: 0 10 10 0;
+}
+
+#nameAndLogo {
+    -fx-border-style: none none solid none;
+    -fx-border-color: transparent transparent #141313 transparent;
+    -fx-border-width: 2;
+}
+
+
+
+
+.sideBarOptions {
+    -fx-alignment: baseline-left;
+    -fx-padding: 15 15 15 10;
+    -fx-text-fill: #141313;
+    -fx-background-color: transparent;
+    -fx-transition: -fx-background 0.5s;
+    -fx-background-insets: 0;
+
+}
+
+.sideBarOptions:hover {
+    -fx-background-color: #D97B6E;
+    -fx-background-insets: 0;
+
+}
+
+#loginButton {
+    -fx-text-fill: #141313;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-border-width: 2;
+    -fx-border-color: #141313;
+    -fx-border-radius: 5;
+    -fx-padding: 5 10 5 10;
+    -fx-font-weight: bold;
+    -fx-transition: -fx-background 0.5s;
+    -fx-background-insets: 0;
+}
+
+#loginButton:hover {
+    -fx-background-color: #D97B6E;
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+}
+
+/* Styling for the content area */
+#content {
+    -fx-background-color: #141313;
+}

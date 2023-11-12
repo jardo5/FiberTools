@@ -4,6 +4,8 @@ module com.fibertools.fibertools {
 
     requires org.kordamp.ikonli.javafx;
 
-    opens com.fibertools.fibertools to javafx.fxml;
-    exports com.fibertools.fibertools;
+    opens com.fibertools.main to javafx.fxml;
+    exports com.fibertools.main;
+    exports com.fibertools.controllers;
+    opens com.fibertools.controllers to javafx.fxml;
 }
