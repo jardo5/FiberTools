@@ -3,6 +3,7 @@ module com.fibertools.fibertools {
     requires javafx.fxml;
 
     requires org.kordamp.ikonli.javafx;
+    requires java.sql;
 
     opens com.fibertools.main to javafx.fxml;
     exports com.fibertools.main;
