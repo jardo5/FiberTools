@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<?import javafx.scene.text.Text?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.fibertools.controllers.InventoryController"
-            prefHeight="600.0" prefWidth="750.0">
-    <children>
-        <StackPane layoutX="-1.0" layoutY="-2.0" prefHeight="600.0" prefWidth="750.0">
-            <children>
-                <Text fill="#e40000" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory" />
-            </children>
-        </StackPane>
-    </children>
 
-</AnchorPane>
+<BorderPane fx:controller="com.fibertools.controllers.InventoryController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <AnchorPane prefHeight="50.0" prefWidth="750.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <TableView fx:id="inventoryTable" prefHeight="100.0" prefWidth="750.0" stylesheets="@inventory.css" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="inventoryColID" prefWidth="30.0" text="ID" />
+          <TableColumn fx:id="inventoryColSerialNumber" prefWidth="112.5" text="Serial Number" />
+            <TableColumn fx:id="inventoryColName" prefWidth="82.0" text="Name" />
+            <TableColumn fx:id="inventoryColType" prefWidth="81.66665649414062" text="Type" />
+            <TableColumn fx:id="inventoryColDescription" prefWidth="100.0" text="Description" />
+            <TableColumn fx:id="inventoryColQuantity" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="inventoryColPrice" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="inventoryColAssignedJob" prefWidth="100.0" text="Assigned Job" />
+            <TableColumn fx:id="inventoryColLastUpdated" prefWidth="100.0" text="Last Updated" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </center>
+</BorderPane>
