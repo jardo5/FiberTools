@@ -78,7 +78,7 @@ public class MainController {
     }
 
     public void onClickInventoryButton(ActionEvent actionEvent) {
-        loadContent("/com/fibertools/main/pages/inventory.fxml");
+        loadContent("/com/fibertools/main/pages/inventory/inventory.fxml");
     }
 
     public void onClickSchedulingButton(ActionEvent actionEvent) {
