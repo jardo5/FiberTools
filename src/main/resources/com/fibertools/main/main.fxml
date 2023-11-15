@@ -36,19 +36,19 @@
                         </StackPane>
                     </children>
                 </HBox>
-                <Button onAction="#onClickTraceViewerButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Trace Viewer">
+                <Button fx:id="traceViewerButton" onAction="#onClickTraceViewerButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Trace Viewer">
                 </Button>
-                <Button onAction="#onClickReportButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Report Creator">
+                <Button fx:id="reportCreatorButton" onAction="#onClickReportButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Report Creator">
                 </Button>
-                <Button onAction="#onClickConversionsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Conversions">
+                <Button fx:id="conversionsButton" onAction="#onClickConversionsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Conversions">
                 </Button>
-                <Button onAction="#onClickCalculatorsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Calculators">
+                <Button fx:id="calculatorsButton" onAction="#onClickCalculatorsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Calculators">
                 </Button>
-                <Button onAction="#onClickSpliceRecordsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Splice Records">
+                <Button fx:id="spliceRecordsButton" onAction="#onClickSpliceRecordsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Splice Records">
                 </Button>
-                <Button onAction="#onClickInventoryButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Inventory">
+                <Button fx:id="inventoryButton" onAction="#onClickInventoryButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Inventory">
                 </Button>
-                <Button onAction="#onClickSchedulingButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Scheduling">
+                <Button fx:id="schedulingButton" onAction="#onClickSchedulingButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Scheduling">
                 </Button>
                 <StackPane prefHeight="150.0" prefWidth="200.0">
                     <children>

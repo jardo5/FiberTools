@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="com.fibertools.controllers.LoginController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="450.0" spacing="25.0" BorderPane.alignment="CENTER">
          <children>
@@ -17,9 +17,9 @@
                   <Image url="@../../../../../media/fiberOpticLogin.png" />
                </image>
             </ImageView>
-            <TextField alignment="CENTER" promptText="Username" />
-            <PasswordField alignment="CENTER" promptText="Password" />
-            <Button fx:id="loginPageLoginButton" mnemonicParsing="false" text="Login" />
+            <TextField fx:id="usernameField" alignment="CENTER" promptText="Username" />
+            <PasswordField fx:id="passwordField" alignment="CENTER" promptText="Password" />
+            <Button fx:id="loginPageLoginButton" mnemonicParsing="false" onAction="#onClickLogin" text="Login" />
          </children>
       </VBox>
    </center>

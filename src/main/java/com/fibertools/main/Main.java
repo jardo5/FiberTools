@@ -20,13 +20,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        try {
-            JDBC.openConnection();
-            launch();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            JDBC.closeConnection();
-        }
+        JDBC.openConnection();
+        launch();
+        JDBC.closeConnection();
     }
+
 }

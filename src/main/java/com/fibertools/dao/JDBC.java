@@ -30,13 +30,28 @@ public abstract class JDBC {
             // Check if the database already exists
             if (databaseExists()) {
                 System.out.println("Existing FiberTools Database Found - Skipping Creation");
-                return;
+            } else {
+                createDatabase(); // Create the database if it doesn't exist
             }
 
             connection = DriverManager.getConnection(jdbcUrl, userName, password);
             System.out.println("DB Connection successful!");
+
+            createUsersTable(); // Create the users table
+            insertSampleUser(); // Insert a sample user
+
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
+        }
+    }
+
+    private static void createDatabase() {
+        try (Connection tempConnection = DriverManager.getConnection("jdbc:mysql://localhost/", userName, password);
+             Statement statement = tempConnection.createStatement()) {
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);
+            System.out.println("FiberTools Database Created!");
+        } catch (SQLException e) {
+            System.out.println("Error creating database:" + e.getMessage());
         }
     }
 
@@ -48,12 +63,34 @@ public abstract class JDBC {
         }
     }
 
+    private static void createUsersTable() {
+        try (Statement statement = connection.createStatement()) {
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS users (" +
+                    "id INT AUTO_INCREMENT PRIMARY KEY," +
+                    "username VARCHAR(50) NOT NULL," +
+                    "password VARCHAR(50) NOT NULL" +
+                    ")";
+            statement.executeUpdate(createTableSQL);
+            System.out.println("Users Table Created!");
+        } catch (SQLException e) {
+            System.out.println("Error creating users table:" + e.getMessage());
+        }
+    }
+
+    private static void insertSampleUser() {
+        try (Statement statement = connection.createStatement()) {
+            String insertUserSQL = "INSERT INTO users (username, password) VALUES ('user', 'user')";
+            statement.executeUpdate(insertUserSQL);
+            System.out.println("Sample user inserted!");
+        } catch (SQLException e) {
+            System.out.println("Error inserting sample user:" + e.getMessage());
+        }
+    }
+
     public static void closeConnection() {
         try {
-            if (connection != null) {
-                connection.close();
+            connection.close();
                 System.out.println("DB Connection closed!");
-            }
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
         }

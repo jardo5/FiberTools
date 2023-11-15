@@ -1,22 +1,60 @@
 package com.fibertools.controllers;
 
+import com.fibertools.dao.UserSQL;
+import com.fibertools.models.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
 public class MainController {
 
+    public Button traceViewerButton;
+    public Button reportCreatorButton;
+    public Button conversionsButton;
+    public Button calculatorsButton;
+    public Button spliceRecordsButton;
+    public Button inventoryButton;
+    public Button schedulingButton;
+    public Button loginButton;
+
+
     @FXML
     private BorderPane contents;
 
     @FXML
     private void initialize() {
-        loadContent("/com/fibertools/main/pages/default.fxml"); //Default Page
+        loadContent("/com/fibertools/main/pages/default.fxml"); // Default Page
+        updateButtonStatus();
     }
+
+    private void updateButtonStatus() {
+        Button[] buttons = {
+                spliceRecordsButton,
+                inventoryButton,
+                schedulingButton,
+        };
+        try {
+            if (UserSQL.isLoggedIn()) {
+                for (Button button : buttons) {
+                    button.setDisable(false);
+                }
+                loginButton.setText("Logout");
+            } else {
+                for (Button button : buttons) {
+                    button.setDisable(true);
+                }
+                loginButton.setText("Login");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // Side Menu Buttons Loaders
     public void onClickTraceViewerButton(ActionEvent actionEvent) {
@@ -48,10 +86,18 @@ public class MainController {
     }
 
     public void onClickLoginButton(ActionEvent actionEvent) {
-        loadContent("/com/fibertools/main/pages/login/login.fxml");
-
+        try {
+            if (UserSQL.isLoggedIn()) {
+                Users.logoutUser();
+                loadContent("/com/fibertools/main/pages/default.fxml");
+            } else {
+                loadContent("/com/fibertools/main/pages/login/login.fxml");
+            }
+            updateButtonStatus();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
     // End of Side Menu Buttons Loaders
 
     //Loads the content of the page by taking the fxml file name as a parameter
