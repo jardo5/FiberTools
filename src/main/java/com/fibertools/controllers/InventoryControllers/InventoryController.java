@@ -1,7 +1,9 @@
-package com.fibertools.controllers;
+package com.fibertools.controllers.InventoryControllers;
 
 import com.fibertools.dao.InventorySQL;
 import com.fibertools.models.Inventory;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,6 +22,10 @@ public class InventoryController {
     public TableColumn inventoryColAssignedJob;
     public TableColumn inventoryColLastUpdated;
 
+    public Button inventoryAddButton;
+    public Button inventoryModifyButton;
+    public Button inventoryDeleteButton;
+
     public void initialize() {
         inventoryColID.setCellValueFactory(new PropertyValueFactory<Inventory, Integer>("id"));
         inventoryColSerialNumber.setCellValueFactory(new PropertyValueFactory<Inventory, String>("serialNumber"));
@@ -33,5 +39,15 @@ public class InventoryController {
 
         //Sets sample inventory data
         inventoryTable.setItems(InventorySQL.getAllInventory());
+    }
+
+    public void onClickInventoryAddButton(ActionEvent actionEvent) {
+
+    }
+
+    public void onClickInventoryModifyButton(ActionEvent actionEvent) {
+    }
+
+    public void onClickInventoryDeleteButton(ActionEvent actionEvent) {
     }
 }
