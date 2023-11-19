@@ -6,8 +6,6 @@ import com.fibertools.models.Users;
 import com.fibertools.utils.FXMLLoaderUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
@@ -30,7 +28,7 @@ public class MainController {
 
     @FXML
     private void initialize() throws IOException {
-        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/default.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/default/default.fxml");
 
 
         //Allows InventoryController to access contents BorderPane
@@ -98,7 +96,7 @@ public class MainController {
         try {
             if (UserSQL.isLoggedIn()) {
                 Users.logoutUser();
-                FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/default.fxml");
+                FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/default/default.fxml");
             } else {
                 FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/login/login.fxml");
             }

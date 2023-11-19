@@ -53,6 +53,12 @@
             <artifactId>materialfx</artifactId>
             <version>11.17.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.github.palexdev</groupId>
+            <artifactId>virtualizedfx</artifactId>
+            <version>11.9.3</version>
+        </dependency>
     </dependencies>
 
     <build>

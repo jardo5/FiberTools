@@ -1,0 +1,76 @@
+.label {
+    -fx-text-fill: white;
+}
+
+/* ComboBox Default Styling */
+#customComboBox,
+#customComboBox:focused,
+#customComboBox .list-view,
+#customComboBox .list-cell {
+    -fx-background-color: #FBFAF5;
+    -fx-border-color: transparent;
+    -fx-text-box-border: transparent;
+    -fx-focus-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-text-fill: black;
+    -fx-pref-width: 150;
+}
+
+#customComboBox:focused {
+    -fx-focus-color: -fx-control-inner-background;
+    -fx-faint-focus-color: -fx-control-inner-background;
+}
+
+#customComboBox .arrow-button {
+    -fx-background-color: white;
+}
+
+#customComboBox .scroll-bar:vertical,
+#customComboBox .scroll-bar:horizontal {
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
+/* End of ComboBox Default Styling */
+
+
+/* TextField Default Styling */
+#customTextField,
+#customTextField:focused {
+    -fx-background-insets: 0;
+    -fx-background-color: #FBFAF5;
+    -fx-border-color: transparent;
+    -fx-text-box-border: transparent;
+    -fx-background-radius: 0;
+    -fx-text-fill: black;
+}
+
+#customTextField:focused {
+    -fx-focus-color: transparent;
+}
+
+
+/* Disabled/Non-Editable TextField */
+#customTextField:disabled,
+#customTextFieldNonEditable {
+    -fx-background-insets: 0;
+    -fx-background-color: #d2cece;
+    -fx-border-color: transparent;
+    -fx-text-box-border: transparent;
+    -fx-background-radius: 0;
+    -fx-text-fill: black;
+}
+
+/* End of TextField Default Styling */
+
+/* Button Default Styling (Using MaterialFX Button)*/
+
+#customButton {
+    -fx-cursor: hand;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+}
+
+/* End of Button Default Styling */
