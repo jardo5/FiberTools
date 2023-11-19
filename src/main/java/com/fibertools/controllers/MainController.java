@@ -1,7 +1,9 @@
 package com.fibertools.controllers;
 
+import com.fibertools.controllers.InventoryControllers.InventoryController;
 import com.fibertools.dao.UserSQL;
 import com.fibertools.models.Users;
+import com.fibertools.utils.FXMLLoaderUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,11 +29,18 @@ public class MainController {
     private BorderPane contents;
 
     @FXML
-    private void initialize() {
-        loadContent("/com/fibertools/main/pages/default.fxml"); // Default Page
+    private void initialize() throws IOException {
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/default.fxml");
+
+
+        //Allows InventoryController to access contents BorderPane
+        InventoryController inventoryController = new InventoryController();
+        inventoryController.setContents(contents);
+
         updateButtonStatus();
     }
 
+    //Checks if user is logged in and updates button status
     private void updateButtonStatus() {
         Button[] buttons = {
                 spliceRecordsButton,
@@ -58,40 +67,40 @@ public class MainController {
 
     // Side Menu Buttons Loaders
     public void onClickTraceViewerButton(ActionEvent actionEvent) {
-        loadContent("/com/fibertools/main/pages/traceviewer.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceviewer.fxml");
     }
 
-    public void onClickReportButton(ActionEvent actionEvent) {
-        loadContent("/com/fibertools/main/pages/report.fxml");
+     public void onClickReportButton(ActionEvent actionEvent) {
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/reportcreator.fxml");
     }
 
     public void onClickConversionsButton(ActionEvent actionEvent) {
-        loadContent("/com/fibertools/main/pages/conversions.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/conversions.fxml");
     }
 
     public void onClickCalculatorsButton(ActionEvent actionEvent) {
-        loadContent("/com/fibertools/main/pages/calculators.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/calculators.fxml");
     }
 
     public void onClickSpliceRecordsButton(ActionEvent actionEvent) {
-        loadContent("/com/fibertools/main/pages/splicerecords.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/splicerecords.fxml");
     }
 
     public void onClickInventoryButton(ActionEvent actionEvent) {
-        loadContent("/com/fibertools/main/pages/inventory/inventory.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/inventory/inventory.fxml");
     }
 
     public void onClickSchedulingButton(ActionEvent actionEvent) {
-        loadContent("/com/fibertools/main/pages/scheduling.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/scheduling.fxml");
     }
 
     public void onClickLoginButton(ActionEvent actionEvent) {
         try {
             if (UserSQL.isLoggedIn()) {
                 Users.logoutUser();
-                loadContent("/com/fibertools/main/pages/default.fxml");
+                FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/default.fxml");
             } else {
-                loadContent("/com/fibertools/main/pages/login/login.fxml");
+                FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/login/login.fxml");
             }
             updateButtonStatus();
         } catch (Exception e) {
@@ -99,16 +108,4 @@ public class MainController {
         }
     }
     // End of Side Menu Buttons Loaders
-
-    //Loads the content of the page by taking the fxml file name as a parameter
-    private void loadContent(String fxmlFileName) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
-            Node newContent = loader.load();
-            contents.getChildren().clear();
-            contents.getChildren().add(newContent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

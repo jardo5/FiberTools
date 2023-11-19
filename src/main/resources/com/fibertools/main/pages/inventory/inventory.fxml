@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.InventoryControllers.InventoryController">
+<BorderPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.InventoryControllers.InventoryController">
    <center>
       <ScrollPane prefHeight="600.0" prefWidth="750.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
@@ -36,9 +36,9 @@
          <children>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="15.0" StackPane.alignment="CENTER">
                <children>
-                  <Button fx:id="inventoryAddButton" mnemonicParsing="false" onAction="#onClickInventoryAddButton" text="Add" />
-                  <Button fx:id="inventoryModifyButton" mnemonicParsing="false" onAction="#onClickInventoryModifyButton" text="Modify" />
-                  <Button fx:id="inventoryDeleteButton" mnemonicParsing="false" onAction="#onClickInventoryDeleteButton" text="Delete" />
+                  <MFXButton fx:id="inventoryAddButton" onAction="#onClickInventoryAddButton" text="Add" />
+                  <MFXButton fx:id="inventoryModifyButton" text="Modify" />
+                  <MFXButton fx:id="inventoryDeleteButton" text="Delete" />
                </children>
             </HBox>
          </children>

@@ -1,12 +1,16 @@
 package com.fibertools.controllers.InventoryControllers;
 
+import com.fibertools.controllers.MainController;
 import com.fibertools.dao.InventorySQL;
 import com.fibertools.models.Inventory;
+import com.fibertools.utils.FXMLLoaderUtils;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
+import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 
 public class InventoryController {
     
@@ -22,9 +26,16 @@ public class InventoryController {
     public TableColumn inventoryColAssignedJob;
     public TableColumn inventoryColLastUpdated;
 
-    public Button inventoryAddButton;
-    public Button inventoryModifyButton;
-    public Button inventoryDeleteButton;
+    public MFXButton inventoryAddButton;
+    public MFXButton inventoryModifyButton;
+    public MFXButton inventoryDeleteButton;
+
+    @FXML
+    private BorderPane contents;
+
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
 
     public void initialize() {
         inventoryColID.setCellValueFactory(new PropertyValueFactory<Inventory, Integer>("id"));
@@ -42,7 +53,7 @@ public class InventoryController {
     }
 
     public void onClickInventoryAddButton(ActionEvent actionEvent) {
-
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/inventory/addInventory.fxml");
     }
 
     public void onClickInventoryModifyButton(ActionEvent actionEvent) {
@@ -50,4 +61,5 @@ public class InventoryController {
 
     public void onClickInventoryDeleteButton(ActionEvent actionEvent) {
     }
+
 }

@@ -1,0 +1,9 @@
+.mfx-text-field {
+    -fx-text-fill: black;
+}
+
+.mfx-text-field .floating-text {
+    -fx-text-fill: white;
+}
+
+
