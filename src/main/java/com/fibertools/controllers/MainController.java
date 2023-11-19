@@ -1,5 +1,6 @@
 package com.fibertools.controllers;
 
+import com.fibertools.controllers.InventoryControllers.AddInventoryController;
 import com.fibertools.controllers.InventoryControllers.InventoryController;
 import com.fibertools.dao.UserSQL;
 import com.fibertools.models.Users;
@@ -27,13 +28,17 @@ public class MainController {
     private BorderPane contents;
 
     @FXML
-    private void initialize() throws IOException {
+    private void initialize() {
         FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/default/default.fxml");
 
 
         //Allows InventoryController to access contents BorderPane
         InventoryController inventoryController = new InventoryController();
         inventoryController.setContents(contents);
+
+        //Alows AddInventoryController to access contents BorderPane
+        AddInventoryController addInventoryController = new AddInventoryController();
+        addInventoryController.setContents(contents);
 
         updateButtonStatus();
     }

@@ -42,6 +42,9 @@ public abstract class JDBC {
             createInventoryTable();
             insertSampleInventory();
 
+            createJobsTable();
+            insertSampleJob();
+
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
         }
@@ -174,6 +177,58 @@ public abstract class JDBC {
         insertInventory("FOSC450B66241B3V", "Commscope FOSC 450 B Gel Closure", "Splice Enclosure", "Underground splice case for up to 96 splices", 32, 335.00, "Google Fiber");
     }
     //End Inventory Table
+
+    //Jobs Table
+    private static void createJobsTable() {
+        try (Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE 'jobs'");
+            if (!resultSet.next()){
+                String createTableSQL = "CREATE TABLE jobs (" +
+                        "id INT AUTO_INCREMENT PRIMARY KEY," +
+                        "job_name VARCHAR(50) NOT NULL" + ")";
+                statement.executeUpdate(createTableSQL);
+                System.out.println("Jobs Table Created!");
+            } else {
+                System.out.println("Jobs Table already exists - Skipping creation");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error creating jobs table:" + e.getMessage());
+        }
+    }
+
+    private static boolean jobExists(String job_name) {
+        try (Statement statement = connection.createStatement()) {
+            String checkJobSQL = "SELECT * FROM jobs WHERE job_name = '" + job_name + "'";
+            ResultSet resultSet = statement.executeQuery(checkJobSQL);
+            return resultSet.next();
+        } catch (SQLException e) {
+            System.out.println("Error checking job existence:" + e.getMessage());
+            return false;
+        }
+    }
+
+    //Sample Job
+    private static void insertJob(String job_name) {
+        if (!jobExists(job_name)) {
+            try (Statement statement = connection.createStatement()) {
+                String insertJobSQL = "INSERT INTO jobs (job_name) VALUES ('" + job_name + "')";
+                statement.executeUpdate(insertJobSQL);
+                System.out.println("Job '" + job_name + "' inserted!");
+            } catch (SQLException e) {
+                System.out.println("Error inserting job:" + e.getMessage());
+            }
+        } else {
+            System.out.println("Job '" + job_name + "' already exists - Skipping insertion");
+        }
+    }
+
+    private static void insertSampleJob() {
+        insertJob("Google");
+        insertJob("AT&T");
+        insertJob("Verizon");
+        insertJob("CenturyLink");
+        insertJob("Comcast");
+    }
 
 
 

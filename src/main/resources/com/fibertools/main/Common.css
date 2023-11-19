@@ -71,6 +71,39 @@
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
+    -fx-padding: 5 15 5 15;
+    -fx-pref-width: 100;
+    -fx-pref-height: 25;
+}
+
+#customAddButton {
+    -fx-cursor: hand;
+    -fx-background-color: #6E8FD9;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 5 15 5 15;
+    -fx-pref-width: 100;
+    -fx-pref-height: 25;
+}
+
+#customModifyButton {
+    -fx-cursor: hand;
+    -fx-background-color: #6ED9AF;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 5 15 5 15;
+    -fx-pref-width: 100;
+    -fx-pref-height: 25;
+}
+
+#customDeleteButton, #customCancelButton {
+    -fx-cursor: hand;
+    -fx-background-color: #D97B6E;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 5 15 5 15;
+    -fx-pref-width: 100;
+    -fx-pref-height: 25;
 }
 
 /* End of Button Default Styling */

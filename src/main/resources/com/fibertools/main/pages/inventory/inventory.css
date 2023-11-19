@@ -1,0 +1,12 @@
+@import url(../../Common.css);
+
+
+.inventoryAddButton {
+    -fx-text-fill: black;
+    -fx-background-color: #6e6ee0;
+}
+
+#inventoryAddButton {
+    -fx-text-fill: black;
+    -fx-background-color: #6e6ee0;
+}
