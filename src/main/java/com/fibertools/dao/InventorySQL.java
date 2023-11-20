@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class InventorySQL {
@@ -38,6 +39,18 @@ public class InventorySQL {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public static void removeInventoryItem(int id){
+        String query = "DELETE FROM inventory WHERE id = ?";
+        try {
+            Connection connection = JDBC.connection;
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -82,7 +82,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <ComboBox id="customComboBox" fx:id="addInventoryType" editable="true" />
+                                                      <ComboBox id="customComboBox" fx:id="addInventoryType" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -126,7 +126,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <ComboBox id="customComboBox" fx:id="addInventoryAssignedJob" editable="true" prefWidth="150.0" />
+                                                      <ComboBox id="customComboBox" fx:id="addInventoryAssignedJob" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                              </children>

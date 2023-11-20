@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -10,26 +9,22 @@
 
 <BorderPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@inventory.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.InventoryControllers.InventoryController">
    <center>
-      <ScrollPane prefHeight="600.0" prefWidth="750.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
-         <content>
-            <TableView fx:id="inventoryTable" prefHeight="600.0" prefWidth="750.0" stylesheets="@inventory.css">
-              <columns>
-                <TableColumn fx:id="inventoryColID" prefWidth="30.0" text="ID" />
-                <TableColumn fx:id="inventoryColSerialNumber" prefWidth="108.5" text="Serial Number" />
-                  <TableColumn fx:id="inventoryColName" prefWidth="86.0" text="Name" />
-                  <TableColumn fx:id="inventoryColType" prefWidth="81.66665649414062" text="Type" />
-                  <TableColumn fx:id="inventoryColDescription" prefWidth="100.0" text="Description" />
-                  <TableColumn fx:id="inventoryColQuantity" prefWidth="75.0" text="Quantity" />
-                  <TableColumn fx:id="inventoryColPrice" prefWidth="75.0" text="Price" />
-                  <TableColumn fx:id="inventoryColAssignedJob" prefWidth="100.0" text="Assigned Job" />
-                  <TableColumn fx:id="inventoryColLastUpdated" prefWidth="100.0" text="Last Updated" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </content>
-      </ScrollPane>
+      <TableView id="inventoryTable" fx:id="inventoryTable" prefHeight="600.0" prefWidth="750.0" BorderPane.alignment="CENTER_LEFT">
+        <columns>
+          <TableColumn fx:id="inventoryColID" prefWidth="30.0" text="ID" />
+          <TableColumn fx:id="inventoryColSerialNumber" prefWidth="108.5" text="Serial Number" />
+            <TableColumn fx:id="inventoryColName" prefWidth="86.0" text="Name" />
+            <TableColumn fx:id="inventoryColType" prefWidth="81.66665649414062" text="Type" />
+            <TableColumn fx:id="inventoryColDescription" prefWidth="100.0" text="Description" />
+            <TableColumn fx:id="inventoryColQuantity" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="inventoryColPrice" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="inventoryColAssignedJob" prefWidth="100.0" text="Assigned Job" />
+            <TableColumn fx:id="inventoryColLastUpdated" prefWidth="100.0" text="Last Updated" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
    </center>
    <bottom>
       <StackPane prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -37,8 +32,8 @@
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="15.0" StackPane.alignment="CENTER">
                <children>
                   <MFXButton id="customAddButton" fx:id="inventoryAddButton" onAction="#onClickInventoryAddButton" text="Add" />
-                  <MFXButton id="customModifyButton" fx:id="inventoryModifyButton" text="Modify" />
-                  <MFXButton id="customDeleteButton" fx:id="inventoryDeleteButton" text="Delete" />
+                  <MFXButton id="customModifyButton" fx:id="inventoryModifyButton" onAction="#onClickInventoryModifyButton" text="Modify" />
+                  <MFXButton id="customDeleteButton" fx:id="inventoryDeleteButton" onAction="#onClickInventoryDeleteButton" text="Delete" />
                </children>
             </HBox>
          </children>

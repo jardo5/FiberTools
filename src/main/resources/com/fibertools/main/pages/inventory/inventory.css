@@ -10,3 +10,53 @@
     -fx-text-fill: black;
     -fx-background-color: #6e6ee0;
 }
+
+/* Styles for TableView */
+
+/* Styles for TableView */
+
+/* Styles for TableView */
+
+#inventoryTable {
+    -fx-control-inner-background: #2a3338;
+    -fx-text-fill: white;
+}
+
+.table-view {
+    -fx-background-color: #2a3338;
+}
+
+.table-view .column-header {
+    -fx-text-fill: white;
+    -fx-background-color: #2a3338;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #808080;
+    -fx-table-cell-border-color:transparent;
+}
+
+.table-row-cell {
+    -fx-background-color: #2a3338;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #808080;
+    -fx-table-cell-border-color:transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #323d43;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #808080;
+    -fx-table-cell-border-color:transparent;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #3282b8;
+}
+
+.table-view .column-header .label{
+    -fx-alignment:CENTER_LEFT
+}
+
+
+
+
+

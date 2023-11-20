@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -10,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <AnchorPane prefHeight="600.0" prefWidth="750.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.DefaultController">
    <children>
       <StackPane layoutX="-1.0" layoutY="-2.0" prefHeight="600.0" prefWidth="750.0">
@@ -57,6 +57,7 @@
                         <MFXButton id="customButton" mnemonicParsing="false" text="Button" />
                      </children>
                   </HBox>
+                  <MFXTableView prefHeight="229.0" prefWidth="343.0" />
                </children>
             </VBox>
          </children>

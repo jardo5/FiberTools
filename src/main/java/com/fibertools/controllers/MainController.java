@@ -2,6 +2,7 @@ package com.fibertools.controllers;
 
 import com.fibertools.controllers.InventoryControllers.AddInventoryController;
 import com.fibertools.controllers.InventoryControllers.InventoryController;
+import com.fibertools.controllers.InventoryControllers.ModifyInventoryController;
 import com.fibertools.dao.UserSQL;
 import com.fibertools.models.Users;
 import com.fibertools.utils.FXMLLoaderUtils;
@@ -36,9 +37,13 @@ public class MainController {
         InventoryController inventoryController = new InventoryController();
         inventoryController.setContents(contents);
 
-        //Alows AddInventoryController to access contents BorderPane
+        //Allows AddInventoryController to access contents BorderPane
         AddInventoryController addInventoryController = new AddInventoryController();
         addInventoryController.setContents(contents);
+
+        //Allows ModifyInventoryController to access contents BorderPane
+        ModifyInventoryController modifyInventoryController = new ModifyInventoryController();
+        modifyInventoryController.setContents(contents);
 
         updateButtonStatus();
     }
