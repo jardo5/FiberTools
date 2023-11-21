@@ -32,6 +32,25 @@
     -fx-font-weight: bold;
 }
 
+.table-view .column-header-background .filler {
+    -fx-background-color: #2a3338;
+}
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 1;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical .thumb {
+    -fx-background-color: #3282b8;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical {
+    -fx-background-color: #2a3338;
+}
+
+
 .table-row-cell {
     -fx-background-color: #2a3338;
     -fx-border-width: 0 0 1 0;
@@ -61,6 +80,7 @@
 /* TODO: Add more styles for TableView
     * 1. Consider Scroll Pane for X-axis
     * 2. Different colors?
+    * 3. Tooltips on hover?
  */
 
 

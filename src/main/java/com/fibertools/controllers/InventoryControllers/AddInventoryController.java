@@ -11,12 +11,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 public class AddInventoryController {
     @FXML
@@ -36,6 +38,7 @@ public class AddInventoryController {
     public ComboBox<Jobs> addInventoryAssignedJob;
     public TextField addInventoryLastUpdated;
 
+    public MFXButton addNewAssignedJobButton;
     public MFXButton addInventoryAddButton;
     public MFXButton addInventoryCancelButton;
 
@@ -110,6 +113,23 @@ public class AddInventoryController {
         }
     }
 
+
+    public void onClickAddInventoryCancelButton(ActionEvent actionEvent) {
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/inventory/inventory.fxml");
+    }
+
+    @FXML
+    public void onClickAddNewAssignedJobButton(ActionEvent actionEvent) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("New Assigned Job");
+        dialog.setHeaderText("Enter the name of the new job:");
+        dialog.setContentText("Job Name:");
+
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(AddInventorySQL::addNewAssignedJob);
+        addInventoryAssignedJob.setItems(AddInventorySQL.getAllJobs());
+    }
+
     public static void errorAlert(String message, String title) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -124,10 +144,5 @@ public class AddInventoryController {
         alert.setHeaderText("Inventory Item Added");
         alert.setContentText(message);
         alert.showAndWait();
-    }
-
-
-    public void onClickAddInventoryCancelButton(ActionEvent actionEvent) {
-        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/inventory/inventory.fxml");
     }
 }

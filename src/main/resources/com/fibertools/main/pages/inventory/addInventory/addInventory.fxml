@@ -82,7 +82,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <ComboBox id="customComboBox" fx:id="addInventoryType" />
+                                                      <ComboBox id="customComboBox" fx:id="addInventoryType" visibleRowCount="5" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -126,7 +126,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <ComboBox id="customComboBox" fx:id="addInventoryAssignedJob" prefWidth="150.0" />
+                                                      <ComboBox id="customComboBox" fx:id="addInventoryAssignedJob" prefWidth="150.0" visibleRowCount="5" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -141,12 +141,21 @@
                      <bottom>
                         <StackPane prefHeight="65.0" prefWidth="350.0" BorderPane.alignment="CENTER">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                              <VBox>
                                  <children>
-                                    <MFXButton id="customAddButton" fx:id="addInventoryAddButton" minHeight="27.0" minWidth="70.0" onAction="#onClickAddInventoryAddButton" text="Add" />
-                                    <MFXButton id="customCancelButton" fx:id="addInventoryCancelButton" minHeight="27.0" minWidth="70.0" onAction="#onClickAddInventoryCancelButton" text="Cancel" />
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <MFXButton id="customModifyButton" fx:id="addNewAssignedJobButton" minHeight="27.0" minWidth="140.0" onAction="#onClickAddNewAssignedJobButton" text="Add New Job" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                                       <children>
+                                          <MFXButton id="customAddButton" fx:id="addInventoryAddButton" minHeight="27.0" minWidth="70.0" onAction="#onClickAddInventoryAddButton" text="Add Item" />
+                                          <MFXButton id="customCancelButton" fx:id="addInventoryCancelButton" minHeight="27.0" minWidth="70.0" onAction="#onClickAddInventoryCancelButton" text="Cancel" />
+                                       </children>
+                                    </HBox>
                                  </children>
-                              </HBox>
+                              </VBox>
                            </children>
                         </StackPane>
                      </bottom>
