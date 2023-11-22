@@ -84,17 +84,4 @@ public class AddInventorySQL {
         return false;
     }
 
-    //add new assigned job to database
-    public static void addNewAssignedJob(String job_name) {
-        String query = "INSERT INTO jobs (job_name) VALUES (?)";
-        try {
-            Connection connection = JDBC.connection;
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, job_name);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

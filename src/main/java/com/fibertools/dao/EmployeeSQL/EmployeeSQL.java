@@ -39,4 +39,16 @@ public class EmployeeSQL {
             return null;
         }
     }
+
+    public static void removeEmployee(int id){
+        String query = "DELETE FROM employees WHERE id = ?";
+        try {
+            Connection connection = JDBC.connection;
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

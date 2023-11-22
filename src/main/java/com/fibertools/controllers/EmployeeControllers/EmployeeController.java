@@ -45,6 +45,8 @@ public class EmployeeController {
         employeeColAssignedJob.setCellValueFactory(new PropertyValueFactory<Employees, String>("employeeAssignedJob"));
 
         employeeTable.setItems(EmployeeSQL.getAllEmployees());
+
+
     }
 
 
