@@ -54,6 +54,10 @@ public class MainController {
         AddEmployeeController addEmployeeController = new AddEmployeeController();
         addEmployeeController.setContents(contents);
 
+        //Allows SpliceRecordsController to access contents BorderPane
+        SpliceRecordsController spliceRecordsController = new SpliceRecordsController();
+        spliceRecordsController.setContents(contents);
+
         updateButtonStatus();
     }
 
@@ -100,7 +104,7 @@ public class MainController {
     }
 
     public void onClickSpliceRecordsButton(ActionEvent actionEvent) {
-        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/splicerecords.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/spliceRecords/spliceRecords.fxml");
     }
 
     public void onClickInventoryButton(ActionEvent actionEvent) {

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<?import javafx.scene.control.Label?>
+<BorderPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@spliceRecords.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.SpliceRecordsController">
+    <bottom>
+        <StackPane prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="15.0" StackPane.alignment="CENTER">
+                    <children>
+                        <MFXButton id="customAddButton" fx:id="inventoryAddButton" text="Add" />
+                        <MFXButton id="customModifyButton" fx:id="inventoryModifyButton" text="Modify" />
+                        <MFXButton id="customDeleteButton" fx:id="inventoryDeleteButton" text="Delete" />
+                    </children>
+                </HBox>
+            </children>
+        </StackPane>
+    </bottom>
+   <right>
+        <TableView id="inventoryTable" fx:id="inventoryTable" prefHeight="350.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+            <placeholder>
+                <Label text="Please Select A Splice" />
+            </placeholder>
+         <columns>
+            <TableColumn prefWidth="75.0" text="ID" />
+            <TableColumn prefWidth="75.0" text="Distance" />
+            <TableColumn prefWidth="75.0" text="Full Loss" />
+            <TableColumn prefWidth="75.0" text="Avg Loss" />
+            <TableColumn prefWidth="75.0" text="Max Loss" />
+            <TableColumn prefWidth="75.0" text="Notes" />
+         </columns>
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
+        </TableView>
+   </right>
+   <top>
+      <TableView prefHeight="300.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="31.0" text="ID" />
+          <TableColumn prefWidth="73.0" text="Name" />
+            <TableColumn prefWidth="85.0" text="Location" />
+            <TableColumn prefWidth="58.0" text="Notes" />
+            <TableColumn prefWidth="78.0" text="Assigned Job" />
+            <TableColumn prefWidth="97.0" text="Date &amp; Time" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <BorderPane.margin>
+            <Insets bottom="5.0" />
+         </BorderPane.margin>
+      </TableView>
+   </top>
+</BorderPane>
