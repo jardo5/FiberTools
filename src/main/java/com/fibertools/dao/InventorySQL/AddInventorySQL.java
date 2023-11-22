@@ -8,25 +8,6 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 
 public class AddInventorySQL {
-    public static ObservableList<Jobs> getAllJobs() {
-        ObservableList<Jobs> jobsList = FXCollections.observableArrayList();
-        String query = "SELECT * FROM jobs";
-        try {
-            Connection connection = JDBC.connection;
-            PreparedStatement statement = connection.prepareStatement(query);
-            ResultSet result = statement.executeQuery();
-            while (result.next()) {
-                int resJobId = result.getInt("id");
-                String resJobName = result.getString("job_name");
-                Jobs job = new Jobs(resJobId, resJobName);
-                jobsList.add(job);
-            }
-            return jobsList;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     //auto increment inventory id
     public static int autoInventoryID() {

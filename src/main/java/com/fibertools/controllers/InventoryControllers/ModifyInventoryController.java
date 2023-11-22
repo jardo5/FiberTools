@@ -2,6 +2,7 @@ package com.fibertools.controllers.InventoryControllers;
 
 import com.fibertools.dao.InventorySQL.AddInventorySQL;
 import com.fibertools.dao.InventorySQL.ModifyInventorySQL;
+import com.fibertools.dao.JobsSQL;
 import com.fibertools.models.Inventory;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -53,7 +54,7 @@ public class ModifyInventoryController {
         modifyInventoryID.setText(String.valueOf(AddInventorySQL.autoInventoryID()));
 
         //Populated Assigned Job ComboBox with Jobs from database
-        modifyInventoryAssignedJob.setItems(AddInventorySQL.getAllJobs());
+        modifyInventoryAssignedJob.setItems(JobsSQL.getAllJobs());
 
         //Populated Type ComboBox with Types
         ObservableList<String> typeList = modifyInventoryType.getItems();
