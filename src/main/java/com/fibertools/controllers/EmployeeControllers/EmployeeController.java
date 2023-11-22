@@ -1,11 +1,14 @@
 package com.fibertools.controllers.EmployeeControllers;
 
 import com.fibertools.dao.EmployeeSQL.EmployeeSQL;
+import com.fibertools.dao.InventorySQL.InventorySQL;
 import com.fibertools.models.Employees;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -58,5 +61,24 @@ public class EmployeeController {
     }
 
     public void onClickEmployeeDeleteButton(ActionEvent actionEvent) {
+        Employees selectedEmployee = employeeTable.getSelectionModel().getSelectedItem();
+        if (selectedEmployee != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Item");
+            alert.setHeaderText("Are you sure you want to delete this employee?");
+            alert.setContentText("Click OK to delete.");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    EmployeeSQL.removeEmployee(selectedEmployee.getEmployeeId());
+                    employeeTable.setItems(EmployeeSQL.getAllEmployees());
+                }
+            });
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No Employee Selected");
+            alert.setContentText("Please select an employee to delete.");
+            alert.showAndWait();
+        }
     }
 }

@@ -40,15 +40,26 @@ public class EmployeeSQL {
         }
     }
 
-    public static void removeEmployee(int id){
-        String query = "DELETE FROM employees WHERE id = ?";
+    public static void removeEmployee(int id) {
         try {
             Connection connection = JDBC.connection;
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, id);
-            statement.executeUpdate();
+
+
+            String deleteEmployeeSQL = "DELETE FROM employees WHERE id = ?";
+            PreparedStatement deleteStatement = connection.prepareStatement(deleteEmployeeSQL);
+            deleteStatement.setInt(1, id);
+            deleteStatement.executeUpdate();
+
+            String updateIdsSQL = "UPDATE employees SET id = id - 1 WHERE id > ?";
+            PreparedStatement updateStatement = connection.prepareStatement(updateIdsSQL);
+            updateStatement.setInt(1, id);
+            updateStatement.executeUpdate();
+
+            System.out.println("Employee with ID " + id + " removed successfully.");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }

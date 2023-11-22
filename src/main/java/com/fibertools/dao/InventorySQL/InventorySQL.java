@@ -43,15 +43,25 @@ public class InventorySQL {
         }
     }
 
-    public static void removeInventoryItem(int id){
-        String query = "DELETE FROM inventory WHERE id = ?";
+    public static void removeInventoryItem(int id) {
         try {
             Connection connection = JDBC.connection;
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, id);
-            statement.executeUpdate();
+
+            String deleteInventoryItemSQL = "DELETE FROM inventory WHERE id = ?";
+            PreparedStatement deleteStatement = connection.prepareStatement(deleteInventoryItemSQL);
+            deleteStatement.setInt(1, id);
+            deleteStatement.executeUpdate();
+
+            String updateIdsSQL = "UPDATE inventory SET id = id - 1 WHERE id > ?";
+            PreparedStatement updateStatement = connection.prepareStatement(updateIdsSQL);
+            updateStatement.setInt(1, id);
+            updateStatement.executeUpdate();
+
+            System.out.println("Inventory item with ID " + id + " removed successfully.");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 }
