@@ -1,8 +1,10 @@
-package com.fibertools.controllers;
+package com.fibertools.controllers.SpliceRecordControllers;
 
 import com.fibertools.dao.SpliceRecordsSQL.SpliceRecords.SpliceRecordsSQL;
 import com.fibertools.models.SpliceRecords;
+import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -63,5 +65,15 @@ public class SpliceRecordsController {
     }
 
 
+    public void onClickSpliceAddButton(ActionEvent actionEvent) {
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/spliceRecords/addSpliceRecord/addSpliceRecord.fxml");
+    }
 
+    public void onClickSpliceModifyButton(ActionEvent actionEvent) {
+
+
+    }
+
+    public void onClickSpliceDeleteButton(ActionEvent actionEvent) {
+    }
 }

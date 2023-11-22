@@ -9,7 +9,6 @@ import java.sql.*;
 
 public class AddInventorySQL {
 
-    //auto increment inventory id
     public static int autoInventoryID() {
         String query = "SELECT MAX(id) FROM inventory";
         try {
@@ -27,7 +26,6 @@ public class AddInventorySQL {
         }
     }
 
-    //add new inventory item to database
     public static void addInventoryItem(int id, String serial_number, String name, String type, String description, int quantity, double price, String assigned_job, Timestamp last_updated) {
         String query = "INSERT INTO inventory (id, serial_number, name, type, description, quantity, price, assigned_job, last_updated) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {

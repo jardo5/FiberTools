@@ -15,4 +15,6 @@ module com.fibertools.fibertools {
     opens com.fibertools.controllers.InventoryControllers to javafx.fxml;
     exports com.fibertools.controllers.EmployeeControllers;
     opens com.fibertools.controllers.EmployeeControllers to javafx.fxml;
+    exports com.fibertools.controllers.SpliceRecordControllers;
+    opens com.fibertools.controllers.SpliceRecordControllers to javafx.fxml;
 }

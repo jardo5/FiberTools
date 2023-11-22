@@ -5,6 +5,8 @@ import com.fibertools.controllers.EmployeeControllers.EmployeeController;
 import com.fibertools.controllers.InventoryControllers.AddInventoryController;
 import com.fibertools.controllers.InventoryControllers.InventoryController;
 import com.fibertools.controllers.InventoryControllers.ModifyInventoryController;
+import com.fibertools.controllers.SpliceRecordControllers.AddSpliceRecordController;
+import com.fibertools.controllers.SpliceRecordControllers.SpliceRecordsController;
 import com.fibertools.dao.UserSQL;
 import com.fibertools.models.Users;
 import com.fibertools.utils.FXMLLoaderUtils;
@@ -57,6 +59,10 @@ public class MainController {
         //Allows SpliceRecordsController to access contents BorderPane
         SpliceRecordsController spliceRecordsController = new SpliceRecordsController();
         spliceRecordsController.setContents(contents);
+
+        // Allows AddSpliceRecordController to access contents BorderPane
+        AddSpliceRecordController addSpliceRecordController = new AddSpliceRecordController();
+        addSpliceRecordController.setContents(contents);
 
         updateButtonStatus();
     }

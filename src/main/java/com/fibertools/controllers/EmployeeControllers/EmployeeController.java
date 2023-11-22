@@ -14,6 +14,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
+// TODO: Fix Table View text color. Add Modify Functionality.
+
 public class EmployeeController {
 
     @FXML

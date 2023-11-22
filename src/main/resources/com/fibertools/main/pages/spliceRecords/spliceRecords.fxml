@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@spliceRecords.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.SpliceRecordsController">
+<BorderPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@spliceRecords.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.SpliceRecordControllers.SpliceRecordsController">
    <top>
       <TableView fx:id="spliceRecordsTable" prefHeight="250.0" prefWidth="750.0" BorderPane.alignment="CENTER">
         <columns>
@@ -62,9 +62,9 @@
          <children>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <MFXButton id="customAddButton" fx:id="spliceRecordAddSpliceButton" text="Add Splice" />
-                  <MFXButton id="customModifyButton" fx:id="spliceRecordModifySpliceButton" text="Modify Splice" />
-                  <MFXButton id="customDeleteButton" fx:id="spliceRecordDeleteSpliceButton" text="Delete Splice" />
+                  <MFXButton id="customAddButton" fx:id="spliceRecordAddSpliceButton" onAction="#onClickSpliceAddButton" text="Add Splice" />
+                  <MFXButton id="customModifyButton" fx:id="spliceRecordModifySpliceButton" onAction="#onClickSpliceModifyButton" text="Modify Splice" />
+                  <MFXButton id="customDeleteButton" fx:id="spliceRecordDeleteSpliceButton" onAction="#onClickSpliceDeleteButton" text="Delete Splice" />
                </children>
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
