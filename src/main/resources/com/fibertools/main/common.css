@@ -124,12 +124,10 @@
 /* TableView Default Styling */
 /* Styles for TableView */
 
-#inventoryTable {
-    -fx-control-inner-background: #2a3338;
-    -fx-text-fill: white;
-}
-
-#employeeTable {
+#inventoryTable,
+#customerTable,
+#spliceRecordsTable,
+#fibersRecordsTable {
     -fx-control-inner-background: #2a3338;
     -fx-text-fill: white;
 }

@@ -1,10 +1,7 @@
 package com.fibertools.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
 
 public abstract class JDBC {
 
@@ -47,6 +44,9 @@ public abstract class JDBC {
 
             createEmployeeTable();
             insertSampleEmployee();
+
+            createSpliceRecordsTable();
+            insertSampleSpliceRecord();
 
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
@@ -291,6 +291,67 @@ public abstract class JDBC {
     }
 
     //End Employees Table
+
+    //Splice Records Table
+
+    private static void createSpliceRecordsTable() {
+        try (Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE 'splice_records'");
+            if (!resultSet.next()) {
+                String createTableSQL = "CREATE TABLE splice_records (" +
+                        "splice_id INT AUTO_INCREMENT PRIMARY KEY," +
+                        "splice_name VARCHAR(50) NOT NULL," +
+                        "splice_customer_name VARCHAR(100) NOT NULL," +
+                        "splice_location VARCHAR(50) NOT NULL," +
+                        "splice_count INT NOT NULL," +
+                        "splice_notes VARCHAR(100) NOT NULL," +
+                        "splice_assigned_job VARCHAR(50) NOT NULL," +
+                        "splice_date DATE" + ")";
+                statement.executeUpdate(createTableSQL);
+                System.out.println("Splice Records Table Created!");
+            } else {
+                System.out.println("Splice Records Table already exists - Skipping creation");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error creating splice records table:" + e.getMessage());
+        }
+    }
+
+    private static boolean spliceRecordExists(String splice_name) {
+        try (Statement statement = connection.createStatement()) {
+            String checkSpliceRecordSQL = "SELECT * FROM splice_records WHERE splice_name = '" + splice_name + "'";
+            ResultSet resultSet = statement.executeQuery(checkSpliceRecordSQL);
+            return resultSet.next();
+        } catch (SQLException e) {
+            System.out.println("Error checking splice record existence:" + e.getMessage());
+            return false;
+        }
+    }
+
+    private static void insertSpliceRecord(String splice_name, String splice_customer_name, String splice_location, int splice_count, String splice_notes, String splice_assigned_job, LocalDate splice_date) {
+        if (!spliceRecordExists(splice_name)) {
+            try (Statement statement = connection.createStatement()) {
+                String insertSpliceRecordSQL = "INSERT INTO splice_records (splice_name, splice_customer_name, splice_location, splice_count, splice_notes, splice_assigned_job, splice_date) VALUES ('"
+                        + splice_name + "', '" + splice_customer_name + "', '" + splice_location + "', '" + splice_count + "', '" + splice_notes + "', '" + splice_assigned_job + "', '" + splice_date + "')";
+                statement.executeUpdate(insertSpliceRecordSQL);
+                System.out.println("Splice Record '" + splice_name + "' inserted!");
+            } catch (SQLException e) {
+                System.out.println("Error inserting splice record:" + e.getMessage());
+            }
+        } else {
+            System.out.println("Splice Record '" + splice_name + "' already exists - Skipping insertion");
+        }
+    }
+
+    private static void insertSampleSpliceRecord() {
+        insertSpliceRecord("Google Building Patch Panel 54", "Google", "123 Main St", 24, "Example Notes", "Google", LocalDate.of(2023, 11, 21));
+    }
+
+    //End Splice Records Table
+
+
+
+
 
     public static void closeConnection() {
         try {
