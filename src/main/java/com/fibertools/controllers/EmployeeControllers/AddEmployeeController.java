@@ -122,6 +122,7 @@ public class AddEmployeeController {
     }
 
     public void onClickAddEmployeeCancelButton(ActionEvent actionEvent) {
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/employee/employee.fxml");
     }
 
     public static void errorAlert(String error){
