@@ -32,31 +32,24 @@ public class Inventory {
     public String getSerialNumber() {
         return serialNumber;
     }
-
     public String getName() {
         return name;
     }
-
     public String getType() {
         return type;
     }
-
     public String getDescription() {
         return description;
     }
-
     public int getQuantity() {
         return quantity;
     }
-
     public double getPrice() {
         return price;
     }
-
     public String getAssignedJob() {
         return assignedJob;
     }
-
     public String getLastUpdated() {
         return lastUpdated;
     }
@@ -66,35 +59,27 @@ public class Inventory {
     public void setId(int id) {
         this.id = id;
     }
-
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public void setType(String type) {
         this.type = type;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
     public void setPrice(double price) {
         this.price = price;
     }
-
     public void setAssignedJob(String assignedJob) {
         this.assignedJob = assignedJob;
     }
-
     public void setLastUpdated(String lastUpdated) {
         this.lastUpdated = lastUpdated;
     }

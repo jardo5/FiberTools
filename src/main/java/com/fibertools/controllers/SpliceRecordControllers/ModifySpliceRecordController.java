@@ -2,9 +2,7 @@ package com.fibertools.controllers.SpliceRecordControllers;
 
 import com.fibertools.dao.InventorySQL.AddInventorySQL;
 import com.fibertools.dao.JobsSQL;
-import com.fibertools.dao.SpliceRecordsSQL.SpliceRecords.AddSpliceRecordSQL;
 import com.fibertools.dao.SpliceRecordsSQL.SpliceRecords.ModifySpliceRecordsSQL;
-import com.fibertools.models.Jobs;
 import com.fibertools.models.SpliceRecords;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;

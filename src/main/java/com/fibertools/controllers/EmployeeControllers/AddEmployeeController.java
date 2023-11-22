@@ -1,8 +1,7 @@
 package com.fibertools.controllers.EmployeeControllers;
 
-import com.fibertools.dao.EmployeeSQL.addEmployeeSQL;
+import com.fibertools.dao.EmployeeSQL.AddEmployeeSQL;
 import com.fibertools.dao.JobsSQL;
-import com.fibertools.models.Employees;
 import com.fibertools.models.Jobs;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -38,7 +37,7 @@ public class AddEmployeeController {
 
     public void initialize(){
         //Sets auto increment employee id
-        addEmployeeID.setText(String.valueOf(addEmployeeSQL.autoIncrementID()));
+        addEmployeeID.setText(String.valueOf(AddEmployeeSQL.autoIncrementID()));
 
         //Populated Assigned Job ComboBox with Jobs from database
         addEmployeeAssignedJob.setItems(JobsSQL.getAllJobs());
@@ -89,7 +88,7 @@ public class AddEmployeeController {
     }
 
     private boolean validateInput(){
-        return validateFields() && validateEmail() && validatePhone() && !addEmployeeSQL.duplicateEmployeeName(addEmployeeName.getText());
+        return validateFields() && validateEmail() && validatePhone() && !AddEmployeeSQL.duplicateEmployeeName(addEmployeeName.getText());
     }
 
     public void onClickAddEmployeeAddButton(ActionEvent actionEvent) {
@@ -104,7 +103,7 @@ public class AddEmployeeController {
                 double employee_rate = Double.parseDouble(addEmployeeRate.getText());
                 String employee_assigned_job = addEmployeeAssignedJob.getValue().toString();
 
-                addEmployeeSQL.addEmployee(id, employee_name, employee_phone, employee_email, employee_address, employee_position, employee_rate, employee_assigned_job);
+                AddEmployeeSQL.addEmployee(id, employee_name, employee_phone, employee_email, employee_address, employee_position, employee_rate, employee_assigned_job);
                 successAlert("Employee Added Successfully");
                 FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/employee/employee.fxml");
             } catch (Exception e) {

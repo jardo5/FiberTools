@@ -85,6 +85,17 @@ public class SpliceRecordsController {
     }
 
     public void onClickSpliceDeleteButton(ActionEvent actionEvent) {
+        SpliceRecords selectedItem = spliceRecordsTable.getSelectionModel().getSelectedItem();
+        if (selectedItem != null){
+            SpliceRecordsSQL.removeSpliceRecord(selectedItem.getSpliceId());
+            spliceRecordsTable.setItems(SpliceRecordsSQL.getAllSpliceRecords());
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No Splice Record Selected");
+            alert.setContentText("Please select a splice record to delete.");
+            alert.showAndWait();
+        }
     }
 
 

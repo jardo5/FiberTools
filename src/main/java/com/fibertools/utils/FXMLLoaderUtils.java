@@ -1,7 +1,9 @@
 package com.fibertools.utils;
 
+import com.fibertools.controllers.EmployeeControllers.ModifyEmployeeController;
 import com.fibertools.controllers.InventoryControllers.ModifyInventoryController;
 import com.fibertools.controllers.SpliceRecordControllers.ModifySpliceRecordController;
+import com.fibertools.models.Employees;
 import com.fibertools.models.Inventory;
 import com.fibertools.models.SpliceRecords;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +37,23 @@ public class FXMLLoaderUtils {
             contents.setCenter(root);
             modifyInventoryController.setContents(contents);
             modifyInventoryController.setInventory(selectedItem);
+
+            contents.setCenter(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Loads ModifyEmployeeController with selected Employee item
+    public static void loadEmployeeModifyController(BorderPane contents, String fxmlFileName, Employees selectedItem){
+        try {
+            FXMLLoader loader = new FXMLLoader(FXMLLoaderUtils.class.getResource(fxmlFileName));
+            Parent root = loader.load();
+            ModifyEmployeeController modifyEmployeeController = loader.getController();
+            contents.getChildren().clear();
+            contents.setCenter(root);
+            modifyEmployeeController.setContents(contents);
+            modifyEmployeeController.setEmployee(selectedItem);
 
             contents.setCenter(root);
         } catch (IOException e) {

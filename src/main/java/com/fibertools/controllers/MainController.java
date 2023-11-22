@@ -2,10 +2,12 @@ package com.fibertools.controllers;
 
 import com.fibertools.controllers.EmployeeControllers.AddEmployeeController;
 import com.fibertools.controllers.EmployeeControllers.EmployeeController;
+import com.fibertools.controllers.EmployeeControllers.ModifyEmployeeController;
 import com.fibertools.controllers.InventoryControllers.AddInventoryController;
 import com.fibertools.controllers.InventoryControllers.InventoryController;
 import com.fibertools.controllers.InventoryControllers.ModifyInventoryController;
 import com.fibertools.controllers.SpliceRecordControllers.AddSpliceRecordController;
+import com.fibertools.controllers.SpliceRecordControllers.ModifySpliceRecordController;
 import com.fibertools.controllers.SpliceRecordControllers.SpliceRecordsController;
 import com.fibertools.dao.UserSQL;
 import com.fibertools.models.Users;
@@ -56,6 +58,10 @@ public class MainController {
         AddEmployeeController addEmployeeController = new AddEmployeeController();
         addEmployeeController.setContents(contents);
 
+        //Allows ModifyEmployeeController to access contents BorderPane
+        ModifyEmployeeController modifyEmployeeController = new ModifyEmployeeController();
+        modifyEmployeeController.setContents(contents);
+
         //Allows SpliceRecordsController to access contents BorderPane
         SpliceRecordsController spliceRecordsController = new SpliceRecordsController();
         spliceRecordsController.setContents(contents);
@@ -63,6 +69,10 @@ public class MainController {
         // Allows AddSpliceRecordController to access contents BorderPane
         AddSpliceRecordController addSpliceRecordController = new AddSpliceRecordController();
         addSpliceRecordController.setContents(contents);
+
+        //Allows ModifySpliceRecordController to access contents BorderPane
+        ModifySpliceRecordController modifySpliceRecordController = new ModifySpliceRecordController();
+        modifySpliceRecordController.setContents(contents);
 
         updateButtonStatus();
     }

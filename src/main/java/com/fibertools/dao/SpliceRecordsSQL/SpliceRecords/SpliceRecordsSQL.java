@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SpliceRecordsSQL {
 
@@ -39,4 +40,25 @@ public class SpliceRecordsSQL {
 
     }
 
+    public static void removeSpliceRecord(int splice_id){
+        try {
+            Connection connection = JDBC.connection;
+
+            String deleteInventoryItemSQL = "DELETE FROM splice_records WHERE splice_id = ?";
+            PreparedStatement deleteStatement = connection.prepareStatement(deleteInventoryItemSQL);
+            deleteStatement.setInt(1, splice_id);
+            deleteStatement.executeUpdate();
+
+            String updateIdsSQL = "UPDATE splice_records SET splice_id = splice_id - 1 WHERE splice_id > ?";
+            PreparedStatement updateStatement = connection.prepareStatement(updateIdsSQL);
+            updateStatement.setInt(1, splice_id);
+            updateStatement.executeUpdate();
+
+            System.out.println("Splice Record with ID " + splice_id + " removed successfully.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
+

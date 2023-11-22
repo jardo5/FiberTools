@@ -60,6 +60,17 @@ public class EmployeeController {
     }
 
     public void onClickEmployeeModifyButton(ActionEvent actionEvent) {
+        Employees selectedEmployee = employeeTable.getSelectionModel().getSelectedItem();
+        if (selectedEmployee != null) {
+            FXMLLoaderUtils.loadEmployeeModifyController(contents, "/com/fibertools/main/pages/employee/modifyEmployee/modifyEmployee.fxml", selectedEmployee);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No Employee Selected");
+            alert.setContentText("Please select an employee to modify.");
+            alert.showAndWait();
+        }
+
     }
 
     public void onClickEmployeeDeleteButton(ActionEvent actionEvent) {

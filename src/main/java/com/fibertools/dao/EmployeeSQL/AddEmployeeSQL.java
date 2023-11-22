@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class addEmployeeSQL {
+public class AddEmployeeSQL {
 
     public static int autoIncrementID(){
         String query = "SELECT MAX(id) FROM employees";
