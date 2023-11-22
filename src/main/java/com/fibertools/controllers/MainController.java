@@ -1,5 +1,7 @@
 package com.fibertools.controllers;
 
+import com.fibertools.controllers.EmployeeControllers.AddEmployeeController;
+import com.fibertools.controllers.EmployeeControllers.EmployeeController;
 import com.fibertools.controllers.InventoryControllers.AddInventoryController;
 import com.fibertools.controllers.InventoryControllers.InventoryController;
 import com.fibertools.controllers.InventoryControllers.ModifyInventoryController;
@@ -30,6 +32,7 @@ public class MainController {
     private void initialize() {
         FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/default/default.fxml");
 
+        //TODO: Make this all its own function
 
         //Allows InventoryController to access contents BorderPane
         InventoryController inventoryController = new InventoryController();
@@ -42,6 +45,14 @@ public class MainController {
         //Allows ModifyInventoryController to access contents BorderPane
         ModifyInventoryController modifyInventoryController = new ModifyInventoryController();
         modifyInventoryController.setContents(contents);
+
+        //Allows EmployeeController to access contents BorderPane
+        EmployeeController employeeController = new EmployeeController();
+        employeeController.setContents(contents);
+
+        //Allows AddEmployeeController to access contents BorderPane
+        AddEmployeeController addEmployeeController = new AddEmployeeController();
+        addEmployeeController.setContents(contents);
 
         updateButtonStatus();
     }

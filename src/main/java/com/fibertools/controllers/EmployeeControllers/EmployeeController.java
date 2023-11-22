@@ -2,6 +2,7 @@ package com.fibertools.controllers.EmployeeControllers;
 
 import com.fibertools.dao.EmployeeSQL.EmployeeSQL;
 import com.fibertools.models.Employees;
+import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,6 +49,7 @@ public class EmployeeController {
 
 
     public void onClickEmployeeAddButton(ActionEvent actionEvent) {
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/employee/addEmployee/addEmployee.fxml");
     }
 
     public void onClickEmployeeModifyButton(ActionEvent actionEvent) {

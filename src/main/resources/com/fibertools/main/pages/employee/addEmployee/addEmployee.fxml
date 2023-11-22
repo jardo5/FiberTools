@@ -12,79 +12,69 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<!-- TODO: fix top text -->
+<!-- TODO: make prettier and fix top text -->
 
-<BorderPane fx:id="contents" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.InventoryControllers.AddInventoryController">
+<BorderPane fx:id="contents" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.EmployeeControllers.AddEmployeeController">
    <center>
-      <Pane prefHeight="600.0" prefWidth="750.0" stylesheets="@addInventory.css">
+      <Pane prefHeight="600.0" prefWidth="750.0" stylesheets="@addEmployee.css">
          <children>
             <StackPane layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="350.0">
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <top>
-                        <StackPane prefHeight="49.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+                        <StackPane prefHeight="133.0" prefWidth="350.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Inventory Product" underline="true" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Employee" underline="true" />
                            </children>
                         </StackPane>
                      </top>
                      <center>
-                        <StackPane prefHeight="150.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+                        <StackPane prefHeight="133.0" prefWidth="150.0" BorderPane.alignment="CENTER">
                            <children>
                               <VBox spacing="15.0">
                                  <children>
-                                    <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                                       <children>
-                                          <Label prefWidth="150.0" text="ID">
-                                             <font>
-                                                <Font size="10.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField id="customTextFieldNonEditable" fx:id="addInventoryID" editable="false" prefWidth="150.0" />
-                                       </children>
-                                    </VBox>
-                                    <HBox alignment="CENTER" spacing="15.0">
+                                    <HBox alignment="CENTER" prefHeight="133.0" prefWidth="350.0" spacing="15.0">
                                        <children>
                                           <VBox prefHeight="200.0" prefWidth="150.0">
                                              <children>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
                                                    <children>
-                                                      <Label prefWidth="150.0" text="Serial Number">
+                                                      <Label prefWidth="150.0" text="ID">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addInventorySerialNumber" prefWidth="150.0" />
+                                                      <TextField id="customTextFieldNonEditable" fx:id="addEmployeeID" editable="false" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
                                                    <children>
-                                                      <Label prefWidth="150.0" text="Description">
+                                                      <Label prefWidth="150.0" text="Phone">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addInventoryDescription" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="addEmployeePhone" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
                                                    <children>
-                                                      <Label prefWidth="150.0" text="Price">
+                                                      <Label prefWidth="150.0" text="Address">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addInventoryPrice" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="addEmployeeAddress" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
                                                    <children>
-                                                      <Label prefWidth="150.0" text="Type">
+                                                      <Label prefWidth="150.0" text="Position">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <ComboBox id="customComboBox" fx:id="addInventoryType" visibleRowCount="5" />
+                                                      <ComboBox id="customComboBox" fx:id="addEmployeePosition" visibleRowCount="5" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -98,27 +88,27 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addInventoryName" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="addEmployeeName" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
                                                    <children>
-                                                      <Label prefWidth="150.0" text="Last Updated">
+                                                      <Label prefWidth="150.0" text="Email">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextFieldNonEditable" fx:id="addInventoryLastUpdated" editable="false" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="addEmployeeEmail" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
                                                    <children>
-                                                      <Label prefWidth="150.0" text="Quantity">
+                                                      <Label prefWidth="150.0" text="Rate">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addInventoryQuantity" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="addEmployeeRate" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
@@ -128,7 +118,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <ComboBox id="customComboBox" fx:id="addInventoryAssignedJob" prefWidth="150.0" visibleRowCount="5" />
+                                                      <ComboBox id="customComboBox" fx:id="addEmployeeAssignedJob" prefWidth="150.0" visibleRowCount="5" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -141,19 +131,14 @@
                         </StackPane>
                      </center>
                      <bottom>
-                        <StackPane prefHeight="65.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+                        <StackPane prefHeight="137.0" prefWidth="350.0" BorderPane.alignment="CENTER">
                            <children>
-                              <VBox>
+                              <VBox prefHeight="124.0" prefWidth="350.0">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <HBox alignment="CENTER" prefHeight="133.0" prefWidth="350.0" spacing="15.0">
                                        <children>
-                                          <MFXButton id="customModifyButton" fx:id="addNewAssignedJobButton" minHeight="27.0" minWidth="140.0" onAction="#onClickAddNewAssignedJobButton" text="Add New Job" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
-                                       <children>
-                                          <MFXButton id="customAddButton" fx:id="addInventoryAddButton" minHeight="27.0" minWidth="70.0" onAction="#onClickAddInventoryAddButton" text="Add Item" />
-                                          <MFXButton id="customCancelButton" fx:id="addInventoryCancelButton" minHeight="27.0" minWidth="70.0" onAction="#onClickAddInventoryCancelButton" text="Cancel" />
+                                          <MFXButton id="customAddButton" fx:id="addEmployeeAddButton" minHeight="27.0" minWidth="70.0" onAction="#onClickAddEmployeeAddButton" text="Add Item" />
+                                          <MFXButton id="customCancelButton" fx:id="addEmployeeCancelButton" minHeight="27.0" minWidth="70.0" onAction="#onClickAddEmployeeCancelButton" text="Cancel" />
                                        </children>
                                     </HBox>
                                  </children>
