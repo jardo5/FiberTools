@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
+<!-- TODO: Fix the constrained size columns -->
 <BorderPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@inventory.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.InventoryControllers.InventoryController">
    <center>
       <TableView id="inventoryTable" fx:id="inventoryTable" prefHeight="600.0" prefWidth="750.0" BorderPane.alignment="CENTER_LEFT">

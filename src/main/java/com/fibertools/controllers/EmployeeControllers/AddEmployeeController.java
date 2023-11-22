@@ -4,6 +4,7 @@ import com.fibertools.dao.EmployeeSQL.addEmployeeSQL;
 import com.fibertools.dao.JobsSQL;
 import com.fibertools.models.Employees;
 import com.fibertools.models.Jobs;
+import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -92,7 +93,7 @@ public class AddEmployeeController {
     }
 
     public void onClickAddEmployeeAddButton(ActionEvent actionEvent) {
-        if(!validateInput()){
+        if(validateInput()){
             try {
                 int id = Integer.parseInt(addEmployeeID.getText());
                 String employee_name = addEmployeeName.getText();
@@ -105,12 +106,17 @@ public class AddEmployeeController {
 
                 addEmployeeSQL.addEmployee(id, employee_name, employee_phone, employee_email, employee_address, employee_position, employee_rate, employee_assigned_job);
                 successAlert("Employee Added Successfully");
+                FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/employee/employee.fxml");
             } catch (Exception e) {
                 e.printStackTrace();
                 errorAlert("Error Adding Employee");
             }
         } else {
-            errorAlert("Fields are Empty or Invalid");
+            if (!validateFields()) {
+                errorAlert("Please fill out all fields");
+            } else {
+                errorAlert("Duplicate Employee Name Number");
+            }
         }
 
     }
