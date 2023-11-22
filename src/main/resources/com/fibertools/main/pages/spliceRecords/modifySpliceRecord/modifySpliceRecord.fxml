@@ -14,9 +14,9 @@
 
 <!-- TODO: make prettier and fix top text -->
 
-<BorderPane fx:id="contents" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.SpliceRecordControllers.AddSpliceRecordController">
+<BorderPane fx:id="contents" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.SpliceRecordControllers.ModifySpliceRecordController">
    <center>
-      <Pane prefHeight="600.0" prefWidth="750.0" stylesheets="@addSpliceRecord.css">
+      <Pane prefHeight="600.0" prefWidth="750.0" stylesheets="@modifySpliceRecord.css">
          <children>
             <StackPane layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="350.0">
                <children>
@@ -44,7 +44,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextFieldNonEditable" fx:id="addSpliceRecordID" editable="false" prefWidth="150.0" />
+                                                      <TextField id="customTextFieldNonEditable" fx:id="modifySpliceRecordID" editable="false" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
@@ -54,7 +54,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addSpliceRecordCustomerName" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="modifySpliceRecordCustomerName" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
@@ -64,7 +64,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addSpliceRecordCount" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="modifySpliceRecordCount" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
@@ -74,7 +74,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <ComboBox id="customComboBox" fx:id="addSpliceRecordAssignedJob" visibleRowCount="5" />
+                                                      <ComboBox id="customComboBox" fx:id="modifySpliceRecordAssignedJob" visibleRowCount="5" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -88,7 +88,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addSpliceRecordName" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="modifySpliceRecordName" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
@@ -98,7 +98,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addSpliceRecordLocation" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="modifySpliceRecordLocation" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
@@ -108,7 +108,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addSpliceRecordNotes" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="modifySpliceRecordNotes" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
@@ -118,7 +118,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <TextField id="customTextField" fx:id="addSpliceRecordDate" prefWidth="150.0" />
+                                                      <TextField id="customTextField" fx:id="modifySpliceRecordDate" prefWidth="150.0" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -137,8 +137,8 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="133.0" prefWidth="350.0" spacing="15.0">
                                        <children>
-                                          <MFXButton id="customAddButton" fx:id="addSpliceRecordAddButton" minHeight="27.0" minWidth="70.0" onAction="#onClickAddSpliceAddButton" text="Save" />
-                                          <MFXButton id="customCancelButton" fx:id="addSpliceRecordCancelButton" minHeight="27.0" minWidth="70.0" onAction="#onClickAddSpliceCancelButton" text="Cancel" />
+                                          <MFXButton id="customAddButton" fx:id="modifySpliceRecordAddButton" minHeight="27.0" minWidth="70.0" onAction="#onClickModifySpliceAddButton" text="Save" />
+                                          <MFXButton id="customCancelButton" fx:id="modifySpliceRecordCancelButton" minHeight="27.0" minWidth="70.0" onAction="#onClickModifySpliceCancelButton" text="Cancel" />
                                        </children>
                                     </HBox>
                                  </children>

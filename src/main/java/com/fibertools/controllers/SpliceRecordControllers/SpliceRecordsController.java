@@ -6,6 +6,7 @@ import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,7 +22,7 @@ public class SpliceRecordsController {
     }
 
     // Splice Records Table
-    public TableView spliceRecordsTable;
+    public TableView<SpliceRecords> spliceRecordsTable;
     public TableColumn splicesTableColId;
     public TableColumn splicesTableColName;
     public TableColumn splicesTableColCustomerName;
@@ -70,10 +71,21 @@ public class SpliceRecordsController {
     }
 
     public void onClickSpliceModifyButton(ActionEvent actionEvent) {
-
+        SpliceRecords selectedItem = spliceRecordsTable.getSelectionModel().getSelectedItem();
+        if (selectedItem != null){
+            FXMLLoaderUtils.loadSpliceModifyController(contents, "/com/fibertools/main/pages/spliceRecords/modifySpliceRecord/modifySpliceRecord.fxml", selectedItem);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No Splice Record Selected");
+            alert.setContentText("Please select a splice record to modify.");
+            alert.showAndWait();
+        }
 
     }
 
     public void onClickSpliceDeleteButton(ActionEvent actionEvent) {
     }
+
+
 }
