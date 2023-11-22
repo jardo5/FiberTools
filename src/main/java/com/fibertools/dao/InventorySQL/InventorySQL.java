@@ -1,5 +1,6 @@
-package com.fibertools.dao;
+package com.fibertools.dao.InventorySQL;
 
+import com.fibertools.dao.JDBC;
 import com.fibertools.models.Inventory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

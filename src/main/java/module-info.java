@@ -13,4 +13,6 @@ module com.fibertools.fibertools {
     opens com.fibertools.controllers to javafx.fxml;
     exports com.fibertools.controllers.InventoryControllers;
     opens com.fibertools.controllers.InventoryControllers to javafx.fxml;
+    exports com.fibertools.controllers.EmployeeControllers;
+    opens com.fibertools.controllers.EmployeeControllers to javafx.fxml;
 }

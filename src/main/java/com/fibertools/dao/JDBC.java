@@ -45,6 +45,9 @@ public abstract class JDBC {
             createJobsTable();
             insertSampleJob();
 
+            createEmployeeTable();
+            insertSampleEmployee();
+
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
         }
@@ -229,8 +232,65 @@ public abstract class JDBC {
         insertJob("CenturyLink");
         insertJob("Comcast");
     }
+    //End Jobs Table
 
+    //Employees Table
 
+    private static void createEmployeeTable() {
+        try (Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE 'employees'");
+            if (!resultSet.next()) {
+                String createTableSQL = "CREATE TABLE employees (" +
+                        "id INT AUTO_INCREMENT PRIMARY KEY," +
+                        "employee_name VARCHAR(255) NOT NULL," +
+                        "employee_phone VARCHAR(15)," +
+                        "employee_email VARCHAR(255)," +
+                        "employee_address VARCHAR(255)," +
+                        "employee_position VARCHAR(50)," +
+                        "employee_rate DOUBLE," +
+                        "employee_assigned_job VARCHAR(255)" +
+                        ")";
+                statement.executeUpdate(createTableSQL);
+                System.out.println("Employees Table Created!");
+            } else {
+                System.out.println("Employees Table already exists - Skipping creation");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error creating employees table:" + e.getMessage());
+        }
+    }
+
+    private static boolean employeeExists(String employeeName) {
+        try (Statement statement = connection.createStatement()) {
+            String checkEmployeeSQL = "SELECT * FROM employees WHERE employee_name = '" + employeeName + "'";
+            ResultSet resultSet = statement.executeQuery(checkEmployeeSQL);
+            return resultSet.next();
+        } catch (SQLException e) {
+            System.out.println("Error checking employee existence:" + e.getMessage());
+            return false;
+        }
+    }
+
+    private static void insertEmployee(String employeeName, String phoneNumber, String email, String address, String position, double payRate, String currentAssignedJob) {
+        if (!employeeExists(employeeName)) {
+            try (Statement statement = connection.createStatement()) {
+                String insertEmployeeSQL = "INSERT INTO employees (employee_name, employee_phone, employee_email, employee_address, employee_position, employee_rate, employee_assigned_job) VALUES ('"
+                        + employeeName + "', '" + phoneNumber + "', '" + email + "', '" + address + "', '" + position + "', " + payRate + ", '" + currentAssignedJob + "')";
+                statement.executeUpdate(insertEmployeeSQL);
+                System.out.println("Employee '" + employeeName + "' inserted!");
+            } catch (SQLException e) {
+                System.out.println("Error inserting employee:" + e.getMessage());
+            }
+        } else {
+            System.out.println("Employee '" + employeeName + "' already exists - Skipping insertion");
+        }
+    }
+
+    private static void insertSampleEmployee() {
+        insertEmployee("John Doe", "123456789", "john.doe@example.com", "123 Main St", "Splicer", 50.0, "Comcast");
+    }
+
+    //End Employees Table
 
     public static void closeConnection() {
         try {

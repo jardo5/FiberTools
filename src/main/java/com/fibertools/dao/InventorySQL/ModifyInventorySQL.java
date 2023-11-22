@@ -1,4 +1,6 @@
-package com.fibertools.dao;
+package com.fibertools.dao.InventorySQL;
+
+import com.fibertools.dao.JDBC;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

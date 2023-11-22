@@ -48,7 +48,7 @@
                 </Button>
                 <Button fx:id="inventoryButton" onAction="#onClickInventoryButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Inventory">
                 </Button>
-                <Button fx:id="schedulingButton" onAction="#onClickSchedulingButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Scheduling">
+                <Button fx:id="schedulingButton" onAction="#onClickEmployeeButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Employees">
                 </Button>
                 <StackPane prefHeight="150.0" prefWidth="200.0">
                     <children>

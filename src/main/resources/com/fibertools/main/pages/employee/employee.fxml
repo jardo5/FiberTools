@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<BorderPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@employee.css" fx:controller="com.fibertools.controllers.EmployeeControllers.EmployeeController" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+        <center>
+            <TableView id="employeeTable" fx:id="employeeTable" prefHeight="600.0" prefWidth="750.0" BorderPane.alignment="CENTER_LEFT">
+                <columns>
+                    <TableColumn fx:id="employeeColID" prefWidth="30.0" text="ID" />
+                    <TableColumn fx:id="employeeColName" prefWidth="108.5" text="Full Name" />
+                    <TableColumn fx:id="employeeColPhone" prefWidth="86.0" text="Phone Number" />
+                    <TableColumn fx:id="employeeColEmail" prefWidth="81.66665649414062" text="Email" />
+                    <TableColumn fx:id="employeeColAddress" prefWidth="100.0" text="Address" />
+                    <TableColumn fx:id="employeeColPosition" prefWidth="75.0" text="Position" />
+                    <TableColumn fx:id="employeeColRate" prefWidth="75.0" text="Rate" />
+                    <TableColumn fx:id="employeeColAssignedJob" prefWidth="100.0" text="Assigned Job" />
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                </columnResizePolicy>
+            </TableView>
+        </center>
+        <bottom>
+            <StackPane prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                <children>
+                    <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="15.0" StackPane.alignment="CENTER">
+                        <children>
+                            <MFXButton id="customAddButton" fx:id="employeeAddButton" onAction="#onClickEmployeeAddButton" text="Add" />
+                            <MFXButton id="customModifyButton" fx:id="employeeModifyButton" onAction="#onClickEmployeeModifyButton" text="Modify" />
+                            <MFXButton id="customDeleteButton" fx:id="employeeDeleteButton" onAction="#onClickEmployeeDeleteButton" text="Delete" />
+                        </children>
+                    </HBox>
+                </children>
+            </StackPane>
+        </bottom>
+</BorderPane>
+
+

@@ -1,12 +1,11 @@
 package com.fibertools.controllers.InventoryControllers;
 
-import com.fibertools.dao.InventorySQL;
+import com.fibertools.dao.InventorySQL.InventorySQL;
 import com.fibertools.models.Inventory;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;

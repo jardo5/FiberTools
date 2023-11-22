@@ -11,8 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
-import java.io.IOException;
-
 public class MainController {
 
     public Button traceViewerButton;
@@ -98,8 +96,8 @@ public class MainController {
         FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/inventory/inventory.fxml");
     }
 
-    public void onClickSchedulingButton(ActionEvent actionEvent) {
-        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/scheduling.fxml");
+    public void onClickEmployeeButton(ActionEvent actionEvent) {
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/employee/employee.fxml");
     }
 
     public void onClickLoginButton(ActionEvent actionEvent) {

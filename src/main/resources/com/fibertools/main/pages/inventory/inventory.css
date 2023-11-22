@@ -1,4 +1,4 @@
-@import url(../../Common.css);
+@import url(../../common.css);
 
 
 .inventoryAddButton {
@@ -9,72 +9,6 @@
 #inventoryAddButton {
     -fx-text-fill: black;
     -fx-background-color: #6e6ee0;
-}
-
-/* Styles for TableView */
-
-#inventoryTable {
-    -fx-control-inner-background: #2a3338;
-    -fx-text-fill: white;
-}
-
-.table-view {
-    -fx-background-color: #2a3338;
-}
-
-.table-view .column-header {
-    -fx-text-fill: white;
-    -fx-background-color: #2a3338;
-    -fx-border-width: 0 0 1 0;
-    -fx-border-color: #808080;
-    -fx-table-cell-border-color:transparent;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-}
-
-.table-view .column-header-background .filler {
-    -fx-background-color: #2a3338;
-}
-
-.table-view .virtual-flow .scroll-bar .increment-button,
-.table-view .virtual-flow .scroll-bar .decrement-button {
-    -fx-opacity: 0;
-    -fx-padding: 1;
-}
-
-.table-view .virtual-flow .scroll-bar:vertical .thumb {
-    -fx-background-color: #3282b8;
-}
-
-.table-view .virtual-flow .scroll-bar:vertical {
-    -fx-background-color: #2a3338;
-}
-
-
-.table-row-cell {
-    -fx-background-color: #2a3338;
-    -fx-border-width: 0 0 1 0;
-    -fx-border-color: #808080;
-    -fx-table-cell-border-color:transparent;
-}
-
-.table-row-cell:odd {
-    -fx-background-color: #323d43;
-    -fx-border-width: 0 0 1 0;
-    -fx-border-color: #808080;
-    -fx-table-cell-border-color:transparent;
-}
-
-.table-row-cell:hover {
-    -fx-background-color: #3282b8;
-}
-
-.table-row-cell:selected {
-    -fx-background-color: #3282b8;
-}
-
-.table-view .column-header .label{
-    -fx-alignment:CENTER_LEFT
 }
 
 /* TODO: Add more styles for TableView

@@ -1,7 +1,7 @@
 package com.fibertools.controllers.InventoryControllers;
 
 
-import com.fibertools.dao.AddInventorySQL;
+import com.fibertools.dao.InventorySQL.AddInventorySQL;
 import com.fibertools.models.Jobs;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
