@@ -14,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
 public class InventoryController {
-    
+
     public TableView<Inventory> inventoryTable;
 
     public TableColumn inventoryColID;
@@ -59,7 +59,7 @@ public class InventoryController {
 
     public void onClickInventoryModifyButton(ActionEvent actionEvent) {
         Inventory selectedItem = inventoryTable.getSelectionModel().getSelectedItem();
-        if(selectedItem != null){
+        if (selectedItem != null) {
             FXMLLoaderUtils.loadModifyController(contents, "/com/fibertools/main/pages/inventory/modifyInventory/modifyInventory.fxml", selectedItem);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

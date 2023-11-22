@@ -24,14 +24,6 @@ import static com.fibertools.controllers.InventoryControllers.AddInventoryContro
 public class ModifyInventoryController {
 
     @FXML
-    private BorderPane contents;
-
-
-    public void setContents(BorderPane contents) {
-        this.contents = contents;
-    }
-
-    @FXML
     public TextField modifyInventoryID;
     @FXML
     public TextField modifyInventorySerialNumber;
@@ -42,13 +34,17 @@ public class ModifyInventoryController {
     public TextField modifyInventoryPrice;
     public ComboBox modifyInventoryAssignedJob;
     public TextField modifyInventoryLastUpdated;
-
     public MFXButton modifyInventoryAddButton;
     public MFXButton modifyInventoryCancelButton;
-
+    @FXML
+    private BorderPane contents;
     private LocalDateTime currentDateTime;
 
-    public void initialize(){
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
+
+    public void initialize() {
 
         //Sets auto increment inventory id
         modifyInventoryID.setText(String.valueOf(AddInventorySQL.autoInventoryID()));

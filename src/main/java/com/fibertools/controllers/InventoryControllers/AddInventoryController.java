@@ -22,13 +22,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 public class AddInventoryController {
-    @FXML
-    private BorderPane contents;
-
-    public void setContents(BorderPane contents) {
-        this.contents = contents;
-    }
-
     public TextField addInventoryID;
     public TextField addInventorySerialNumber;
     public TextField addInventoryName;
@@ -38,12 +31,32 @@ public class AddInventoryController {
     public TextField addInventoryPrice;
     public ComboBox<Jobs> addInventoryAssignedJob;
     public TextField addInventoryLastUpdated;
-
     public MFXButton addNewAssignedJobButton;
     public MFXButton addInventoryAddButton;
     public MFXButton addInventoryCancelButton;
-
+    @FXML
+    private BorderPane contents;
     private LocalDateTime currentDateTime;
+
+    public static void errorAlert(String message, String title) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public static void successAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText("Inventory Item Added");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
 
     public void initialize() {
 
@@ -92,7 +105,7 @@ public class AddInventoryController {
                 int id = Integer.parseInt(addInventoryID.getText());
                 String serialNumber = addInventorySerialNumber.getText();
                 String name = addInventoryName.getText();
-                String type = addInventoryType.getValue().toString();
+                String type = addInventoryType.getValue();
                 String description = addInventoryDescription.getText();
                 int quantity = Integer.parseInt(addInventoryQuantity.getText());
                 double price = Double.parseDouble(addInventoryPrice.getText());
@@ -114,7 +127,6 @@ public class AddInventoryController {
         }
     }
 
-
     public void onClickAddInventoryCancelButton(ActionEvent actionEvent) {
         FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/inventory/inventory.fxml");
     }
@@ -129,21 +141,5 @@ public class AddInventoryController {
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(JobsSQL::addNewAssignedJob);
         addInventoryAssignedJob.setItems(JobsSQL.getAllJobs());
-    }
-
-    public static void errorAlert(String message, String title) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(title);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-    public static void successAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText("Inventory Item Added");
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

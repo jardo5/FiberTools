@@ -107,7 +107,7 @@ public class MainController {
         FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceviewer.fxml");
     }
 
-     public void onClickReportButton(ActionEvent actionEvent) {
+    public void onClickReportButton(ActionEvent actionEvent) {
         FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/reportcreator.fxml");
     }
 

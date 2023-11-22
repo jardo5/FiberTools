@@ -4,7 +4,6 @@ import com.fibertools.dao.EmployeeSQL.AddEmployeeSQL;
 import com.fibertools.dao.EmployeeSQL.ModifyEmployeeSQL;
 import com.fibertools.dao.JobsSQL;
 import com.fibertools.models.Employees;
-import com.fibertools.models.Jobs;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.collections.ObservableList;
@@ -20,11 +19,6 @@ import static com.fibertools.controllers.EmployeeControllers.AddEmployeeControll
 public class ModifyEmployeeController {
 
     public BorderPane contents;
-    public void setContents(BorderPane contents) {
-        this.contents = contents;
-    }
-
-
     public TextField modifyEmployeeID;
     public TextField modifyEmployeePhone;
     public TextField modifyEmployeeAddress;
@@ -36,7 +30,11 @@ public class ModifyEmployeeController {
     public MFXButton modifyEmployeeAddButton;
     public MFXButton modifyEmployeeCancelButton;
 
-    public void initialize(){
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
+
+    public void initialize() {
         //Sets auto increment employee id
         modifyEmployeeID.setText(String.valueOf(AddEmployeeSQL.autoIncrementID()));
 
@@ -65,33 +63,33 @@ public class ModifyEmployeeController {
     }
 
 
-    private boolean validateEmail(){
+    private boolean validateEmail() {
         String email = modifyEmployeeEmail.getText();
-        if(email.contains("@") && email.contains(".")){
+        if (email.contains("@") && email.contains(".")) {
             return true;
-        }else{
+        } else {
             errorAlert("Invalid Email");
             return false;
         }
     }
 
-    private boolean validatePhone(){
+    private boolean validatePhone() {
         String phone = modifyEmployeePhone.getText();
-        if(phone.length() == 10){
+        if (phone.length() == 10) {
             return true;
-        }else{
+        } else {
             errorAlert("Invalid Phone Number (10 digits no spaces)");
             return false;
         }
     }
 
-    private boolean validateInput(){
+    private boolean validateInput() {
         return validateFields() && validateEmail() && validatePhone();
     }
 
 
     public void onClickModifyEmployeeSaveButton(ActionEvent actionEvent) {
-        if(validateInput()){
+        if (validateInput()) {
             try {
                 int id = Integer.parseInt(modifyEmployeeID.getText());
                 String name = modifyEmployeeName.getText();

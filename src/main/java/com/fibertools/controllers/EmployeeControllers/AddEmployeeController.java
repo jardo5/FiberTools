@@ -17,12 +17,6 @@ public class AddEmployeeController {
 
     @FXML
     public BorderPane contents;
-
-    public void setContents(BorderPane contents) {
-        this.contents = contents;
-    }
-
-
     public TextField addEmployeeID;
     public TextField addEmployeePhone;
     public TextField addEmployeeAddress;
@@ -31,11 +25,30 @@ public class AddEmployeeController {
     public TextField addEmployeeEmail;
     public TextField addEmployeeRate;
     public ComboBox<Jobs> addEmployeeAssignedJob;
-
     public MFXButton addEmployeeAddButton;
     public MFXButton addEmployeeCancelButton;
 
-    public void initialize(){
+    public static void errorAlert(String error) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Error");
+        alert.setContentText(error);
+        alert.showAndWait();
+    }
+
+    public static void successAlert(String success) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText("Success");
+        alert.setContentText(success);
+        alert.showAndWait();
+    }
+
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
+
+    public void initialize() {
         //Sets auto increment employee id
         addEmployeeID.setText(String.valueOf(AddEmployeeSQL.autoIncrementID()));
 
@@ -57,7 +70,7 @@ public class AddEmployeeController {
 
     }
 
-    private boolean validateFields(){
+    private boolean validateFields() {
         return !addEmployeeName.getText().isEmpty() &&
                 !addEmployeePhone.getText().isEmpty() &&
                 !addEmployeeEmail.getText().isEmpty() &&
@@ -67,32 +80,32 @@ public class AddEmployeeController {
                 !addEmployeeAssignedJob.getSelectionModel().isEmpty();
     }
 
-    private boolean validateEmail(){
+    private boolean validateEmail() {
         String email = addEmployeeEmail.getText();
-        if(email.contains("@") && email.contains(".")){
+        if (email.contains("@") && email.contains(".")) {
             return true;
-        }else{
+        } else {
             errorAlert("Invalid Email");
             return false;
         }
     }
 
-    private boolean validatePhone(){
+    private boolean validatePhone() {
         String phone = addEmployeePhone.getText();
-        if(phone.length() == 10){
+        if (phone.length() == 10) {
             return true;
-        }else{
+        } else {
             errorAlert("Invalid Phone Number (10 digits no spaces)");
             return false;
         }
     }
 
-    private boolean validateInput(){
+    private boolean validateInput() {
         return validateFields() && validateEmail() && validatePhone() && !AddEmployeeSQL.duplicateEmployeeName(addEmployeeName.getText());
     }
 
     public void onClickAddEmployeeAddButton(ActionEvent actionEvent) {
-        if(validateInput()){
+        if (validateInput()) {
             try {
                 int id = Integer.parseInt(addEmployeeID.getText());
                 String employee_name = addEmployeeName.getText();
@@ -122,21 +135,5 @@ public class AddEmployeeController {
 
     public void onClickAddEmployeeCancelButton(ActionEvent actionEvent) {
         FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/employee/employee.fxml");
-    }
-
-    public static void errorAlert(String error){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Error");
-        alert.setContentText(error);
-        alert.showAndWait();
-    }
-
-    public static void successAlert(String success){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText("Success");
-        alert.setContentText(success);
-        alert.showAndWait();
     }
 }

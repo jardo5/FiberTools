@@ -1,9 +1,6 @@
 package com.fibertools.dao.InventorySQL;
 
 import com.fibertools.dao.JDBC;
-import com.fibertools.models.Jobs;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.sql.*;
 
@@ -47,14 +44,14 @@ public class AddInventorySQL {
         }
     }
 
-    public static boolean duplicateSerialNumber(String serial_number){
+    public static boolean duplicateSerialNumber(String serial_number) {
         String query = "SELECT * FROM inventory WHERE serial_number = ?";
         try {
             Connection connection = JDBC.connection;
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, serial_number);
             ResultSet result = statement.executeQuery();
-            if(result.next()){
+            if (result.next()) {
                 return true;
             }
         } catch (SQLException e) {

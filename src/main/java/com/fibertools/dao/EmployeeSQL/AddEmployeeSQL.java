@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 
 public class AddEmployeeSQL {
 
-    public static int autoIncrementID(){
+    public static int autoIncrementID() {
         String query = "SELECT MAX(id) FROM employees";
         try {
             Connection connection = JDBC.connection;
@@ -25,7 +25,7 @@ public class AddEmployeeSQL {
         }
     }
 
-    public static void addEmployee(int id, String employee_name, String employee_phone, String employee_email, String employee_address, String employee_position, double employee_rate, String employee_assigned_job){
+    public static void addEmployee(int id, String employee_name, String employee_phone, String employee_email, String employee_address, String employee_position, double employee_rate, String employee_assigned_job) {
         String query = "INSERT INTO employees (id, employee_name, employee_phone, employee_email, employee_address, employee_position, employee_rate, employee_assigned_job) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             Connection connection = JDBC.connection;
@@ -44,18 +44,14 @@ public class AddEmployeeSQL {
         }
     }
 
-    public static boolean duplicateEmployeeName(String employee_name){
+    public static boolean duplicateEmployeeName(String employee_name) {
         String query = "SELECT * FROM employees WHERE employee_name = ?";
         try {
             Connection connection = JDBC.connection;
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, employee_name);
             ResultSet result = statement.executeQuery();
-            if(result.next()){
-                return true;
-            } else {
-                return false;
-            }
+            return result.next();
         } catch (Exception e) {
             e.printStackTrace();
             return false;

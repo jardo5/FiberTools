@@ -13,14 +13,16 @@ public class Jobs {
     public int getJobId() {
         return jobId;
     }
-    public String getJobName() {
-        return jobName;
-    }
 
     //Setters
     public void setJobId(int id) {
         this.jobId = id;
     }
+
+    public String getJobName() {
+        return jobName;
+    }
+
     public void setJobName(String jobName) {
         this.jobName = jobName;
     }

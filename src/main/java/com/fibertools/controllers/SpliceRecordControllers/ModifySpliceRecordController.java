@@ -20,10 +20,6 @@ import java.time.format.DateTimeParseException;
 public class ModifySpliceRecordController {
 
     public BorderPane contents;
-    public void setContents(BorderPane contents) {
-        this.contents = contents;
-    }
-
     @FXML
     public TextField modifySpliceRecordID;
     public TextField modifySpliceRecordCustomerName;
@@ -33,11 +29,14 @@ public class ModifySpliceRecordController {
     public TextField modifySpliceRecordLocation;
     public TextField modifySpliceRecordNotes;
     public TextField modifySpliceRecordDate;
-
     public MFXButton modifySpliceRecordAddButton;
     public MFXButton modifySpliceRecordCancelButton;
 
-    public void initialize(){
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
+
+    public void initialize() {
 
         modifySpliceRecordID.setText(String.valueOf(AddInventorySQL.autoInventoryID()));
 
@@ -46,7 +45,7 @@ public class ModifySpliceRecordController {
 
     }
 
-    private boolean validateFields(){
+    private boolean validateFields() {
         return !modifySpliceRecordName.getText().isEmpty() &&
                 !modifySpliceRecordCustomerName.getText().isEmpty() &&
                 !modifySpliceRecordCount.getText().isEmpty() &&
@@ -67,14 +66,13 @@ public class ModifySpliceRecordController {
         }
     }
 
-    private boolean validateInput(){
+    private boolean validateInput() {
         return validateFields() && validateDate();
     }
 
 
-
     public void onClickModifySpliceAddButton(ActionEvent actionEvent) {
-        if(validateInput()){
+        if (validateInput()) {
             try {
                 int id = Integer.parseInt(modifySpliceRecordID.getText());
                 String name = modifySpliceRecordName.getText();
@@ -107,7 +105,7 @@ public class ModifySpliceRecordController {
         modifySpliceRecordCount.setText(String.valueOf(selectedItem.getSpliceCount()));
         modifySpliceRecordLocation.setText(selectedItem.getSpliceLocation());
         modifySpliceRecordNotes.setText(selectedItem.getSpliceNotes());
-        modifySpliceRecordDate.setText(selectedItem.getSpliceDate().toString());
+        modifySpliceRecordDate.setText(selectedItem.getSpliceDate());
         modifySpliceRecordAssignedJob.setValue(selectedItem.getSpliceAssignedJob());
     }
 

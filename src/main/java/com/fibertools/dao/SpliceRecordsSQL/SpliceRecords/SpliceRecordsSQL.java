@@ -19,7 +19,7 @@ public class SpliceRecordsSQL {
             Connection connection = JDBC.connection;
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet result = statement.executeQuery();
-            while (result.next()){
+            while (result.next()) {
                 int resSpliceId = result.getInt("splice_id");
                 String resSpliceName = result.getString("splice_name");
                 String resCustomerName = result.getString("splice_customer_name");
@@ -40,7 +40,7 @@ public class SpliceRecordsSQL {
 
     }
 
-    public static void removeSpliceRecord(int splice_id){
+    public static void removeSpliceRecord(int splice_id) {
         try {
             Connection connection = JDBC.connection;
 

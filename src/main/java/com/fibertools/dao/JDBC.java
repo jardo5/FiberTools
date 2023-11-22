@@ -17,8 +17,8 @@ public abstract class JDBC {
                     "?connectionTimeZone=SERVER&createDatabaseIfNotExist=true";
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String userName = "root";
-    private static String password = System.getenv("DB_PASSWORD");
     public static Connection connection;
+    private static final String password = System.getenv("DB_PASSWORD");
 
     public static void openConnection() {
         try {
@@ -126,9 +126,9 @@ public abstract class JDBC {
 
     //Inventory Table
     private static void createInventoryTable() {
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE 'inventory'");
-            if (!resultSet.next()){
+            if (!resultSet.next()) {
                 String createTableSQL = "CREATE TABLE inventory (" +
                         "id INT AUTO_INCREMENT PRIMARY KEY," +
                         "serial_number VARCHAR(50) NOT NULL," +
@@ -149,7 +149,7 @@ public abstract class JDBC {
             System.out.println("Error creating inventory table:" + e.getMessage());
         }
     }
-    
+
     private static boolean inventoryExists(String serial_number) {
         try (Statement statement = connection.createStatement()) {
             String checkInventorySQL = "SELECT * FROM inventory WHERE serial_number = '" + serial_number + "'";
@@ -183,9 +183,9 @@ public abstract class JDBC {
 
     //Jobs Table
     private static void createJobsTable() {
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE 'jobs'");
-            if (!resultSet.next()){
+            if (!resultSet.next()) {
                 String createTableSQL = "CREATE TABLE jobs (" +
                         "id INT AUTO_INCREMENT PRIMARY KEY," +
                         "job_name VARCHAR(50) NOT NULL" + ")";
@@ -348,9 +348,6 @@ public abstract class JDBC {
     }
 
     //End Splice Records Table
-
-
-
 
 
     public static void closeConnection() {

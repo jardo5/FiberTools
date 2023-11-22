@@ -2,9 +2,7 @@ package com.fibertools.controllers;
 
 import com.fibertools.dao.UserSQL;
 import com.fibertools.models.Users;
-
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -28,7 +26,7 @@ public class LoginController {
                     usernameField.getText(),
                     passwordField.getText()
             );
-            if(loggedInUser != null){
+            if (loggedInUser != null) {
                 showInformationAlert("Login Successful", "Welcome " + loggedInUser.getUsername());
                 Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fibertools/main/main.fxml"));
@@ -48,7 +46,6 @@ public class LoginController {
         }
 
     }
-
 
 
     private void showInformationAlert(String title, String content) {

@@ -9,14 +9,14 @@ import java.sql.SQLException;
 
 public class AddSpliceRecordSQL {
 
-    public static int autoSpliceID(){
+    public static int autoSpliceID() {
         String query = "SELECT MAX(splice_id) FROM splice_records";
         try {
             Connection connection = JDBC.connection;
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet result = statement.executeQuery();
             int spliceID = 0;
-            while(result.next()){
+            while (result.next()) {
                 spliceID = result.getInt("MAX(splice_id)");
             }
             return spliceID + 1;
@@ -27,7 +27,7 @@ public class AddSpliceRecordSQL {
     }
 
 
-    public static void addSpliceRecord(int splice_id, String splice_name, String splice_customer_name, String splice_location, int splice_count, String splice_notes, String splice_assigned_job, String splice_date){
+    public static void addSpliceRecord(int splice_id, String splice_name, String splice_customer_name, String splice_location, int splice_count, String splice_notes, String splice_assigned_job, String splice_date) {
         String query = "INSERT INTO splice_records (splice_id, splice_name, splice_customer_name, splice_location, splice_count, splice_notes, splice_assigned_job, splice_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             Connection connection = JDBC.connection;

@@ -26,50 +26,64 @@ public class Employees {
     public int getEmployeeId() {
         return employeeId;
     }
-    public String getEmployeeName() {
-        return employeeName;
-    }
-    public String getEmployeePhone() {
-        return employeePhone;
-    }
-    public String getEmployeeEmail() {
-        return employeeEmail;
-    }
-    public String getEmployeeAddress() {
-        return employeeAddress;
-    }
-    public String getEmployeePosition() {
-        return employeePosition;
-    }
-    public double getEmployeeRate() {
-        return employeeRate;
-    }
-    public String getEmployeeAssignedJob() {
-        return employeeAssignedJob;
-    }
 
     //Setters
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
     public void setEmployeeName(String employeeName) {
         this.employeeName = employeeName;
     }
+
+    public String getEmployeePhone() {
+        return employeePhone;
+    }
+
     public void setEmployeePhone(String employeePhone) {
         this.employeePhone = employeePhone;
     }
+
+    public String getEmployeeEmail() {
+        return employeeEmail;
+    }
+
     public void setEmployeeEmail(String employeeEmail) {
         this.employeeEmail = employeeEmail;
     }
+
+    public String getEmployeeAddress() {
+        return employeeAddress;
+    }
+
     public void setEmployeeAddress(String employeeAddress) {
         this.employeeAddress = employeeAddress;
     }
+
+    public String getEmployeePosition() {
+        return employeePosition;
+    }
+
     public void setEmployeePosition(String employeePosition) {
         this.employeePosition = employeePosition;
     }
+
+    public double getEmployeeRate() {
+        return employeeRate;
+    }
+
     public void setEmployeeRate(double employeeRate) {
         this.employeeRate = employeeRate;
     }
+
+    public String getEmployeeAssignedJob() {
+        return employeeAssignedJob;
+    }
+
     public void setEmployeeAssignedJob(String employeeAssignedJob) {
         this.employeeAssignedJob = employeeAssignedJob;
     }

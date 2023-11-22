@@ -1,7 +1,6 @@
 package com.fibertools.controllers.EmployeeControllers;
 
 import com.fibertools.dao.EmployeeSQL.EmployeeSQL;
-import com.fibertools.dao.InventorySQL.InventorySQL;
 import com.fibertools.models.Employees;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -18,13 +17,6 @@ import javafx.scene.layout.BorderPane;
 
 public class EmployeeController {
 
-    @FXML
-    private BorderPane contents;
-
-    public void setContents(BorderPane contents) {
-        this.contents = contents;
-    }
-
     public TableView<Employees> employeeTable;
     public TableColumn employeeColID;
     public TableColumn employeeColName;
@@ -34,10 +26,15 @@ public class EmployeeController {
     public TableColumn employeeColPosition;
     public TableColumn employeeColRate;
     public TableColumn employeeColAssignedJob;
-
     public MFXButton employeeAddButton;
     public MFXButton employeeModifyButton;
     public MFXButton employeeDeleteButton;
+    @FXML
+    private BorderPane contents;
+
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
 
     public void initialize() {
         employeeColID.setCellValueFactory(new PropertyValueFactory<Employees, Integer>("employeeId"));

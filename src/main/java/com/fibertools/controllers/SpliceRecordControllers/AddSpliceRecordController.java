@@ -20,12 +20,6 @@ public class AddSpliceRecordController {
 
     @FXML
     public BorderPane contents;
-
-    public void setContents(BorderPane contents) {
-        this.contents = contents;
-    }
-
-
     public TextField addSpliceRecordID;
     public TextField addSpliceRecordName;
     public TextField addSpliceRecordCustomerName;
@@ -34,18 +28,21 @@ public class AddSpliceRecordController {
     public TextField addSpliceRecordNotes;
     public ComboBox<Jobs> addSpliceRecordAssignedJob;
     public TextField addSpliceRecordDate;
-
     public MFXButton addSpliceRecordAddButton;
     public MFXButton addSpliceRecordCancelButton;
 
-    public void initialize(){
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
+
+    public void initialize() {
 
         addSpliceRecordID.setText(String.valueOf(AddSpliceRecordSQL.autoSpliceID()));
 
         addSpliceRecordAssignedJob.setItems(JobsSQL.getAllJobs());
     }
 
-    private boolean validateFields(){
+    private boolean validateFields() {
         return !addSpliceRecordName.getText().isEmpty() &&
                 !addSpliceRecordCustomerName.getText().isEmpty() &&
                 !addSpliceRecordCount.getText().isEmpty() &&

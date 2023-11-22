@@ -9,7 +9,6 @@ import com.fibertools.models.SpliceRecords;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
@@ -28,7 +27,7 @@ public class FXMLLoaderUtils {
     }
 
     //Loads ModifyInventoryController with selected Inventory item
-    public static void loadModifyController(BorderPane contents, String fxmlFileName, Inventory selectedItem){
+    public static void loadModifyController(BorderPane contents, String fxmlFileName, Inventory selectedItem) {
         try {
             FXMLLoader loader = new FXMLLoader(FXMLLoaderUtils.class.getResource(fxmlFileName));
             Parent root = loader.load();
@@ -45,7 +44,7 @@ public class FXMLLoaderUtils {
     }
 
     //Loads ModifyEmployeeController with selected Employee item
-    public static void loadEmployeeModifyController(BorderPane contents, String fxmlFileName, Employees selectedItem){
+    public static void loadEmployeeModifyController(BorderPane contents, String fxmlFileName, Employees selectedItem) {
         try {
             FXMLLoader loader = new FXMLLoader(FXMLLoaderUtils.class.getResource(fxmlFileName));
             Parent root = loader.load();
@@ -62,7 +61,7 @@ public class FXMLLoaderUtils {
     }
 
     //Loads ModifySpliceRecordController with selected SpliceRecord item
-    public static void loadSpliceModifyController(BorderPane contents, String fxmlFileName, SpliceRecords selectedItem){
+    public static void loadSpliceModifyController(BorderPane contents, String fxmlFileName, SpliceRecords selectedItem) {
         try {
             FXMLLoader loader = new FXMLLoader(FXMLLoaderUtils.class.getResource(fxmlFileName));
             Parent root = loader.load();

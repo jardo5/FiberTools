@@ -14,13 +14,6 @@ import javafx.scene.layout.BorderPane;
 
 public class SpliceRecordsController {
 
-    @FXML
-    BorderPane contents;
-
-    public void setContents(BorderPane contents) {
-        this.contents = contents;
-    }
-
     // Splice Records Table
     public TableView<SpliceRecords> spliceRecordsTable;
     public TableColumn splicesTableColId;
@@ -31,26 +24,29 @@ public class SpliceRecordsController {
     public TableColumn splicesTableColNotes;
     public TableColumn splicesTableColAssignedJob;
     public TableColumn splicesTableColDate;
-
     public MFXButton spliceRecordAddSpliceButton;
     public MFXButton spliceRecordModifySpliceButton;
     public MFXButton spliceRecordDeleteSpliceButton;
-
-    // Fibers Records Table
-
     public TableView fibersRecordsTable;
     public TableColumn fibersRecordsColId;
+
+    // Fibers Records Table
     public TableColumn fibersRecordsColDistance;
     public TableColumn fibersRecordsColSpanLoss;
     public TableColumn fibersRecordsColAvgLoss;
     public TableColumn fibersRecordsColMaxLoss;
     public TableColumn fibersRecordsColNotes;
-
     public MFXButton fiberRecordAddFiberButton;
     public MFXButton fiberRecordModifyFiberButton;
     public MFXButton fiberRecordDeleteFiberButton;
+    @FXML
+    BorderPane contents;
 
-    public void initialize(){
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
+
+    public void initialize() {
 
         splicesTableColId.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Integer>("spliceId"));
         splicesTableColName.setCellValueFactory(new PropertyValueFactory<SpliceRecords, String>("spliceName"));
@@ -72,7 +68,7 @@ public class SpliceRecordsController {
 
     public void onClickSpliceModifyButton(ActionEvent actionEvent) {
         SpliceRecords selectedItem = spliceRecordsTable.getSelectionModel().getSelectedItem();
-        if (selectedItem != null){
+        if (selectedItem != null) {
             FXMLLoaderUtils.loadSpliceModifyController(contents, "/com/fibertools/main/pages/spliceRecords/modifySpliceRecord/modifySpliceRecord.fxml", selectedItem);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -86,7 +82,7 @@ public class SpliceRecordsController {
 
     public void onClickSpliceDeleteButton(ActionEvent actionEvent) {
         SpliceRecords selectedItem = spliceRecordsTable.getSelectionModel().getSelectedItem();
-        if (selectedItem != null){
+        if (selectedItem != null) {
             SpliceRecordsSQL.removeSpliceRecord(selectedItem.getSpliceId());
             spliceRecordsTable.setItems(SpliceRecordsSQL.getAllSpliceRecords());
         } else {

@@ -1,15 +1,20 @@
 package com.fibertools.main;
 
+import com.fibertools.dao.JDBC;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import com.fibertools.dao.JDBC;
 
 import java.io.IOException;
 
 public class Main extends Application {
+    public static void main(String[] args) {
+        JDBC.openConnection();
+        launch();
+        JDBC.closeConnection();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
@@ -17,12 +22,6 @@ public class Main extends Application {
         stage.setTitle("FiberTools");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        JDBC.openConnection();
-        launch();
-        JDBC.closeConnection();
     }
 
 }

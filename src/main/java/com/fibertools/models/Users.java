@@ -13,10 +13,6 @@ public class Users {
         this.username = username;
     }
 
-    public static void setLoggedInUser(Users loggedInUser) {
-        Users.loggedInUser = loggedInUser;
-    }
-
     public static void logoutUser() {
         Users.setLoggedInUser(null);
     }
@@ -26,26 +22,30 @@ public class Users {
         return loggedInUser;
     }
 
+    public static void setLoggedInUser(Users loggedInUser) {
+        Users.loggedInUser = loggedInUser;
+    }
+
     public int getId() {
         return id;
     }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-    //Getters End
 
     //Setters
     public void setId(int id) {
         this.id = id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+    //Getters End
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
