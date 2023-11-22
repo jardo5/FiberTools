@@ -127,9 +127,10 @@
 #inventoryTable,
 #customerTable,
 #spliceRecordsTable,
-#fibersRecordsTable {
+#fibersRecordsTable,
+#employeeTable {
     -fx-control-inner-background: #2a3338;
-    -fx-text-fill: white;
+    -fx-text-fill: #e5e4e2;
 }
 
 .table-view {
@@ -137,7 +138,7 @@
 }
 
 .table-view .column-header {
-    -fx-text-fill: white;
+    -fx-text-fill: #e5e4e2;
     -fx-background-color: #2a3338;
     -fx-border-width: 0 0 1 0;
     -fx-border-color: #808080;

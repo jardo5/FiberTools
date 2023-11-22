@@ -48,6 +48,9 @@ public abstract class JDBC {
             createSpliceRecordsTable();
             insertSampleSpliceRecord();
 
+            createFiberRecordsTable();
+            insertSampleFiberRecord();
+
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
         }
@@ -348,6 +351,68 @@ public abstract class JDBC {
     }
 
     //End Splice Records Table
+
+    //Fiber Records Table
+
+    //splice_id foreign key references splice_records(splice_id)
+    private static void createFiberRecordsTable(){
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE 'fibers'");
+            if (!resultSet.next()) {
+                String createTableSQL = "CREATE TABLE fibers (" +
+                        "id INT AUTO_INCREMENT PRIMARY KEY," +
+                        "distance DOUBLE NOT NULL," +
+                        "span_loss DOUBLE NOT NULL," +
+                        "avg_loss DOUBLE NOT NULL," +
+                        "max_loss DOUBLE NOT NULL," +
+                        "notes VARCHAR(100) NOT NULL," +
+                        "splice_id INT NOT NULL," +
+                        "FOREIGN KEY (splice_id) REFERENCES splice_records(splice_id)" +
+                        ")";
+                statement.executeUpdate(createTableSQL);
+                System.out.println("Fiber Records Table Created!");
+            } else {
+                System.out.println("Fiber Records Table already exists - Skipping creation");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error creating fiber records table:" + e.getMessage());
+        }
+
+    }
+
+    private static boolean fiberRecordExists(int splice_id) {
+        try (Statement statement = connection.createStatement()) {
+            String checkFiberRecordSQL = "SELECT * FROM fibers WHERE splice_id = '" + splice_id + "'";
+            ResultSet resultSet = statement.executeQuery(checkFiberRecordSQL);
+            return resultSet.next();
+        } catch (SQLException e) {
+            System.out.println("Error checking fiber record existence:" + e.getMessage());
+            return false;
+        }
+    }
+
+    private static void insertFiberRecord(double distance, double span_loss, double avg_loss, double max_loss, String notes, int splice_id) {
+        if (!fiberRecordExists(splice_id)) {
+            try (Statement statement = connection.createStatement()) {
+                String insertFiberRecordSQL = "INSERT INTO fibers (Distance, Span_Loss, Avg_Loss, Max_Loss, Notes, splice_id) VALUES ('"
+                        + distance + "', '" + span_loss + "', '" + avg_loss + "', '" + max_loss + "', '" + notes + "', '" + splice_id + "')";
+                statement.executeUpdate(insertFiberRecordSQL);
+                System.out.println("Fiber Record '" + splice_id + "' inserted!");
+            } catch (SQLException e) {
+                System.out.println("Error inserting fiber record:" + e.getMessage());
+            }
+        } else {
+            System.out.println("Fiber Record '" + splice_id + "' already exists - Skipping insertion");
+        }
+    }
+
+    private static void insertSampleFiberRecord() {
+        insertFiberRecord(73231.0, 4.52, .7, 1.6, "Example Notes", 1);
+    }
+
+    //End Fiber Records Table
+
 
 
     public static void closeConnection() {

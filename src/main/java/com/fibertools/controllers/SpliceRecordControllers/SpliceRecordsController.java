@@ -1,9 +1,11 @@
 package com.fibertools.controllers.SpliceRecordControllers;
 
+import com.fibertools.dao.SpliceRecordsSQL.FiberRecords.FiberRecordsSQL;
 import com.fibertools.dao.SpliceRecordsSQL.SpliceRecords.SpliceRecordsSQL;
 import com.fibertools.models.SpliceRecords;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -59,6 +61,29 @@ public class SpliceRecordsController {
 
 
         spliceRecordsTable.setItems(SpliceRecordsSQL.getAllSpliceRecords());
+
+        fibersRecordsColId.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Integer>("fiberId"));
+        fibersRecordsColDistance.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Double>("fiberDistance"));
+        fibersRecordsColSpanLoss.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Double>("fiberSpanLoss"));
+        fibersRecordsColAvgLoss.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Double>("fiberAvgLoss"));
+        fibersRecordsColMaxLoss.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Double>("fiberMaxLoss"));
+        fibersRecordsColNotes.setCellValueFactory(new PropertyValueFactory<SpliceRecords, String>("fiberNotes"));
+
+        // Listener for when a Splice Record is selected
+        spliceRecordsTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        int spliceId = newValue.getSpliceId();
+                        fibersRecordsTable.setItems(FiberRecordsSQL.getAllFibersBySpliceID(spliceId));
+                    } else {
+                        fibersRecordsTable.setItems(FXCollections.observableArrayList());
+                    }
+                }
+        );
+
+
+        spliceRecordsTable.setItems(SpliceRecordsSQL.getAllSpliceRecords());
+
     }
 
 
