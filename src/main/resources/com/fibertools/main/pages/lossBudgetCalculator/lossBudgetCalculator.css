@@ -1,0 +1,8 @@
+@import url(../../common.css);
+
+#customComboBox,
+#customComboBox:focused,
+#customComboBox .list-view,
+#customComboBox .list-cell {
+    -fx-pref-width: 250;
+}

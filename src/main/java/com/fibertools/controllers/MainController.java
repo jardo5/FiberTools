@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 public class MainController {
 
@@ -27,6 +28,9 @@ public class MainController {
     public Button inventoryButton;
     public Button schedulingButton;
     public Button loginButton;
+
+
+    public VBox calculatorsDropdown;
 
 
     @FXML
@@ -116,7 +120,7 @@ public class MainController {
     }
 
     public void onClickCalculatorsButton(ActionEvent actionEvent) {
-        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/calculators.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/lossBudgetCalculator/lossBudgetCalculator.fxml");
     }
 
     public void onClickSpliceRecordsButton(ActionEvent actionEvent) {

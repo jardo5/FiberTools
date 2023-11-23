@@ -14,6 +14,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
+//TODO Add Functionality to change/delete splice records
+
 public class SpliceRecordsController {
 
     // Splice Records Table
