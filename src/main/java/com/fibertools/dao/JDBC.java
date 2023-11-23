@@ -362,6 +362,7 @@ public abstract class JDBC {
             if (!resultSet.next()) {
                 String createTableSQL = "CREATE TABLE fibers (" +
                         "id INT AUTO_INCREMENT PRIMARY KEY," +
+                        "fiber_number INT NOT NULL," +
                         "distance DOUBLE NOT NULL," +
                         "span_loss DOUBLE NOT NULL," +
                         "avg_loss DOUBLE NOT NULL," +
@@ -392,11 +393,11 @@ public abstract class JDBC {
         }
     }
 
-    private static void insertFiberRecord(double distance, double span_loss, double avg_loss, double max_loss, String notes, int splice_id) {
+    private static void insertFiberRecord(int fiber_number, double distance, double span_loss, double avg_loss, double max_loss, String notes, int splice_id) {
         if (!fiberRecordExists(splice_id)) {
             try (Statement statement = connection.createStatement()) {
-                String insertFiberRecordSQL = "INSERT INTO fibers (Distance, Span_Loss, Avg_Loss, Max_Loss, Notes, splice_id) VALUES ('"
-                        + distance + "', '" + span_loss + "', '" + avg_loss + "', '" + max_loss + "', '" + notes + "', '" + splice_id + "')";
+                String insertFiberRecordSQL = "INSERT INTO fibers (Fiber_Number, Distance, Span_Loss, Avg_Loss, Max_Loss, Notes, splice_id) VALUES ('"
+                        + fiber_number + "', '" + distance + "', '" + span_loss + "', '" + avg_loss + "', '" + max_loss + "', '" + notes + "', '" + splice_id + "')";
                 statement.executeUpdate(insertFiberRecordSQL);
                 System.out.println("Fiber Record '" + splice_id + "' inserted!");
             } catch (SQLException e) {
@@ -408,7 +409,7 @@ public abstract class JDBC {
     }
 
     private static void insertSampleFiberRecord() {
-        insertFiberRecord(73231.0, 4.52, .7, 1.6, "Example Notes", 1);
+        insertFiberRecord(1,73231.0, 4.52, .7, 1.6, "Example Notes", 1);
     }
 
     //End Fiber Records Table

@@ -3,6 +3,7 @@ package com.fibertools.models;
 public class Fibers {
 
     private int fiberId;
+    private int fiberNumber;
     private double fiberDistance;
     private double fiberSpanLoss;
     private double fiberAvgLoss;
@@ -10,8 +11,9 @@ public class Fibers {
     private String fiberNotes;
     private int spliceId;
 
-    public Fibers(int fiberId, double fiberDistance, double fiberSpanLoss, double fiberAvgLoss, double fiberMaxLoss, String fiberNotes, int spliceId) {
+    public Fibers(int fiberId, int fiberNumber, double fiberDistance, double fiberSpanLoss, double fiberAvgLoss, double fiberMaxLoss, String fiberNotes, int spliceId) {
         this.fiberId = fiberId;
+        this.fiberNumber = fiberNumber;
         this.fiberDistance = fiberDistance;
         this.fiberSpanLoss = fiberSpanLoss;
         this.fiberAvgLoss = fiberAvgLoss;
@@ -23,6 +25,10 @@ public class Fibers {
     //Getters
     public int getFiberId() {
         return fiberId;
+    }
+
+    public int getFiberNumber() {
+        return fiberNumber;
     }
 
     public double getFiberDistance() {
@@ -53,6 +59,10 @@ public class Fibers {
 
     public void setFiberId(int fiberId) {
         this.fiberId = fiberId;
+    }
+
+    public void setFiberNumber(int fiberNumber) {
+        this.fiberNumber = fiberNumber;
     }
 
     public void setFiberDistance(double fiberDistance) {

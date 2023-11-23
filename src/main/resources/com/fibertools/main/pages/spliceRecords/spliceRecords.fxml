@@ -37,7 +37,8 @@
               <Label text="Please Select A Splice Record" />
           </placeholder>
         <columns>
-          <TableColumn fx:id="fibersRecordsColId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="fibersRecordsColId" prefWidth="75.0" text="ID" visible="false" />
+            <TableColumn fx:id="fibersRecordsColNumber" prefWidth="75.0" text="Fiber Number" />
           <TableColumn fx:id="fibersRecordsColDistance" prefWidth="75.0" text="Distance" />
             <TableColumn fx:id="fibersRecordsColSpanLoss" prefWidth="75.0" text="Total Span Loss" />
             <TableColumn fx:id="fibersRecordsColAvgLoss" prefWidth="75.0" text="Avg Loss" />

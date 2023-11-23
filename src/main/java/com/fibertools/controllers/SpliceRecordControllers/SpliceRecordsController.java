@@ -33,6 +33,7 @@ public class SpliceRecordsController {
     public TableColumn fibersRecordsColId;
 
     // Fibers Records Table
+    public TableColumn fibersRecordsColNumber;
     public TableColumn fibersRecordsColDistance;
     public TableColumn fibersRecordsColSpanLoss;
     public TableColumn fibersRecordsColAvgLoss;
@@ -41,6 +42,7 @@ public class SpliceRecordsController {
     public MFXButton fiberRecordAddFiberButton;
     public MFXButton fiberRecordModifyFiberButton;
     public MFXButton fiberRecordDeleteFiberButton;
+
     @FXML
     BorderPane contents;
 
@@ -63,6 +65,7 @@ public class SpliceRecordsController {
         spliceRecordsTable.setItems(SpliceRecordsSQL.getAllSpliceRecords());
 
         fibersRecordsColId.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Integer>("fiberId"));
+        fibersRecordsColNumber.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Integer>("fiberNumber"));
         fibersRecordsColDistance.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Double>("fiberDistance"));
         fibersRecordsColSpanLoss.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Double>("fiberSpanLoss"));
         fibersRecordsColAvgLoss.setCellValueFactory(new PropertyValueFactory<SpliceRecords, Double>("fiberAvgLoss"));
