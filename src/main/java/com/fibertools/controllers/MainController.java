@@ -112,7 +112,7 @@ public class MainController {
     }
 
     public void onClickReportButton(ActionEvent actionEvent) {
-        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/reportcreator.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/report.fxml");
     }
 
     public void onClickConversionsButton(ActionEvent actionEvent) {

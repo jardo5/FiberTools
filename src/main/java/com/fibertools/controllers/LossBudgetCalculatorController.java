@@ -3,9 +3,29 @@ package com.fibertools.controllers;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import java.io.IOException;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import static com.fibertools.controllers.EmployeeControllers.AddEmployeeController.errorAlert;
 
@@ -16,6 +36,7 @@ public class LossBudgetCalculatorController {
         this.content = contents;
     }
 
+
     public ComboBox lossBudgetTypeComboBox;
     public ComboBox lossBudgetMeasurementComboBox;
 
@@ -24,6 +45,8 @@ public class LossBudgetCalculatorController {
     public TextField lossBudgetSplices;
     public TextField lossBudgetTotalLoss;
     public MFXButton lossBudgetCalculateButton;
+
+    public MFXButton lossBudgetCredits;
 
     public void initialize() {
         lossBudgetTypeComboBox.getItems().addAll(
@@ -124,6 +147,21 @@ public class LossBudgetCalculatorController {
         }
     }
 
+
+    public void onClickLossBudgetCredits(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fibertools/main/pages/lossBudgetCalculator/credits.fxml"));
+            StackPane dialogContent = loader.load();
+
+            //TODO: Fix White Bar at the bottom of Dialog
+            Dialog dialog = new Dialog();
+            dialog.setTitle("Credits");
+            dialog.getDialogPane().setContent(dialogContent);
+            dialog.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

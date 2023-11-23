@@ -42,7 +42,7 @@
                 </Button>
                 <Button fx:id="conversionsButton" onAction="#onClickConversionsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Conversions">
                 </Button>
-                <Button fx:id="calculatorsButton" onAction="#onClickCalculatorsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Calculators">
+                <Button fx:id="calculatorsButton" onAction="#onClickCalculatorsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Loss Budget Calculator">
                 </Button>
                 <Button fx:id="spliceRecordsButton" onAction="#onClickSpliceRecordsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Splice Records">
                 </Button>

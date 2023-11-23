@@ -11,13 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane fx:id="content" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@lossBudgetCalculator.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.LossBudgetCalculatorController">
-   <bottom>
-      <StackPane prefHeight="49.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <MFXButton id="customButton" text="Credits &amp; Sources" />
-         </children>
-      </StackPane>
-   </bottom>
    <center>
       <VBox alignment="CENTER" prefWidth="750.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
@@ -63,4 +56,11 @@
          </children>
       </VBox>
    </center>
+   <bottom>
+      <StackPane prefHeight="49.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <MFXButton id="customButton" fx:id="lossBudgetCredits" onAction="#onClickLossBudgetCredits" text="Credits &amp; Sources" />
+         </children>
+      </StackPane>
+   </bottom>
 </BorderPane>

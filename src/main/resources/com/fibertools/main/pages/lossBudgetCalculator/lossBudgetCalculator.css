@@ -6,3 +6,15 @@
 #customComboBox .list-cell {
     -fx-pref-width: 250;
 }
+
+/* For Credits */
+
+#creditsPane  {
+    -fx-background-color: #141313;
+    -fx-text-fill: #e5e4e2;
+}
+
+#creditsPane .label {
+    -fx-font-size: 12;
+}
+
