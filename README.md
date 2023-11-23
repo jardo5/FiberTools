@@ -1,9 +1,23 @@
-# <span style="color:#6E8FD9">FiberTools</span>
 
+<h1 align="center">
+  <img src="https://i.imgur.com/pcxav6F.png" alt="FiberTools Logo" width="200" height="200">
+</h1>
+
+<h1 align="center">
+  <span style="color:#6E8FD9">FiberTools</span>
+</h1>
+
+<h1 align="center">
+  
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+
+![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
+![SceneBuilder](https://img.shields.io/badge/SceneBuilder-007ACC.svg?style=for-the-badge&logo=Java&logoColor=white)
+
 [![JavaFX](https://img.shields.io/badge/JavaFX-17%2B-green)](https://openjfx.io/)
+
 
 <span style="color:#6E8FD9">FiberTools</span> is an open-source JavaFX application designed to assist with fiber optic network data storage and calculations.
 
@@ -46,3 +60,4 @@
    ```bash
    mvn clean javafx:run
    ```
+   </h1>
