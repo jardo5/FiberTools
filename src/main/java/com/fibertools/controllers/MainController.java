@@ -33,6 +33,13 @@ public class MainController {
     public VBox calculatorsDropdown;
 
 
+    //TODO Finish Splice Records CRUD
+    //TODO Start Working on Trace Viewer
+    //TODO Start Working on Report Creator
+    //TODO Start Working on Conversions (Fiber to Color, Color to Fiber, etc.)
+    //TODO Start Working on Reports
+
+
     @FXML
     private BorderPane contents;
 
