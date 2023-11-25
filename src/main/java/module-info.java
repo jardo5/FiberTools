@@ -2,7 +2,10 @@ module com.fibertools.fibertools {
     requires javafx.controls;
     requires javafx.fxml;
 
+    requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;
+    requires org.kordamp.ikonli.fontawesome5;
+
     requires java.sql;
     requires MaterialFX;
 
@@ -17,4 +20,6 @@ module com.fibertools.fibertools {
     opens com.fibertools.controllers.EmployeeControllers to javafx.fxml;
     exports com.fibertools.controllers.SpliceRecordControllers;
     opens com.fibertools.controllers.SpliceRecordControllers to javafx.fxml;
+    exports com.fibertools.controllers.TraceViewerControllers;
+    opens com.fibertools.controllers.TraceViewerControllers to javafx.fxml;
 }

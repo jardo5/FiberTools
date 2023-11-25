@@ -115,7 +115,7 @@ public class MainController {
 
     // Side Menu Buttons Loaders
     public void onClickTraceViewerButton(ActionEvent actionEvent) {
-        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceviewer.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceViewer/traceViewer.fxml");
     }
 
     public void onClickReportButton(ActionEvent actionEvent) {

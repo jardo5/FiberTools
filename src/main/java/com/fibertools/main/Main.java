@@ -6,13 +6,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+
 import java.io.IOException;
 
 public class Main extends Application {
     public static void main(String[] args) {
+        System.out.println(System.getenv("PATH"));
         JDBC.openConnection();
         launch();
         JDBC.closeConnection();
+
     }
 
     @Override
@@ -23,5 +27,6 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
 
 }

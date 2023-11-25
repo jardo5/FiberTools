@@ -193,3 +193,8 @@
 }
 
 /* End of TableView Default Styling */
+
+#backgroundPane {
+    -fx-background-color: #141313;
+}
+

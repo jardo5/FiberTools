@@ -1,0 +1,57 @@
+@import url(../../common.css);
+
+
+
+/* Hidden Until File is Dragged & Dropped */
+#dragAndDropConfirmationText{
+    -fx-font-size: 12px;
+    -fx-text-fill: #e5e4e2;
+}
+
+/* Hidden Until File is Dragged & Dropped */
+#confirmationTextStackPane {
+    -fx-text-fill: BLACK;
+    -fx-border-radius: 55;
+    -fx-border-color: #e5e4e2;
+    -fx-border-width: .25;
+    -fx-background-radius: 55;
+}
+
+
+#innerMiddleStackPane {
+    -fx-background-color: transparent;
+    -fx-border-style: dashed;
+    -fx-border-color: #2a3338;
+    -fx-border-width: 2;
+}
+
+/* For Center Text */
+/* -fx-text-fill Doesnt work? */
+
+
+/* For mfx-button */
+.mfx-button .text {
+    -fx-text-fill: transparent;
+    -fx-font-weight: bolder;
+    -fx-font-size: 15px;
+    -fx-spacing: 5;
+
+}
+
+/* Generate Button */
+#customAddButton {
+    -fx-pref-width: 120;
+    -fx-pref-height: 35;
+}
+
+#customAddButton .text {
+    -fx-spacing: 5;
+    -fx-border-width: 0;
+    -fx-padding: 1 2 1 2;
+}
+
+/* For IMG */
+#cloudFontIcon {
+    -fx-fill: #e5e4e2;
+}
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane id="backgroundPane" fx:id="contents" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@traceViewer.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.TraceViewerControllers.TraceViewerController">
+    <center>
+        <StackPane fx:id="dropPane" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="CENTER">
+               <children>
+                  <StackPane id="innerMiddleStackPane" fx:id="innerMiddleStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragEntered="#onDragEntered" onDragExited="#onDragExited" prefHeight="350.0" prefWidth="350.0">
+                     <children>
+                        <VBox alignment="CENTER" spacing="15.0">
+                           <children>
+                               <FontIcon id="cloudFontIcon" iconLiteral="fas-cloud-upload-alt" iconSize="100" />
+                              <Text id="dropText" fill="#e5e4e2" strokeType="OUTSIDE" strokeWidth="0.0" text="Drag &amp; Drop" textAlignment="CENTER" />
+                              <Text id="dropText" fill="#e5e4e2" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" textAlignment="CENTER" underline="true" />
+                              <MFXButton id="customButton" fx:id="browseButton" onAction="#onBrowseClicked" visible="true" text="Browse" />
+                               <MFXButton id="customButton" fx:id="viewButton" text="View" onAction="#onViewClicked" visible="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+         </children>
+        </StackPane>
+    </center>
+    <bottom>
+      <StackPane id="bottomStackPane" prefHeight="150.0" stylesheets="@traceViewer.css">
+         <children>
+              <MFXButton id="customAddButton" fx:id="generateButton" onAction="#onGenerateClicked" text="Generate" />
+         </children>
+      </StackPane>
+    </bottom>
+   <top>
+      <StackPane prefHeight="150.0" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane id="confirmationTextStackPane" fx:id="confirmationTextStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity">
+               <children>
+                   <Text id="dragAndDropConfirmationText" fx:id="statusMessage" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </Text>
+               </children>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </StackPane>
+         </children>
+      </StackPane>
+   </top>
+</BorderPane>
