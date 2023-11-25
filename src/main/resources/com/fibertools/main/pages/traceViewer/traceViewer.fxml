@@ -22,7 +22,6 @@
                               <Text id="dropText" fill="#e5e4e2" strokeType="OUTSIDE" strokeWidth="0.0" text="Drag &amp; Drop" textAlignment="CENTER" />
                               <Text id="dropText" fill="#e5e4e2" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" textAlignment="CENTER" underline="true" />
                               <MFXButton id="customButton" fx:id="browseButton" onAction="#onBrowseClicked" visible="true" text="Browse" />
-                               <MFXButton id="customButton" fx:id="viewButton" text="View" onAction="#onViewClicked" visible="false" />
                            </children>
                         </VBox>
                      </children>
@@ -36,6 +35,7 @@
       <StackPane id="bottomStackPane" prefHeight="150.0" stylesheets="@traceViewer.css">
          <children>
               <MFXButton id="customAddButton" fx:id="generateButton" onAction="#onGenerateClicked" text="Generate" />
+             <MFXButton id="customAddButton" fx:id="viewButton" text="View" onAction="#onViewClicked" visible="false" />
          </children>
       </StackPane>
     </bottom>

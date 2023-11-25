@@ -1,16 +1,18 @@
 package com.fibertools.controllers.TraceViewerControllers;
 
 
+import com.fibertools.utils.FXMLLoaderUtils;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import javafx.animation.FadeTransition;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
@@ -31,6 +33,20 @@ public class TraceViewerController {
     private Text statusMessage;
 
     private File droppedFile;
+
+    @FXML
+    private MFXButton generateButton;
+
+    @FXML
+    private MFXButton viewButton;
+
+    public BorderPane contents;
+
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
+
+
 
 
     @FXML
@@ -114,11 +130,15 @@ public class TraceViewerController {
     }
 
 
-
     private void showError(String errorMessage) {
         Platform.runLater(() -> {
             updateStatusMessage(errorMessage, true);
         });
+    }
+
+    private void switchButtons() {
+        generateButton.setVisible(false);
+        viewButton.setVisible(true);
     }
 
     @FXML
@@ -126,6 +146,7 @@ public class TraceViewerController {
         if (droppedFile != null) {
             try {
                 runPyOTDR(droppedFile.getAbsolutePath());
+                switchButtons(); // Switches to view button after generating
             } catch (Exception e) {
                 e.printStackTrace();
                 showError("Error processing file.");
@@ -136,19 +157,36 @@ public class TraceViewerController {
     }
 
     private void runPyOTDR(String filePath) throws IOException {
+        // Temporary output directory
+        String outputDirectoryPath = "src/main/sorData";
+        File outputDirectory = new File(outputDirectoryPath);
+
+        // Create directory if it doesn't exist
+        if (!outputDirectory.exists()) {
+            outputDirectory.mkdir();
+        }
+
+
         String pythonPath = "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3";
         String pyotdrScriptPath = "/Library/Frameworks/Python.framework/Versions/3.12/bin/pyotdr";
+
         ProcessBuilder processBuilder = new ProcessBuilder(pythonPath, pyotdrScriptPath, filePath);
-        processBuilder.redirectErrorStream(true); // Redirect stderr to stdout
+
+
+        processBuilder.directory(outputDirectory);
+
+
+        processBuilder.redirectErrorStream(true);
+
 
         Process process = processBuilder.start();
 
-        // Reading the combined output stream of the process
+
         new Thread(() -> {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    System.out.println(line); // All output, including errors, is now in stdout
+                    System.out.println(line);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -164,8 +202,8 @@ public class TraceViewerController {
     }
 
 
-
     // Opens Trace Viewer
     public void onViewClicked(ActionEvent actionEvent) {
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceViewer/traceViewerData/traceViewerData.fxml");
     }
 }
