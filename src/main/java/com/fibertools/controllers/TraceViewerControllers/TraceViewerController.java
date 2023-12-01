@@ -166,21 +166,17 @@ public class TraceViewerController {
             outputDirectory.mkdir();
         }
 
-
+        // Path to python3 and pyotdr script default install location on macOS
         String pythonPath = "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3";
         String pyotdrScriptPath = "/Library/Frameworks/Python.framework/Versions/3.12/bin/pyotdr";
 
-        ProcessBuilder processBuilder = new ProcessBuilder(pythonPath, pyotdrScriptPath, filePath);
-
+        // Include "XML" in the command to generate XML output
+        ProcessBuilder processBuilder = new ProcessBuilder(pythonPath, pyotdrScriptPath, filePath, "XML");
 
         processBuilder.directory(outputDirectory);
-
-
         processBuilder.redirectErrorStream(true);
 
-
         Process process = processBuilder.start();
-
 
         new Thread(() -> {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
@@ -202,8 +198,15 @@ public class TraceViewerController {
     }
 
 
-    // Opens Trace Viewer
-    public void onViewClicked(ActionEvent actionEvent) {
-        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceViewer/traceViewerData/traceViewerData.fxml");
-    }
+    // Opens Trace Viewer (TraceViewDataControl)
+    /* public void onViewClicked(ActionEvent actionEvent) {
+        try {
+            // Loads TraceViewerDataController with dropped file
+            FXMLLoaderUtils.loadViewer("/com/fibertools/main/pages/traceViewer/traceViewerData/traceViewerData.fxml", droppedFile);
+            //Refreshes the Trace Viewer to remove View button and reset selected file
+            FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceViewer/traceViewer.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } */
 }

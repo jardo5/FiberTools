@@ -11,7 +11,9 @@ module com.fibertools.fibertools {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.annotation;
+    requires java.xml.bind;
 
+    opens com.fibertools.models.TaceViewerModels to java.xml.bind;
     opens com.fibertools.models to javafx.base;
     opens com.fibertools.main to javafx.fxml;
     exports com.fibertools.main;

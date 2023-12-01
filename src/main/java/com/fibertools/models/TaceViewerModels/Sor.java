@@ -1,10 +1,34 @@
 package com.fibertools.models.TaceViewerModels;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Map;
 
-public class TraceData {
+
+@XmlRootElement(name = "sor")
+public class Sor {
+    private String filename;
+    private int format;
+    private String version;
+    private String mapblock;
+
+    // Getters and setters
+
+    @XmlElement(name = "filename")
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+}
+
+
+/* @XmlRootElement(name = "sor")
+public class Sor {
     private Cksum cksum;
     private DataPts dataPts;
     private FxdParams fxdParams;
@@ -19,7 +43,7 @@ public class TraceData {
     private Boolean debug;
     private String dump;
 
-    //Getters
+    // Getters
     public Cksum getCksum() {
         return cksum;
     }
@@ -32,6 +56,7 @@ public class TraceData {
         return fxdParams;
     }
 
+    @XmlElement(name = "GenParams")
     public GenParams getGenParams() {
         return genParams;
     }
@@ -72,7 +97,7 @@ public class TraceData {
         return dump;
     }
 
-    //Setters
+    // Setters
     public void setCksum(Cksum cksum) {
         this.cksum = cksum;
     }
@@ -124,5 +149,4 @@ public class TraceData {
     public void setDump(String dump) {
         this.dump = dump;
     }
-
-}
+} */

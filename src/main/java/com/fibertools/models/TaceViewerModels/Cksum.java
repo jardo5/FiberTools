@@ -1,25 +1,32 @@
 package com.fibertools.models.TaceViewerModels;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "Cksum")
 public class Cksum {
 
     private int checksum;
     private int checksum_ours;
     private boolean match;
 
-    //Getters
+    // Getters
+    @XmlElement(name = "checksum")
     public int getChecksum() {
         return checksum;
     }
 
+    @XmlElement(name = "checksum_ours")
     public int getChecksum_ours() {
         return checksum_ours;
     }
 
-    public boolean getMatch() {
+    @XmlElement(name = "match")
+    public boolean isMatch() {
         return match;
     }
 
-    //Setters
+    // Setters
     public void setChecksum(int checksum) {
         this.checksum = checksum;
     }
@@ -31,5 +38,4 @@ public class Cksum {
     public void setMatch(boolean match) {
         this.match = match;
     }
-
 }

@@ -1,5 +1,12 @@
 package com.fibertools.models.TaceViewerModels;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "GenParams")
 public class GenParams {
 
     private String buildCondition;
@@ -17,56 +24,70 @@ public class GenParams {
     private String wavelength;
 
     // Getters
-    public String getBuildCondition() {
-        return buildCondition;
-    }
 
-    public String getCableId() {
-        return cableId;
-    }
-
-    public String getCableCodeFiberType() {
-        return cableCodeFiberType;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public String getFiberId() {
-        return fiberId;
-    }
-
-    public String getFiberType() {
-        return fiberType;
-    }
-
+    @XmlElement(name = "language")
     public String getLanguage() {
         return language;
     }
 
+    @XmlElement(name = "cable_ID")
+    public String getCableId() {
+        return cableId;
+    }
+
+    @XmlElement(name = "cable_code_fiber_type")
+    public String getCableCodeFiberType() {
+        return cableCodeFiberType;
+    }
+
+    @XmlElement(name = "comments")
+    public String getComments() {
+        return comments;
+    }
+
+    @XmlElement(name = "fiber_ID")
+    public String getFiberId() {
+        return fiberId;
+    }
+
+    @XmlElement(name = "fiber_type")
+    public String getFiberType() {
+        return fiberType;
+    }
+
+    @XmlElement(name = "location_A")
     public String getLocationA() {
         return locationA;
     }
 
+    @XmlElement(name = "location_B")
     public String getLocationB() {
         return locationB;
     }
 
+    @XmlElement(name = "operator")
     public String getOperator() {
         return operator;
     }
 
+    @XmlElement(name = "user_offset")
     public String getUserOffset() {
         return userOffset;
     }
 
+    @XmlElement(name = "user_offset_distance")
     public String getUserOffsetDistance() {
         return userOffsetDistance;
     }
 
+    @XmlElement(name = "wavelength")
     public String getWavelength() {
         return wavelength;
+    }
+
+    @XmlElement(name = "build_condition")
+    public String getBuildCondition() {
+        return buildCondition;
     }
 
     // Setters
@@ -122,3 +143,4 @@ public class GenParams {
         this.wavelength = wavelength;
     }
 }
+

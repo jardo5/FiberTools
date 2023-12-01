@@ -1,5 +1,6 @@
 package com.fibertools.main;
 
+import com.fibertools.controllers.ExampleParser;
 import com.fibertools.dao.JDBC;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,10 @@ import java.io.IOException;
 public class Main extends Application {
     public static void main(String[] args) {
         System.out.println(System.getenv("PATH"));
+
+        ExampleParser exampleParser = new ExampleParser();
+        exampleParser.parseXmlFile("src/main/sorData/example1-dump.xml");
+
         JDBC.openConnection();
         launch();
         JDBC.closeConnection();

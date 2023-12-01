@@ -1,11 +1,13 @@
 package com.fibertools.models.TaceViewerModels;
 
-
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Map;
 
+@XmlRootElement(name = "DataPts")
 public class DataPts {
 
-    private Map<String, Object> dataptsParams;
+    private DataptsParams dataptsParams;
     private double maxBeforeOffset;
     private double minBeforeOffset;
     private int numDataPoints;
@@ -14,36 +16,43 @@ public class DataPts {
     private double scalingFactor;
 
     // Getters
-    public Map<String, Object> getDataptsParams() {
+    @XmlElement(name = "_datapts_params")
+    public DataptsParams getDataptsParams() {
         return dataptsParams;
     }
 
+    @XmlElement(name = "max_before_offset")
     public double getMaxBeforeOffset() {
         return maxBeforeOffset;
     }
 
+    @XmlElement(name = "min_before_offset")
     public double getMinBeforeOffset() {
         return minBeforeOffset;
     }
 
+    @XmlElement(name = "num_data_points")
     public int getNumDataPoints() {
         return numDataPoints;
     }
 
+    @XmlElement(name = "num_data_points_2")
     public int getNumDataPoints2() {
         return numDataPoints2;
     }
 
+    @XmlElement(name = "num_traces")
     public int getNumTraces() {
         return numTraces;
     }
 
+    @XmlElement(name = "scaling_factor")
     public double getScalingFactor() {
         return scalingFactor;
     }
 
     // Setters
-    public void setDataptsParams(Map<String, Object> dataptsParams) {
+    public void setDataptsParams(DataptsParams dataptsParams) {
         this.dataptsParams = dataptsParams;
     }
 
@@ -70,5 +79,27 @@ public class DataPts {
     public void setScalingFactor(double scalingFactor) {
         this.scalingFactor = scalingFactor;
     }
-}
 
+    public static class DataptsParams {
+        private int xscaling;
+        private String offset;
+
+        @XmlElement(name = "xscaling")
+        public int getXscaling() {
+            return xscaling;
+        }
+
+        @XmlElement(name = "offset")
+        public String getOffset() {
+            return offset;
+        }
+
+        public void setXscaling(int xscaling) {
+            this.xscaling = xscaling;
+        }
+
+        public void setOffset(String offset) {
+            this.offset = offset;
+        }
+    }
+}
