@@ -1,6 +1,7 @@
 package com.fibertools.controllers.TraceViewerControllers;
 
 
+import com.fibertools.models.TaceViewerModels.GenParams;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.animation.FadeTransition;
@@ -33,6 +34,8 @@ public class TraceViewerController {
     private Text statusMessage;
 
     private File droppedFile;
+
+    private String fileName;
 
     @FXML
     private MFXButton generateButton;
@@ -170,7 +173,6 @@ public class TraceViewerController {
         String pythonPath = "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3";
         String pyotdrScriptPath = "/Library/Frameworks/Python.framework/Versions/3.12/bin/pyotdr";
 
-        // Include "XML" in the command to generate XML output
         ProcessBuilder processBuilder = new ProcessBuilder(pythonPath, pyotdrScriptPath, filePath, "XML");
 
         processBuilder.directory(outputDirectory);
@@ -198,15 +200,12 @@ public class TraceViewerController {
     }
 
 
-    // Opens Trace Viewer (TraceViewDataControl)
-    /* public void onViewClicked(ActionEvent actionEvent) {
-        try {
-            // Loads TraceViewerDataController with dropped file
-            FXMLLoaderUtils.loadViewer("/com/fibertools/main/pages/traceViewer/traceViewerData/traceViewerData.fxml", droppedFile);
-            //Refreshes the Trace Viewer to remove View button and reset selected file
-            FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceViewer/traceViewer.fxml");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    } */
+
+     public void onViewClicked(ActionEvent actionEvent) {
+        fileName = droppedFile.getName();
+        System.out.println(fileName);
+        FXMLLoaderUtils.loadViewDataController("/com/fibertools/main/pages/traceViewer/traceViewerData/traceViewerData.fxml", fileName);
+        //Reload TraceViewer & fileName
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceViewer/traceViewer.fxml");
+    }
 }

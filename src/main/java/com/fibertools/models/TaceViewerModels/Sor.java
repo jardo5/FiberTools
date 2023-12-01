@@ -9,8 +9,8 @@ public class Sor {
     private int format;
     private String version;
     private GenParams genParams;
-    // private FxdParams fxdParams;
-    //private KeyEvents keyEvents;
+    private FxdParams fxdParams;
+    private KeyEvents keyEvents;
 
     @XmlElement(name = "filename")
     public String getFilename() {
@@ -50,7 +50,7 @@ public class Sor {
     }
 
 
-    /*
+
     @XmlElement(name = "FxdParams")
     public FxdParams getFxdParams() {
         return fxdParams;
@@ -69,5 +69,5 @@ public class Sor {
     public void setKeyEvents(KeyEvents keyEvents) {
         this.keyEvents = keyEvents;
     }
-    */
+
 }

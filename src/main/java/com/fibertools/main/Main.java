@@ -18,6 +18,10 @@ public class Main extends Application {
         ExampleParser exampleParser = new ExampleParser();
         exampleParser.parseXmlFile("src/main/sorData/example1-dump.xml");
 
+
+        //Spacer
+        System.out.println();
+
         JDBC.openConnection();
         launch();
         JDBC.closeConnection();

@@ -1,15 +1,14 @@
 package com.fibertools.models.TaceViewerModels;
 
 import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.util.Map;
-import com.fibertools.utils.EventAdapter;
+
+import java.util.List;
+
 
 @XmlRootElement(name = "KeyEvents")
 public class KeyEvents {
 
     private int numEvents;
-    private Map<String, Event> events;
     private Summary summary;
 
     @XmlElement(name = "num_events")
@@ -21,14 +20,6 @@ public class KeyEvents {
         this.numEvents = numEvents;
     }
 
-    @XmlJavaTypeAdapter(EventAdapter.class)
-    public Map<String, Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(Map<String, Event> events) {
-        this.events = events;
-    }
 
     @XmlElement(name = "Summary")
     public Summary getSummary() {

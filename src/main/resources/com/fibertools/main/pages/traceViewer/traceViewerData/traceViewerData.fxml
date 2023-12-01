@@ -1,35 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.TraceViewerControllers.TraceViewerDataController">
-   <bottom>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab closable="false" text="Identification">
-               <content>
-                  <GridPane fx:id="identificationGrid" vgap="10" hgap="10">
+<BorderPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@traceViewerData.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.TraceViewerControllers.TraceViewerDataController">
+    <bottom>
+        <TabPane prefHeight="200.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab closable="false" text="General Params">
+               <HBox>
+                  <children>
+                          <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="300.0" vgap="5.0">
+                              <columnConstraints>
+                                  <ColumnConstraints />
+                                  <ColumnConstraints />
+                              </columnConstraints>
+                              <rowConstraints>
+                                  <RowConstraints percentHeight="25.0" />
+                                  <RowConstraints percentHeight="25.0" />
+                                  <RowConstraints percentHeight="25.0" />
+                                  <RowConstraints percentHeight="25.0" />
 
-                  </GridPane>
-               </content>
-          </Tab>
-          <Tab closable="false" text="Summary">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-            <Tab closable="false" text="Event Table">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-   </bottom>
+                              </rowConstraints>
+                              <children>
+                                  <Label text="Language" GridPane.rowIndex="0" />
+                                  <Label text="Date Time" GridPane.rowIndex="1" />
+                                  <Label text="File Name" GridPane.rowIndex="2" />
+                                  <Label text="Unit" GridPane.rowIndex="3" />
+                                  <TextField id="customTextField" fx:id="languageTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                  <TextField id="customTextField" fx:id="dateTimeTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                  <TextField id="customTextField" fx:id="fileNameTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                  <TextField id="customTextField" fx:id="unitTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              </children>
+                        <padding>
+                           <Insets bottom="5.0" top="5.0" />
+                        </padding>
+                          </GridPane>
+
+
+                     <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="300.0" vgap="5.0">
+                        <columnConstraints>
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints percentHeight="20.0" />
+                           <RowConstraints percentHeight="20.0" />
+                           <RowConstraints percentHeight="20.0" />
+                           <RowConstraints percentHeight="20.0" />
+                           <RowConstraints percentHeight="20.0" />
+                        </rowConstraints>
+                        <children>
+                           <Label text="Operator" GridPane.rowIndex="0" />
+                           <Label text="Cable ID" GridPane.rowIndex="1" />
+                           <Label text="Fiber ID" GridPane.rowIndex="2" />
+                           <Label text="Location A" GridPane.rowIndex="3" />
+                            <Label text="Location B" GridPane.rowIndex="4" />
+                           <TextField id="customTextField" fx:id="operatorTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                           <TextField id="customTextField" fx:id="cableIDTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           <TextField id="customTextField" fx:id="fiberIDTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <TextField id="customTextField" fx:id="locationATextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <TextField id="customTextField" fx:id="locationBTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        </children>
+                        <HBox.margin>
+                           <Insets />
+                        </HBox.margin>
+                        <padding>
+                           <Insets bottom="5.0" top="5.0" />
+                        </padding>
+                     </GridPane>
+
+
+                      <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="300.0" vgap="5.0">
+                          <columnConstraints>
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints percentHeight="33.0" />
+                              <RowConstraints percentHeight="33.0" />
+                                <RowConstraints percentHeight="33.0" />
+                          </rowConstraints>
+                          <children>
+                              <Label text="Wavelength" GridPane.rowIndex="0" />
+                              <Label text="Pulse Width" GridPane.rowIndex="1" />
+                              <Label text="Comments" GridPane.rowIndex="2" />
+                              <TextField id="customTextField" fx:id="wavelengthTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              <TextField id="customTextField" fx:id="pulseWidthTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField id="customTextField" fx:id="commentsTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                          </children>
+                      </GridPane>
+                  </children>
+               </HBox>
+                </Tab>
+                <Tab closable="false" text="Event Table">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </bottom>
 </BorderPane>

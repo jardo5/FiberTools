@@ -59,7 +59,7 @@
    <bottom>
       <StackPane prefHeight="49.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <MFXButton id="customButton" fx:id="lossBudgetCredits" onAction="#onClickLossBudgetCredits" text="Credits &amp; Sources" />
+            <MFXButton id="customButton" fx:id="lossBudgetCredits" onAction="#onClickLossBudgetCredits" text="Credits" />
          </children>
       </StackPane>
    </bottom>

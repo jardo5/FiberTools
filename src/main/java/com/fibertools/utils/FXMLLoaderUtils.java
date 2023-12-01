@@ -7,6 +7,8 @@ import com.fibertools.controllers.TraceViewerControllers.TraceViewerDataControll
 import com.fibertools.models.Employees;
 import com.fibertools.models.Inventory;
 import com.fibertools.models.SpliceRecords;
+import com.fibertools.models.TaceViewerModels.GenParams;
+import com.fibertools.models.TaceViewerModels.Sor;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -30,24 +32,11 @@ public class FXMLLoaderUtils {
         }
     }
 
-    // Open a new window but keep the current window open
-    /* public static void loadViewer(String fxmlFileName, File file){
-        try {
-            FXMLLoader loader = new FXMLLoader(FXMLLoaderUtils.class.getResource(fxmlFileName));
-            Parent root = loader.load();
 
-            // Get the controller and pass the file
-            TraceViewerDataController dataController = loader.getController();
-            dataController.setFile(file); // Pass the file that was dropped or selected
+    //Loads TraceViewerDataController with selected Sor files data
 
-            Stage stage = new Stage();
-            stage.setTitle("Trace Viewer");
-            stage.setScene(new Scene(root, 1200, 800));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    } */
+
+
 
 
     //Loads ModifyInventoryController with selected Inventory item
@@ -101,4 +90,18 @@ public class FXMLLoaderUtils {
         }
     }
 
+    public static void loadViewDataController(String fxmlFile, String fileName) {
+        try {
+            FXMLLoader loader = new FXMLLoader(FXMLLoaderUtils.class.getResource(fxmlFile));
+            Parent root = loader.load();
+            TraceViewerDataController traceViewerDataController = loader.getController();
+            traceViewerDataController.populateFieldsFromSorFile(String.valueOf(new File(fileName)));
+            Stage stage = new Stage();
+            stage.setTitle("Trace Viewer");
+            stage.setScene(new Scene(root, 1200, 800));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
