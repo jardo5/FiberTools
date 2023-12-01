@@ -1,43 +1,45 @@
 package com.fibertools.models.TaceViewerModels;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "FxdParams")
 public class FxdParams {
-
     private String dateTime;
     private String unit;
     private String wavelength;
     private int acquisitionOffset;
-    private double acquisitionOffsetDistance;
+    private int acquisitionOffsetDistance;
     private int numberOfPulseWidthEntries;
     private String pulseWidth;
     private String sampleSpacing;
     private int numDataPoints;
     private String index;
-    private String bc;
+    private String BC;
     private int numAverages;
     private String averagingTime;
     private double range;
-    private double acquisitionRangeDistance;
+    private int acquisitionRangeDistance;
     private int frontPanelOffset;
     private int noiseFloorLevel;
     private int noiseFloorScalingFactor;
     private int powerOffsetFirstPoint;
     private String lossThr;
     private String reflThr;
-    private String eotThr;
+    private String EOTThr;
     private String traceType;
-    private int x1;
-    private int y1;
-    private int x2;
-    private int y2;
+    private int X1;
+    private int Y1;
+    private int X2;
+    private int Y2;
     private double resolution;
 
+    // Getters and Setters
     @XmlElement(name = "date_time")
     public String getDateTime() {
         return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
     @XmlElement(name = "unit")
@@ -45,9 +47,17 @@ public class FxdParams {
         return unit;
     }
 
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
     @XmlElement(name = "wavelength")
     public String getWavelength() {
         return wavelength;
+    }
+
+    public void setWavelength(String wavelength) {
+        this.wavelength = wavelength;
     }
 
     @XmlElement(name = "acquisition_offset")
@@ -55,9 +65,17 @@ public class FxdParams {
         return acquisitionOffset;
     }
 
+    public void setAcquisitionOffset(int acquisitionOffset) {
+        this.acquisitionOffset = acquisitionOffset;
+    }
+
     @XmlElement(name = "acquisition_offset_distance")
-    public double getAcquisitionOffsetDistance() {
+    public int getAcquisitionOffsetDistance() {
         return acquisitionOffsetDistance;
+    }
+
+    public void setAcquisitionOffsetDistance(int acquisitionOffsetDistance) {
+        this.acquisitionOffsetDistance = acquisitionOffsetDistance;
     }
 
     @XmlElement(name = "number_of_pulse_width_entries")
@@ -65,9 +83,17 @@ public class FxdParams {
         return numberOfPulseWidthEntries;
     }
 
+    public void setNumberOfPulseWidthEntries(int numberOfPulseWidthEntries) {
+        this.numberOfPulseWidthEntries = numberOfPulseWidthEntries;
+    }
+
     @XmlElement(name = "pulse_width")
     public String getPulseWidth() {
         return pulseWidth;
+    }
+
+    public void setPulseWidth(String pulseWidth) {
+        this.pulseWidth = pulseWidth;
     }
 
     @XmlElement(name = "sample_spacing")
@@ -75,9 +101,17 @@ public class FxdParams {
         return sampleSpacing;
     }
 
+    public void setSampleSpacing(String sampleSpacing) {
+        this.sampleSpacing = sampleSpacing;
+    }
+
     @XmlElement(name = "num_data_points")
     public int getNumDataPoints() {
         return numDataPoints;
+    }
+
+    public void setNumDataPoints(int numDataPoints) {
+        this.numDataPoints = numDataPoints;
     }
 
     @XmlElement(name = "index")
@@ -85,9 +119,17 @@ public class FxdParams {
         return index;
     }
 
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
     @XmlElement(name = "BC")
-    public String getBc() {
-        return bc;
+    public String getBC() {
+        return BC;
+    }
+
+    public void setBC(String BC) {
+        this.BC = BC;
     }
 
     @XmlElement(name = "num_averages")
@@ -95,9 +137,17 @@ public class FxdParams {
         return numAverages;
     }
 
+    public void setNumAverages(int numAverages) {
+        this.numAverages = numAverages;
+    }
+
     @XmlElement(name = "averaging_time")
     public String getAveragingTime() {
         return averagingTime;
+    }
+
+    public void setAveragingTime(String averagingTime) {
+        this.averagingTime = averagingTime;
     }
 
     @XmlElement(name = "range")
@@ -105,9 +155,17 @@ public class FxdParams {
         return range;
     }
 
+    public void setRange(double range) {
+        this.range = range;
+    }
+
     @XmlElement(name = "acquisition_range_distance")
-    public double getAcquisitionRangeDistance() {
+    public int getAcquisitionRangeDistance() {
         return acquisitionRangeDistance;
+    }
+
+    public void setAcquisitionRangeDistance(int acquisitionRangeDistance) {
+        this.acquisitionRangeDistance = acquisitionRangeDistance;
     }
 
     @XmlElement(name = "front_panel_offset")
@@ -115,9 +173,17 @@ public class FxdParams {
         return frontPanelOffset;
     }
 
+    public void setFrontPanelOffset(int frontPanelOffset) {
+        this.frontPanelOffset = frontPanelOffset;
+    }
+
     @XmlElement(name = "noise_floor_level")
     public int getNoiseFloorLevel() {
         return noiseFloorLevel;
+    }
+
+    public void setNoiseFloorLevel(int noiseFloorLevel) {
+        this.noiseFloorLevel = noiseFloorLevel;
     }
 
     @XmlElement(name = "noise_floor_scaling_factor")
@@ -125,9 +191,17 @@ public class FxdParams {
         return noiseFloorScalingFactor;
     }
 
+    public void setNoiseFloorScalingFactor(int noiseFloorScalingFactor) {
+        this.noiseFloorScalingFactor = noiseFloorScalingFactor;
+    }
+
     @XmlElement(name = "power_offset_first_point")
     public int getPowerOffsetFirstPoint() {
         return powerOffsetFirstPoint;
+    }
+
+    public void setPowerOffsetFirstPoint(int powerOffsetFirstPoint) {
+        this.powerOffsetFirstPoint = powerOffsetFirstPoint;
     }
 
     @XmlElement(name = "loss_thr")
@@ -135,14 +209,26 @@ public class FxdParams {
         return lossThr;
     }
 
+    public void setLossThr(String lossThr) {
+        this.lossThr = lossThr;
+    }
+
     @XmlElement(name = "refl_thr")
     public String getReflThr() {
         return reflThr;
     }
 
+    public void setReflThr(String reflThr) {
+        this.reflThr = reflThr;
+    }
+
     @XmlElement(name = "EOT_thr")
-    public String getEotThr() {
-        return eotThr;
+    public String getEOTThr() {
+        return EOTThr;
+    }
+
+    public void setEOTThr(String EOTThr) {
+        this.EOTThr = EOTThr;
     }
 
     @XmlElement(name = "trace_type")
@@ -150,24 +236,44 @@ public class FxdParams {
         return traceType;
     }
 
+    public void setTraceType(String traceType) {
+        this.traceType = traceType;
+    }
+
     @XmlElement(name = "X1")
     public int getX1() {
-        return x1;
+        return X1;
+    }
+
+    public void setX1(int X1) {
+        this.X1 = X1;
     }
 
     @XmlElement(name = "Y1")
     public int getY1() {
-        return y1;
+        return Y1;
+    }
+
+    public void setY1(int Y1) {
+        this.Y1 = Y1;
     }
 
     @XmlElement(name = "X2")
     public int getX2() {
-        return x2;
+        return X2;
+    }
+
+    public void setX2(int X2) {
+        this.X2 = X2;
     }
 
     @XmlElement(name = "Y2")
     public int getY2() {
-        return y2;
+        return Y2;
+    }
+
+    public void setY2(int Y2) {
+        this.Y2 = Y2;
     }
 
     @XmlElement(name = "resolution")
@@ -175,117 +281,7 @@ public class FxdParams {
         return resolution;
     }
 
-    // Setters
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public void setWavelength(String wavelength) {
-        this.wavelength = wavelength;
-    }
-
-    public void setAcquisitionOffset(int acquisitionOffset) {
-        this.acquisitionOffset = acquisitionOffset;
-    }
-
-    public void setAcquisitionOffsetDistance(double acquisitionOffsetDistance) {
-        this.acquisitionOffsetDistance = acquisitionOffsetDistance;
-    }
-
-    public void setNumberOfPulseWidthEntries(int numberOfPulseWidthEntries) {
-        this.numberOfPulseWidthEntries = numberOfPulseWidthEntries;
-    }
-
-    public void setPulseWidth(String pulseWidth) {
-        this.pulseWidth = pulseWidth;
-    }
-
-    public void setSampleSpacing(String sampleSpacing) {
-        this.sampleSpacing = sampleSpacing;
-    }
-
-    public void setNumDataPoints(int numDataPoints) {
-        this.numDataPoints = numDataPoints;
-    }
-
-    public void setIndex(String index) {
-        this.index = index;
-    }
-
-    public void setBc(String bc) {
-        this.bc = bc;
-    }
-
-    public void setNumAverages(int numAverages) {
-        this.numAverages = numAverages;
-    }
-
-    public void setAveragingTime(String averagingTime) {
-        this.averagingTime = averagingTime;
-    }
-
-    public void setRange(double range) {
-        this.range = range;
-    }
-
-    public void setAcquisitionRangeDistance(double acquisitionRangeDistance) {
-        this.acquisitionRangeDistance = acquisitionRangeDistance;
-    }
-
-    public void setFrontPanelOffset(int frontPanelOffset) {
-        this.frontPanelOffset = frontPanelOffset;
-    }
-
-    public void setNoiseFloorLevel(int noiseFloorLevel) {
-        this.noiseFloorLevel = noiseFloorLevel;
-    }
-
-    public void setNoiseFloorScalingFactor(int noiseFloorScalingFactor) {
-        this.noiseFloorScalingFactor = noiseFloorScalingFactor;
-    }
-
-    public void setPowerOffsetFirstPoint(int powerOffsetFirstPoint) {
-        this.powerOffsetFirstPoint = powerOffsetFirstPoint;
-    }
-
-    public void setLossThr(String lossThr) {
-        this.lossThr = lossThr;
-    }
-
-    public void setReflThr(String reflThr) {
-        this.reflThr = reflThr;
-    }
-
-    public void setEotThr(String eotThr) {
-        this.eotThr = eotThr;
-    }
-
-    public void setTraceType(String traceType) {
-        this.traceType = traceType;
-    }
-
-    public void setX1(int x1) {
-        this.x1 = x1;
-    }
-
-    public void setY1(int y1) {
-        this.y1 = y1;
-    }
-
-    public void setX2(int x2) {
-        this.x2 = x2;
-    }
-
-    public void setY2(int y2) {
-        this.y2 = y2;
-    }
-
     public void setResolution(double resolution) {
         this.resolution = resolution;
     }
-
 }

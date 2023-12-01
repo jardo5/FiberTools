@@ -1,19 +1,33 @@
 package com.fibertools.models.TaceViewerModels;
 
 import javax.xml.bind.annotation.*;
-import java.util.List;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.Map;
+import com.fibertools.utils.EventAdapter;
 
 @XmlRootElement(name = "KeyEvents")
 public class KeyEvents {
 
-    private List<Event> events;
-    private Summary summary;
     private int numEvents;
+    private Map<String, Event> events;
+    private Summary summary;
 
-    @XmlElementWrapper(name = "events")
-    @XmlElement(name = "event")
-    public List<Event> getEvents() {
+    @XmlElement(name = "num_events")
+    public int getNumEvents() {
+        return numEvents;
+    }
+
+    public void setNumEvents(int numEvents) {
+        this.numEvents = numEvents;
+    }
+
+    @XmlJavaTypeAdapter(EventAdapter.class)
+    public Map<String, Event> getEvents() {
         return events;
+    }
+
+    public void setEvents(Map<String, Event> events) {
+        this.events = events;
     }
 
     @XmlElement(name = "Summary")
@@ -21,96 +35,87 @@ public class KeyEvents {
         return summary;
     }
 
-    @XmlElement(name = "num_events")
-    public int getNumEvents() {
-        return numEvents;
+    public void setSummary(Summary summary) {
+        this.summary = summary;
     }
 
+    // Inner Event class
     public static class Event {
         private String type;
-        private Double distance;
-        private Double slope;
-        private Double spliceLoss;
-        private Double reflLoss;
+        private double distance;
+        private double slope;
+        private double spliceLoss;
+        private double reflLoss;
         private String comments;
-        private Double endOfPrev;
-        private Double startOfCurr;
-        private Double endOfCurr;
-        private Double startOfNext;
-        private Double peak;
+        private double endOfPrev;
+        private double startOfCurr;
+        private double endOfCurr;
+        private double startOfNext;
+        private double peak;
 
-        @XmlElement(name = "type")
+        // Getters
         public String getType() {
             return type;
         }
 
-        @XmlElement(name = "distance")
-        public Double getDistance() {
+        public double getDistance() {
             return distance;
         }
 
-        @XmlElement(name = "slope")
-        public Double getSlope() {
+        public double getSlope() {
             return slope;
         }
 
-        @XmlElement(name = "splice_loss")
-        public Double getSpliceLoss() {
+        public double getSpliceLoss() {
             return spliceLoss;
         }
 
-        @XmlElement(name = "refl_loss")
-        public Double getReflLoss() {
+        public double getReflLoss() {
             return reflLoss;
         }
 
-        @XmlElement(name = "comments")
         public String getComments() {
             return comments;
         }
 
-        @XmlElement(name = "end_of_prev")
-        public Double getEndOfPrev() {
+        public double getEndOfPrev() {
             return endOfPrev;
         }
 
-        @XmlElement(name = "start_of_curr")
-        public Double getStartOfCurr() {
+        public double getStartOfCurr() {
             return startOfCurr;
         }
 
-        @XmlElement(name = "end_of_curr")
-        public Double getEndOfCurr() {
+        public double getEndOfCurr() {
             return endOfCurr;
         }
 
-        @XmlElement(name = "start_of_next")
-        public Double getStartOfNext() {
+        public double getStartOfNext() {
             return startOfNext;
         }
 
-        @XmlElement(name = "peak")
-        public Double getPeak() {
+        public double getPeak() {
             return peak;
         }
 
+        // Setters
         public void setType(String type) {
             this.type = type;
         }
 
-        public void setDistance(Double distance) {
+        public void setDistance(double distance) {
             this.distance = distance;
         }
 
-        public void setSlope(Double slope) {
+        public void setSlope(double slope) {
             this.slope = slope;
         }
 
-        public void setSpliceLoss(Double spliceLoss) {
+        public void setSpliceLoss(double spliceLoss) {
             this.spliceLoss = spliceLoss;
         }
 
-        public void setReflLoss(Double reflLoss) {
+        public void setReflLoss(double reflLoss) {
             this.reflLoss = reflLoss;
         }
 
@@ -118,87 +123,86 @@ public class KeyEvents {
             this.comments = comments;
         }
 
-        public void setEndOfPrev(Double endOfPrev) {
+        public void setEndOfPrev(double endOfPrev) {
             this.endOfPrev = endOfPrev;
         }
 
-        public void setStartOfCurr(Double startOfCurr) {
+        public void setStartOfCurr(double startOfCurr) {
             this.startOfCurr = startOfCurr;
         }
 
-        public void setEndOfCurr(Double endOfCurr) {
+        public void setEndOfCurr(double endOfCurr) {
             this.endOfCurr = endOfCurr;
         }
 
-        public void setStartOfNext(Double startOfNext) {
+        public void setStartOfNext(double startOfNext) {
             this.startOfNext = startOfNext;
         }
 
-        public void setPeak(Double peak) {
+        public void setPeak(double peak) {
             this.peak = peak;
         }
     }
 
-    public static class Summary {
-        private Double totalLoss;
-        private Double orl;
-        private Double lossStart;
-        private Double lossEnd;
-        private Double orlStart;
-        private Double orlFinish;
 
-        @XmlElement(name = "total_loss")
-        public Double getTotalLoss() {
+    // Inner Summary class
+    public static class Summary {
+        private double totalLoss;
+        private double ORL;
+        private double lossStart;
+        private double lossEnd;
+        private double ORLStart;
+        private double ORLEnd;
+
+        // Getters
+        public double getTotalLoss() {
             return totalLoss;
         }
 
-        @XmlElement(name = "ORL")
-        public Double getOrl() {
-            return orl;
+        public double getORL() {
+            return ORL;
         }
 
-        @XmlElement(name = "loss_start")
-        public Double getLossStart() {
+        public double getLossStart() {
             return lossStart;
         }
 
-        @XmlElement(name = "loss_end")
-        public Double getLossEnd() {
+        public double getLossEnd() {
             return lossEnd;
         }
 
-        @XmlElement(name = "ORL_start")
-        public Double getOrlStart() {
-            return orlStart;
+        public double getORLStart() {
+            return ORLStart;
         }
 
-        @XmlElement(name = "ORL_finish")
-        public Double getOrlFinish() {
-            return orlFinish;
+        public double getORLEnd() {
+            return ORLEnd;
         }
 
-        public void setTotalLoss(Double totalLoss) {
+        // Setters
+        public void setTotalLoss(double totalLoss) {
             this.totalLoss = totalLoss;
         }
 
-        public void setOrl(Double orl) {
-            this.orl = orl;
+        public void setORL(double ORL) {
+            this.ORL = ORL;
         }
 
-        public void setLossStart(Double lossStart) {
+        public void setLossStart(double lossStart) {
             this.lossStart = lossStart;
         }
 
-        public void setLossEnd(Double lossEnd) {
+        public void setLossEnd(double lossEnd) {
             this.lossEnd = lossEnd;
         }
 
-        public void setOrlStart(Double orlStart) {
-            this.orlStart = orlStart;
+        public void setORLStart(double ORLStart) {
+            this.ORLStart = ORLStart;
         }
 
-        public void setOrlFinish(Double orlFinish) {
-            this.orlFinish = orlFinish;
+        public void setORLEnd(double ORLEnd) {
+            this.ORLEnd = ORLEnd;
         }
     }
+
 }

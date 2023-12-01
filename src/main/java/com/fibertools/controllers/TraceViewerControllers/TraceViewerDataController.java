@@ -1,19 +1,13 @@
 package com.fibertools.controllers.TraceViewerControllers;
 
 
-import com.fibertools.models.TaceViewerModels.GenParams;
-import com.fibertools.models.TaceViewerModels.Sor;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.GridPane;
 
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-import java.io.*;
 import java.net.URL;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
 public class TraceViewerDataController implements Initializable {
