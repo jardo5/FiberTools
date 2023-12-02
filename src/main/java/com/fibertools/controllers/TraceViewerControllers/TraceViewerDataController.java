@@ -18,6 +18,7 @@ import java.io.File;
 import java.net.URL;
 
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class TraceViewerDataController {
@@ -42,6 +43,7 @@ public class TraceViewerDataController {
     public TextField dateTimeTextField; //FxdParams
     public TextField unitTextField; //FxdParams
     public TextField pulseWidthTextField; //FxdParams
+    public TextField rangeTextField; //FxdParams
 
 
     private String fileName;
@@ -111,6 +113,11 @@ public class TraceViewerDataController {
                 setTextField(dateTimeTextField, sor.getFxdParams().getDateTime());
                 setTextField(unitTextField, sor.getFxdParams().getUnit());
                 setTextField(pulseWidthTextField, sor.getFxdParams().getPulseWidth());
+
+                //TODO make this simplify the number for example 131260.36203530076ft to 131260ft
+                DecimalFormat df = new DecimalFormat("#");
+                setTextField(rangeTextField, df.format(sor.getFxdParams().getRange() * 3280.84));
+
             }
         }catch (NullPointerException e){
             System.out.println("Null pointer exception");
