@@ -79,7 +79,7 @@ public class TraceViewerDataController implements Initializable {
     private File xmlFile;
 
 
-    //TODO add way to remove files after they are added
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Events Table

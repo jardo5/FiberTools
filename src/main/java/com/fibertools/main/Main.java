@@ -18,15 +18,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         System.out.println(System.getenv("PATH"));
 
-        //TODO REMOVE THIS
-        String fileName = "src/main/sorData/XMLTRANSLATION.xml";
-        KeyEventsParser.parseAllKeyEvents(fileName);
-        KeyEventsParser.parseSummary(fileName);
-
-
-        //Spacer
-        System.out.println();
-
         JDBC.openConnection();
         launch();
         JDBC.closeConnection();

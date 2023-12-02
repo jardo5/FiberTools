@@ -195,15 +195,15 @@ public class KeyEvents {
         }
 
         public void setLossEnd(double lossEnd) {
-            this.lossEnd = lossEnd;
+            this.lossEnd = MeasurementConversions.KMtoFT(lossEnd); // Convert to feet
         }
 
         public void setORLStart(double ORLStart) {
-            this.ORLStart = ORLStart;
+            this.ORLStart = MeasurementConversions.KMtoFT(ORLStart); // Convert to feet
         }
 
         public void setORLEnd(double ORLEnd) {
-            this.ORLEnd = ORLEnd;
+            this.ORLEnd = MeasurementConversions.KMtoFT(ORLEnd); // Convert to feet
         }
     }
 

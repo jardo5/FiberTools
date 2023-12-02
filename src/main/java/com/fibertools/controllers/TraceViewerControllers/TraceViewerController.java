@@ -184,7 +184,7 @@ public class TraceViewerController {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    System.out.println(line);
+                    System.out.println("Successfully generated XML/DAT file");
                 }
             } catch (IOException e) {
                 e.printStackTrace();

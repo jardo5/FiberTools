@@ -55,7 +55,7 @@ public class KeyEventsParser {
                             event.setIndex(index); // ONLY FOR EVENT TABLE NOT ON XML SHEET
                             events.add(event);
                             index++; // ONLY FOR EVENT TABLE NOT ON XML SHEET
-                            printEventToConsole(i, event); //TODO DELETE THIS AFTER TESTING
+                            //printEventToConsole(i, event);
                         }
                     }
                 }
@@ -83,7 +83,7 @@ public class KeyEventsParser {
         }
     }
 
-    //TODO DELETE THIS METHOD AFTER TESTING
+
     private static void printEventToConsole(int eventNumber, KeyEvents.Event event) {
         System.out.println("Event " + eventNumber + ":");
         System.out.println("Type: " + event.getType());
@@ -130,7 +130,7 @@ public class KeyEventsParser {
                             summary.setORLStart(parseDoubleOrDefault(getElementTextContent(summaryElement, "ORL_start"), 0.0));
                             summary.setORLEnd(parseDoubleOrDefault(getElementTextContent(summaryElement, "ORL_finish"), 0.0));
 
-                            printSummaryToConsole(summary); //TODO DELETE THIS AFTER TESTING
+                            //printSummaryToConsole(summary);
                         }
                     }
                 }
@@ -141,8 +141,8 @@ public class KeyEventsParser {
         return summary;
     }
 
-    //TODO DELETE THIS METHOD AFTER TESTING
-    private static void printSummaryToConsole(Summary summary) {
+
+     private static void printSummaryToConsole(Summary summary) {
         System.out.println("Summary:");
         System.out.println("Total Loss: " + summary.getTotalLoss());
         System.out.println("ORL: " + summary.getOrl());
