@@ -1,7 +1,10 @@
 package com.fibertools.main;
 
-import com.fibertools.controllers.ExampleParser;
 import com.fibertools.dao.JDBC;
+import com.fibertools.models.TaceViewerModels.GenParams;
+import com.fibertools.models.TaceViewerModels.KeyEvents;
+import com.fibertools.models.TaceViewerModels.Sor;
+import com.fibertools.utils.KeyEventsParser;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,9 +18,10 @@ public class Main extends Application {
     public static void main(String[] args) {
         System.out.println(System.getenv("PATH"));
 
-        //TODO DELETE THIS AFTER TESTING IS COMPLETE
-        // ExampleParser exampleParser = new ExampleParser();
-        // exampleParser.parseXmlFile("src/main/sorData/example1-dump.xml");
+        //TODO REMOVE THIS
+        String fileName = "src/main/sorData/XMLTRANSLATION.xml";
+        KeyEventsParser.parseAllKeyEvents(fileName);
+        KeyEventsParser.parseSummary(fileName);
 
 
         //Spacer

@@ -1,5 +1,7 @@
 package com.fibertools.models.TaceViewerModels;
 
+import com.fibertools.utils.MeasurementConversions;
+
 import javax.xml.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +34,7 @@ public class KeyEvents {
 
     // Inner Event class
     public static class Event {
+        private int index; // ONLY FOR EVENT TABLE NOT ON XML SHEET
         private String type;
         private double distance;
         private double slope;
@@ -45,6 +48,10 @@ public class KeyEvents {
         private double peak;
 
         // Getters
+        public int getIndex() {
+            return index;
+        }
+
         public String getType() {
             return type;
         }
@@ -90,12 +97,16 @@ public class KeyEvents {
         }
 
         // Setters
+        public void setIndex(int index) {
+            this.index = index;
+        }
+
         public void setType(String type) {
             this.type = type;
         }
 
         public void setDistance(double distance) {
-            this.distance = distance;
+            this.distance = MeasurementConversions.KMtoFT(distance); // Convert to feet
         }
 
         public void setSlope(double slope) {
@@ -131,7 +142,7 @@ public class KeyEvents {
         }
 
         public void setPeak(double peak) {
-            this.peak = peak;
+            this.peak = MeasurementConversions.KMtoFT(peak); // Convert to feet
         }
     }
 
@@ -150,7 +161,7 @@ public class KeyEvents {
             return totalLoss;
         }
 
-        public double getORL() {
+        public double getOrl() {
             return ORL;
         }
 
@@ -162,11 +173,11 @@ public class KeyEvents {
             return lossEnd;
         }
 
-        public double getORLStart() {
+        public double getOrlStart() {
             return ORLStart;
         }
 
-        public double getORLEnd() {
+        public double getOrlEnd() {
             return ORLEnd;
         }
 

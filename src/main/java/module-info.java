@@ -1,6 +1,7 @@
 module com.fibertools.fibertools {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.base;
 
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;
@@ -14,8 +15,7 @@ module com.fibertools.fibertools {
     requires java.xml.bind;
 
     opens com.fibertools.utils to java.xml.bind;
-    opens com.fibertools.models.TaceViewerModels to java.xml.bind;
-    opens com.fibertools.models to javafx.base;
+    opens com.fibertools.models.TaceViewerModels to javafx.base, java.xml.bind;
     opens com.fibertools.main to javafx.fxml;
     exports com.fibertools.main;
     exports com.fibertools.controllers;

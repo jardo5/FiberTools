@@ -2,6 +2,7 @@ package com.fibertools.models.TaceViewerModels;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 @XmlRootElement(name = "sor")
 public class Sor {
@@ -11,7 +12,7 @@ public class Sor {
     private GenParams genParams;
     private SupParams supParams;
     private FxdParams fxdParams;
-    private KeyEvents keyEvents;
+    private List<KeyEvents> keyEvents;
 
     @XmlElement(name = "filename")
     public String getFilename() {
@@ -71,11 +72,11 @@ public class Sor {
 
 
     @XmlElement(name = "KeyEvents")
-    public KeyEvents getKeyEvents() {
+    public List<KeyEvents> getKeyEvents() {
         return keyEvents;
     }
 
-    public void setKeyEvents(KeyEvents keyEvents) {
+    public void setKeyEvents(List<KeyEvents> keyEvents) {
         this.keyEvents = keyEvents;
     }
 

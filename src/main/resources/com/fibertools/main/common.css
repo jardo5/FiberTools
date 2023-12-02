@@ -128,7 +128,8 @@
 #customerTable,
 #spliceRecordsTable,
 #fibersRecordsTable,
-#employeeTable {
+#employeeTable,
+#eventsTable {
     -fx-control-inner-background: #2a3338;
     -fx-text-fill: #e5e4e2;
 }

@@ -1,13 +1,18 @@
 package com.fibertools.controllers.TraceViewerControllers;
 
 
-import com.fibertools.models.TaceViewerModels.FxdParams;
-import com.fibertools.models.TaceViewerModels.GenParams;
-import com.fibertools.models.TaceViewerModels.Sor;
-import com.fibertools.models.TaceViewerModels.SupParams;
+import com.fibertools.models.TaceViewerModels.*;
+import com.fibertools.utils.KeyEventsParser;
+import com.fibertools.utils.MeasurementConversions;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 
 
@@ -18,13 +23,15 @@ import java.io.File;
 import java.net.URL;
 
 import java.nio.file.Paths;
+import java.security.Key;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
-public class TraceViewerDataController {
+public class TraceViewerDataController implements Initializable {
 
     @FXML
     public GridPane identificationGrid;
+
     public TextField fileNameTextField;
 
     public TextField languageTextField; //GenParams
@@ -45,14 +52,76 @@ public class TraceViewerDataController {
     public TextField pulseWidthTextField; //FxdParams
     public TextField rangeTextField; //FxdParams
 
+    public TableView eventsTable; //KeyEvents
+    public TableColumn eventColumn; //KeyEvents
+    public TableColumn typeColumn; //KeyEvents
+    public TableColumn distanceColumn; //KeyEvents
+    public TableColumn slopeColumn; //KeyEvents
+    public TableColumn spliceLossColumn; //KeyEvents
+    public TableColumn reflectionLossColumn; //KeyEvents
+    public TableColumn commentsColumn; //KeyEvents
+    public TableColumn endOfPrevColumn; //KeyEvents
+    public TableColumn startOfCurrColumn; //KeyEvents
+    public TableColumn endOfCurrColumn; //KeyEvents
+    public TableColumn startOfNextColumn; //KeyEvents
+    public TableColumn peakColumn; //KeyEvents
+    
+    public TableView summaryTable; //KeyEvents, Summary
+    public TableColumn totalLossColumn; //KeyEvents, Summary
+    public TableColumn orlColumn; //KeyEvents, Summary
+    public TableColumn lossStartColumn; //KeyEvents, Summary
+    public TableColumn lossEndColumn; //KeyEvents, Summary
+    public TableColumn orlStartColumn; //KeyEvents, Summary
+    public TableColumn orlEndColumn; //KeyEvents, Summary
+
 
     private String fileName;
 
-
-
     //TODO add way to remove files after they are added
     //TODO add KeyEvents
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //Events Table
+        eventColumn.setCellValueFactory(new PropertyValueFactory<>("index"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        distanceColumn.setCellValueFactory(new PropertyValueFactory<>("distance"));
+        slopeColumn.setCellValueFactory(new PropertyValueFactory<>("slope"));
+        spliceLossColumn.setCellValueFactory(new PropertyValueFactory<>("spliceLoss"));
+        reflectionLossColumn.setCellValueFactory(new PropertyValueFactory<>("reflLoss"));
+        commentsColumn.setCellValueFactory(new PropertyValueFactory<>("comments"));
+        endOfPrevColumn.setCellValueFactory(new PropertyValueFactory<>("endOfPrev"));
+        startOfCurrColumn.setCellValueFactory(new PropertyValueFactory<>("startOfCurr"));
+        endOfCurrColumn.setCellValueFactory(new PropertyValueFactory<>("endOfCurr"));
+        startOfNextColumn.setCellValueFactory(new PropertyValueFactory<>("startOfNext"));
+        peakColumn.setCellValueFactory(new PropertyValueFactory<>("peak"));
+        //End of Events Table
+        //Summary Table
+        totalLossColumn.setCellValueFactory(new PropertyValueFactory<>("totalLoss"));
+        orlColumn.setCellValueFactory(new PropertyValueFactory<>("orl"));  // Match the property name
+        lossStartColumn.setCellValueFactory(new PropertyValueFactory<>("lossStart"));
+        lossEndColumn.setCellValueFactory(new PropertyValueFactory<>("lossEnd"));
+        orlStartColumn.setCellValueFactory(new PropertyValueFactory<>("orlStart"));  // Match the property name
+        orlEndColumn.setCellValueFactory(new PropertyValueFactory<>("orlEnd"));  // Match the property name
 
+        //End of Summary Table
+    }
+
+    //Summary Tab
+    public void populateSummaryTable(String fileName){
+        ObservableList<KeyEvents.Summary> summaries = FXCollections.observableArrayList();
+        summaries.addAll(KeyEventsParser.parseSummary(fileName));
+        summaryTable.setItems(summaries);
+    }
+
+    //Events Tab
+    public void populateEventsTable(String fileName){
+        ObservableList<KeyEvents.Event> events = FXCollections.observableArrayList();
+        events.addAll(KeyEventsParser.parseAllKeyEvents(fileName));
+        eventsTable.setItems(events);
+    }
+    //End of Events Tab
+
+    // Start of General Params Tab
     public void populateFieldsFromSorFile(String fileName) {
         //Reanme file to [example]-dump.xml
         String xmlFileName = fileName.substring(0, fileName.length() - 4) + "-dump.xml";
@@ -71,6 +140,8 @@ public class TraceViewerDataController {
             updateGenParamsFields(sor);
             updateFxdParamsFields(sor);
             updateSupParamsFields(sor);
+            populateEventsTable(String.valueOf(xmlFile));
+            populateSummaryTable(String.valueOf(xmlFile));
 
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -114,7 +185,7 @@ public class TraceViewerDataController {
                 setTextField(unitTextField, sor.getFxdParams().getUnit());
                 setTextField(pulseWidthTextField, sor.getFxdParams().getPulseWidth());
 
-                //TODO make this simplify the number for example 131260.36203530076ft to 131260ft
+                //Removes decimals from range and converts km to ft
                 DecimalFormat df = new DecimalFormat("#");
                 setTextField(rangeTextField, df.format(sor.getFxdParams().getRange() * 3280.84));
 
@@ -123,6 +194,7 @@ public class TraceViewerDataController {
             System.out.println("Null pointer exception");
         }
     }
+    //End of General Params Tab
 
     private void setTextField(TextField textField, String text){
         text = text == null ? null : text.trim();
@@ -135,5 +207,4 @@ public class TraceViewerDataController {
             textField.setStyle("-fx-background-color: #d2cece;");
         }
     }
-
 }
