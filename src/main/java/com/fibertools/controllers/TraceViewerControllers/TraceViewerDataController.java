@@ -76,9 +76,10 @@ public class TraceViewerDataController implements Initializable {
 
 
     private String fileName;
+    private File xmlFile;
+
 
     //TODO add way to remove files after they are added
-    //TODO add KeyEvents
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Events Table
@@ -102,7 +103,6 @@ public class TraceViewerDataController implements Initializable {
         lossEndColumn.setCellValueFactory(new PropertyValueFactory<>("lossEnd"));
         orlStartColumn.setCellValueFactory(new PropertyValueFactory<>("orlStart"));  // Match the property name
         orlEndColumn.setCellValueFactory(new PropertyValueFactory<>("orlEnd"));  // Match the property name
-
         //End of Summary Table
     }
 
@@ -123,7 +123,7 @@ public class TraceViewerDataController implements Initializable {
 
     // Start of General Params Tab
     public void populateFieldsFromSorFile(String fileName) {
-        //Reanme file to [example]-dump.xml
+        //Rename file to [example]-dump.xml
         String xmlFileName = fileName.substring(0, fileName.length() - 4) + "-dump.xml";
         File xmlFile = Paths.get("src/main/sorData", xmlFileName).toFile();
         System.out.println("XML file path: " + xmlFile.getAbsolutePath());
@@ -143,6 +143,13 @@ public class TraceViewerDataController implements Initializable {
             populateEventsTable(String.valueOf(xmlFile));
             populateSummaryTable(String.valueOf(xmlFile));
 
+
+            //Delete xml file after it is read
+            xmlFile.delete();
+            //Delete .dat file with [example]-trace.dat
+            String datFileName = fileName.substring(0, fileName.length() - 4) + "-trace.dat";
+            File datFile = Paths.get("src/main/sorData", datFileName).toFile();
+            datFile.delete();
         } catch (JAXBException e) {
             e.printStackTrace();
         }
