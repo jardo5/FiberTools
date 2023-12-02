@@ -12,6 +12,7 @@ import java.io.File;
 // TODO DELETE THIS CLASS AFTER TESTING IS COMPLETE
 
 public class ExampleParser {
+    /*
     public void parseXmlFile(String filePath) {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Sor.class);
@@ -46,7 +47,7 @@ public class ExampleParser {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-    }
+    } */
 }
 
 

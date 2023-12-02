@@ -15,8 +15,9 @@ public class Main extends Application {
     public static void main(String[] args) {
         System.out.println(System.getenv("PATH"));
 
-        ExampleParser exampleParser = new ExampleParser();
-        exampleParser.parseXmlFile("src/main/sorData/example1-dump.xml");
+        //TODO DELETE THIS AFTER TESTING IS COMPLETE
+        // ExampleParser exampleParser = new ExampleParser();
+        // exampleParser.parseXmlFile("src/main/sorData/example1-dump.xml");
 
 
         //Spacer

@@ -9,6 +9,7 @@ public class Sor {
     private int format;
     private String version;
     private GenParams genParams;
+    private SupParams supParams;
     private FxdParams fxdParams;
     private KeyEvents keyEvents;
 
@@ -50,6 +51,14 @@ public class Sor {
     }
 
 
+    @XmlElement(name = "SupParams")
+    public SupParams getSupParams() {
+        return supParams;
+    }
+
+    public void setSupParams(SupParams supParams) {
+        this.supParams = supParams;
+    }
 
     @XmlElement(name = "FxdParams")
     public FxdParams getFxdParams() {

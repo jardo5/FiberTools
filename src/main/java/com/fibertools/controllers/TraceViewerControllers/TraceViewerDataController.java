@@ -4,6 +4,7 @@ package com.fibertools.controllers.TraceViewerControllers;
 import com.fibertools.models.TaceViewerModels.FxdParams;
 import com.fibertools.models.TaceViewerModels.GenParams;
 import com.fibertools.models.TaceViewerModels.Sor;
+import com.fibertools.models.TaceViewerModels.SupParams;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -32,11 +33,16 @@ public class TraceViewerDataController {
     public TextField locationBTextField; //GenParams
     public TextField operatorTextField; //GenParams
     public TextField commentsTextField; //GenParams
+    public TextField wavelengthTextField; //GenParams
+
+    public TextField companyTextField; //SupParams
+    public TextField otdrModelNumberTextField; //SupParams
+    public TextField otdrSerialNumberTextField; //SupParams
 
     public TextField dateTimeTextField; //FxdParams
     public TextField unitTextField; //FxdParams
-    public TextField wavelengthTextField; //FxdParams or GenParams
     public TextField pulseWidthTextField; //FxdParams
+
 
     private String fileName;
 
@@ -57,10 +63,12 @@ public class TraceViewerDataController {
             Sor sor = (Sor) jaxbUnmarshaller.unmarshal(xmlFile);
             GenParams genParams = sor.getGenParams();
             FxdParams fxdParams = sor.getFxdParams();
+            SupParams supParams = sor.getSupParams();
 
             //Populate fields
             updateGenParamsFields(sor);
             updateFxdParamsFields(sor);
+            updateSupParamsFields(sor);
 
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -78,7 +86,19 @@ public class TraceViewerDataController {
                 setTextField(locationBTextField, sor.getGenParams().getLocationB());
                 setTextField(operatorTextField, sor.getGenParams().getOperator());
                 setTextField(commentsTextField, sor.getGenParams().getComments());
-                setTextField(wavelengthTextField, sor.getGenParams().getWavelength() != null ? sor.getGenParams().getWavelength() : sor.getFxdParams().getWavelength());
+                setTextField(wavelengthTextField, sor.getGenParams().getWavelength());
+            }
+        } catch (NullPointerException e){
+            System.out.println("Null pointer exception");
+        }
+    }
+
+    private void updateSupParamsFields(Sor sor){
+        try {
+            if(sor.getSupParams() != null){
+                setTextField(companyTextField, sor.getSupParams().getSupplier());
+                setTextField(otdrModelNumberTextField, sor.getSupParams().getModelNumber());
+                setTextField(otdrSerialNumberTextField, sor.getSupParams().getSerialNumber());
             }
         } catch (NullPointerException e){
             System.out.println("Null pointer exception");
@@ -90,7 +110,6 @@ public class TraceViewerDataController {
             if(sor.getFxdParams() != null){
                 setTextField(dateTimeTextField, sor.getFxdParams().getDateTime());
                 setTextField(unitTextField, sor.getFxdParams().getUnit());
-                setTextField(wavelengthTextField, sor.getFxdParams().getWavelength());
                 setTextField(pulseWidthTextField, sor.getFxdParams().getPulseWidth());
             }
         }catch (NullPointerException e){

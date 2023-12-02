@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sor>
+    <filename>XMLTRANS.sor</filename>
+    <format>2</format>
+    <version>2.00</version>
+    <mapblock>
+        <nbytes>135</nbytes>
+        <nblocks>7</nblocks>
+    </mapblock>
+    <blocks>
+        <GenParams>
+            <name>GenParams</name>
+            <version>2.00</version>
+            <size>74</size>
+            <pos>135</pos>
+            <order>0</order>
+        </GenParams>
+        <SupParams>
+            <name>SupParams</name>
+            <version>2.00</version>
+            <size>54</size>
+            <pos>209</pos>
+            <order>1</order>
+        </SupParams>
+        <FxdParams>
+            <name>FxdParams</name>
+            <version>2.00</version>
+            <size>92</size>
+            <pos>263</pos>
+            <order>2</order>
+        </FxdParams>
+        <KeyEvents>
+            <name>KeyEvents</name>
+            <version>2.00</version>
+            <size>254</size>
+            <pos>355</pos>
+            <order>3</order>
+        </KeyEvents>
+        <DataPts>
+            <name>DataPts</name>
+            <version>2.00</version>
+            <size>62698</size>
+            <pos>609</pos>
+            <order>4</order>
+        </DataPts>
+        <ExfoNewProprietaryBlock_01>
+            <name>ExfoNewProprietaryBlock 01</name>
+            <version>2.00</version>
+            <size>48587</size>
+            <pos>63307</pos>
+            <order>5</order>
+        </ExfoNewProprietaryBlock_01>
+        <Cksum>
+            <name>Cksum</name>
+            <version>2.00</version>
+            <size>8</size>
+            <pos>111894</pos>
+            <order>6</order>
+        </Cksum>
+    </blocks>
+    <GenParams>
+        <language>EN</language> <!-- Language -->
+        <cable_ID>48 SM</cable_ID> <!-- Cable ID -->
+        <fiber_ID>001</fiber_ID> <!-- Fiber ID -->
+        <fiber_type>G.652 (standard SMF)</fiber_type>
+        <wavelength>1310 nm</wavelength> <!-- Wavelength -->
+        <location_A>Loc A</location_A> <!-- Location A -->
+        <location_B>Loc B</location_B> <!-- Location B -->
+        <cable_code_fiber_type> </cable_code_fiber_type>
+        <build_condition>BC (as-built)</build_condition>
+        <user_offset>0</user_offset>
+        <user_offset_distance>0</user_offset_distance>
+        <operator>Testy Test</operator> <!-- Operator -->
+        <comments> </comments> <!-- Comments -->
+    </GenParams>
+    <SupParams>
+        <supplier>Test Test</supplier> <!-- Company -->
+        <OTDR> </OTDR>
+        <OTDR_S_N> </OTDR_S_N>
+        <module>FJEFFJFHJ-2323JWEFJW</module> <!-- Model Number  NOT REAL-->
+        <module_S_N>234532452</module_S_N> <!-- Serial Number NOT REAL-->
+        <software> </software>
+        <other> </other>
+    </SupParams>
+    <FxdParams>
+        <date_time>Mon Apr 11 15:57:25 2022 (1649692645 sec)</date_time> <!-- Date and Time Remove Seconds its number of seconds that have elapsed since 00:00:00 UTC of January 1st, 1970-->
+        <unit>mt (meters)</unit>  <!-- Unit (Defaults to Meters, Will be Changed To Feet)-->
+        <wavelength>1306.2 nm</wavelength> <!-- Unsure why 1306.2nm? Keep USING GenParams wavelength-->
+        <acquisition_offset>0</acquisition_offset>
+        <acquisition_offset_distance>0</acquisition_offset_distance>
+        <number_of_pulse_width_entries>1</number_of_pulse_width_entries>
+        <pulse_width>100 ns</pulse_width> <!-- Pulse Width -->
+        <sample_spacing>0.00625 usec</sample_spacing>
+        <num_data_points>31339</num_data_points>
+        <index>1.467700</index>
+        <BC>-79.50 dB</BC>
+        <num_averages>1457</num_averages>
+        <averaging_time>2 sec</averaging_time>
+        <range>40.00815834835968</range> <!-- This chooses the Range in k(ft) 1st dial in OTDR. -->
+        <acquisition_range_distance>25000305</acquisition_range_distance>
+        <front_panel_offset>0</front_panel_offset>
+        <noise_floor_level>44319</noise_floor_level>
+        <noise_floor_scaling_factor>1000</noise_floor_scaling_factor>
+        <power_offset_first_point>0</power_offset_first_point>
+        <loss_thr>0.020 dB</loss_thr>
+        <refl_thr>-65.535 dB</refl_thr>
+        <EOT_thr>5.000 dB</EOT_thr>
+        <trace_type>ST[standard trace]</trace_type>
+        <X1>0</X1>
+        <Y1>0</Y1>
+        <X2>0</X2>
+        <Y2>0</Y2>
+        <resolution>1.2766252384683519</resolution>
+    </FxdParams>
+    <KeyEvents> <!-- Y-axis "Default Injection Level" Bottom ~25.9 and Top ~28.9 -->
+        <num_events>5</num_events> <!-- Number of Events -->
+        <event_1> <!-- Event Y-Axis EXFO states ~28.26 -->
+            <type>1F9999LS {auto} reflection</type>
+            <distance>0.000</distance>
+            <slope>0.000</slope> <!-- Att. db loss per kM in span bewteen hits can be used to calculate the necessary slope between hits-->
+            <splice_loss>0.000</splice_loss> <!-- Splice Loss -->
+            <refl_loss>-70.516</refl_loss> <!-- Reflection Loss -->
+            <comments> </comments>
+            <end_of_prev>0.000</end_of_prev>
+            <start_of_curr>0.000</start_of_curr>
+            <end_of_curr>0.018</end_of_curr>
+            <start_of_next>4.686</start_of_next>
+            <peak>0.009</peak><!-- Distance to Hit -->
+        </event_1>
+        <event_2> <!-- Event Y-Axis EXFO states ~26.801 -->
+            <type>0F9999LS {auto} loss/drop/gain</type>
+            <distance>4.686</distance>
+            <slope>0.332</slope> <!-- Att. db loss per kM in span between hits can be used to calculate the necessary slope between hits-->
+            <splice_loss>0.111</splice_loss> <!-- Splice Loss -->
+            <refl_loss>0.000</refl_loss> <!-- Reflection Loss -->
+            <comments> </comments>
+            <end_of_prev>0.018</end_of_prev>
+            <start_of_curr>4.686</start_of_curr>
+            <end_of_curr>4.715</end_of_curr>
+            <start_of_next>9.715</start_of_next>
+            <peak>4.686</peak><!-- Distance to Hit -->
+        </event_2>
+        <event_3> <!-- Event Y-Axis EXFO states ~22.495 -->
+            <type>0F9999LS {auto} loss/drop/gain</type>
+            <distance>17.374</distance> <!-- Distance of hit in Kilometers X-Axis -->
+            <slope>0.330</slope> <!-- Att. db loss per kM in span between hits -->
+            <splice_loss>0.156</splice_loss> <!-- Splice Loss -->
+            <refl_loss>0.000</refl_loss> <!-- Reflection Loss -->
+            <comments> </comments>
+            <end_of_prev>12.373</end_of_prev>
+            <start_of_curr>17.374</start_of_curr>
+            <end_of_curr>17.417</end_of_curr>
+            <start_of_next>22.418</start_of_next> <!-- Y-Axis hit number but it's not consistent on other hits-->
+            <peak>17.374</peak><!-- Distance to Hit -->
+        </event_3>
+        <event_4> <!-- Event Y-Axis EXFO states ~20.068 -->
+            <type>0F9999LS {auto} loss/drop/gain</type>
+            <distance>24.261</distance> <!-- Distance of hit in Kilometers X-Axis -->
+            <slope>0.330</slope> <!-- Att. db loss per kM in span between hits -->
+            <splice_loss>0.147</splice_loss> <!-- Splice Loss -->
+            <refl_loss>0.000</refl_loss> <!-- Reflection Loss -->
+            <comments> </comments>
+            <end_of_prev>19.260</end_of_prev>
+            <start_of_curr>24.261</start_of_curr>
+            <end_of_curr>24.298</end_of_curr>
+            <start_of_next>29.299</start_of_next>
+            <peak>24.261</peak> <!-- Distance to Hit -->
+        </event_4>
+        <event_5> <!-- Event Y-Axis EXFO states ~15.18 with large curve up hitting 27.3 -->
+            <type>1E9999LS {auto} reflection</type>
+            <distance>38.623</distance> <!-- End of Fiber According to pyOTDR and EXFO OTDR--> <!-- Distance of hit in Kilometers X-Axis -->
+            <slope>0.334</slope> <!-- Att. db loss per kM in span bewteen hits can be used to calculate the necessary slope between hits-->
+            <splice_loss>0.000</splice_loss>
+            <refl_loss>-34.539</refl_loss> <!-- Reflection Loss -->
+            <comments> </comments>
+            <end_of_prev>33.622</end_of_prev>
+            <start_of_curr>38.623</start_of_curr>
+            <end_of_curr>39.215</end_of_curr>
+            <start_of_next>40.007</start_of_next>
+            <peak>38.637</peak> <!-- End of Fiber -->
+        </event_5>
+        <Summary>
+            <total_loss>13.226</total_loss> <!-- Total Loss -->
+            <ORL>31.514</ORL> <!-- ORL Correct -->
+            <loss_start>0.0</loss_start>
+            <loss_end>38.62302</loss_end> <!-- End of Fiber -->
+            <ORL_start>0.0</ORL_start>
+            <ORL_finish>38.62302</ORL_finish> <!-- End of Fiber -->
+        </Summary>
+    </KeyEvents>
+    <DataPts>
+        <_datapts_params>
+            <xscaling>1</xscaling>
+            <offset>STV</offset>
+        </_datapts_params>
+        <num_data_points>31339</num_data_points>
+        <num_traces>1</num_traces>
+        <num_data_points_2>31339</num_data_points_2>
+        <scaling_factor>1.0</scaling_factor>
+        <max_before_offset>63.999</max_before_offset>
+        <min_before_offset>35.507</min_before_offset>
+    </DataPts>
+    <Cksum>
+        <checksum_ours>5980</checksum_ours>
+        <checksum>47138</checksum>
+        <match>false</match>
+    </Cksum>
+</sor>
