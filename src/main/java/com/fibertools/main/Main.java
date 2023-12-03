@@ -14,6 +14,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+//TODO Start Working on Report Creator
+//TODO Start Working on Conversions (Fiber to Color, Color to Fiber, etc.)
+//TODO Prettier
+//TODO Remove unused imports
+//TODO Go over UI/UX
+//TODO Comment out unnecessary System.out.println() statements
+
 public class Main extends Application {
     public static void main(String[] args) {
         System.out.println(System.getenv("PATH"));
