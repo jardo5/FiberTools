@@ -88,12 +88,12 @@ public class TraceViewerDataController implements Initializable {
     private File datFile;
     
 
-    public CategoryAxis traceChartX;
+    public NumberAxis traceChartX;
     public NumberAxis traceChartY;
 
     @FXML
-    private LineChart<String, Number> traceChart;
-    private XYChart.Series<String, Number> series;
+    private LineChart<Number, Number> traceChart;
+    private XYChart.Series<Number, Number> series;
 
 
     //TODO Attempt to find a more efficient way to parse the .dat file and display it as a graph
@@ -116,7 +116,7 @@ public class TraceViewerDataController implements Initializable {
                         double distanceKM = Double.parseDouble(parts[0]);
                         double distanceFT = MeasurementConversions.KMtoFT(distanceKM); // Convert KM to FT
                         double power = Double.parseDouble(parts[1]);
-                        series.getData().add(new XYChart.Data<>(String.format("%d", (int) distanceFT), power));
+                        series.getData().add(new XYChart.Data<>(distanceFT, power));
 
                     } else {
                         System.out.println("Unexpected data format: " + line);
@@ -134,11 +134,6 @@ public class TraceViewerDataController implements Initializable {
             }
         }
     }
-
-
-
-
-
 
 
     @Override

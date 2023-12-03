@@ -176,7 +176,7 @@
    <center>
       <LineChart fx:id="traceChart" animated="false" createSymbols="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" verticalGridLinesVisible="false" verticalZeroLineVisible="false" BorderPane.alignment="CENTER">
         <xAxis>
-          <CategoryAxis fx:id="traceChartX" animated="false" label="Distance (FT)" side="BOTTOM" />
+          <NumberAxis fx:id="traceChartX" animated="false" label="Distance (FT)" side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis fx:id="traceChartY" animated="false" label="Reflected Power" side="LEFT" />
