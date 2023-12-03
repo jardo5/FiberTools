@@ -9,9 +9,6 @@ module com.fibertools.fibertools {
 
     requires java.sql;
     requires MaterialFX;
-    requires com.fasterxml.jackson.databind;
-    requires com.fasterxml.jackson.core;
-    requires com.fasterxml.jackson.annotation;
     requires java.xml.bind;
 
     opens com.fibertools.utils to java.xml.bind;
