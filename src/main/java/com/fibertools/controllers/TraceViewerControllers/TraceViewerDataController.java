@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -18,6 +19,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 
 import javax.xml.bind.JAXBContext;
@@ -86,6 +90,8 @@ public class TraceViewerDataController implements Initializable {
     private String fileName = "default";
     private File xmlFile;
     private File datFile;
+
+    private Line selectedLine;
     
 
     public NumberAxis traceChartX;
@@ -94,6 +100,9 @@ public class TraceViewerDataController implements Initializable {
     @FXML
     private LineChart<Number, Number> traceChart;
     private XYChart.Series<Number, Number> series;
+
+    private XYChart.Series<Number, Number> selectedLineSeries = new XYChart.Series<>();
+
 
 
     //TODO Attempt to find a more efficient way to parse the .dat file and display it as a graph
@@ -136,6 +145,7 @@ public class TraceViewerDataController implements Initializable {
     }
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Create Line Chart
@@ -147,6 +157,19 @@ public class TraceViewerDataController implements Initializable {
         traceChart.setCreateSymbols(false);
 
         loadChartData(fileName);
+
+
+        eventsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                double selectedDistance = ((KeyEvents.Event) newSelection).getDistance();
+                drawLineOnTraceChart(selectedDistance);
+            }
+        });
+
+        // Create a series for drawing lines
+        selectedLineSeries = new XYChart.Series<>();
+        traceChart.getData().add(selectedLineSeries);
+
 
 
 
@@ -174,6 +197,37 @@ public class TraceViewerDataController implements Initializable {
         orlEndColumn.setCellValueFactory(new PropertyValueFactory<>("orlEnd"));  // Match the property name
         //End of Summary Table
     }
+
+    private void drawLineOnTraceChart(double distance) {
+        // Clear the previously drawn lines
+        selectedLineSeries.getData().clear();
+
+        // Get the maximum Y-axis value from the existing data
+        double maxY = getMaxYValueFromChartData();
+
+        // Add the line to the series
+        selectedLineSeries.getData().add(new XYChart.Data<>(distance, maxY));
+        selectedLineSeries.getData().add(new XYChart.Data<>(distance, traceChartY.getLowerBound())); // Lower bound or another desired value
+
+        // Set a custom style for the line (you can customize this further)
+        selectedLineSeries.getNode().setStyle("-fx-stroke: red; -fx-stroke-width: 1.5px;");
+    }
+
+    private double getMaxYValueFromChartData() {
+        double maxY = Double.MIN_VALUE;
+
+        for (XYChart.Data<Number, Number> data : series.getData()) {
+            double yValue = data.getYValue().doubleValue();
+            if (yValue > maxY) {
+                maxY = yValue;
+            }
+        }
+
+        return maxY;
+    }
+
+
+
 
     //Summary Tab
     public void populateSummaryTable(String fileName){
