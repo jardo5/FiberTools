@@ -174,12 +174,12 @@
         </TabPane>
     </bottom>
    <center>
-      <LineChart BorderPane.alignment="CENTER">
+      <LineChart fx:id="traceChart" animated="false" createSymbols="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" verticalGridLinesVisible="false" verticalZeroLineVisible="false" BorderPane.alignment="CENTER">
         <xAxis>
-          <CategoryAxis label="Distance (FT)" side="BOTTOM" />
+          <CategoryAxis fx:id="traceChartX" animated="false" label="Distance (FT)" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis label="Reflected Power" side="LEFT" />
+          <NumberAxis fx:id="traceChartY" animated="false" label="Reflected Power" side="LEFT" />
         </yAxis>
       </LineChart>
    </center>

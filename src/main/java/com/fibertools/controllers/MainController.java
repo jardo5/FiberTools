@@ -45,8 +45,6 @@ public class MainController {
     private void initialize() {
         FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/default/default.fxml");
 
-        //TODO: Make this all its own function
-
         //Allows InventoryController to access contents BorderPane
         InventoryController inventoryController = new InventoryController();
         inventoryController.setContents(contents);

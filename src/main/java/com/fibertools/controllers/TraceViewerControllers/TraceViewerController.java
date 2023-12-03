@@ -50,7 +50,8 @@ public class TraceViewerController {
     }
 
 
-
+//TODO Attempt to find a way to parse the .dat file and display it as a graph with proper units and with effenecity
+    //TODO IF NOT POSSIBLE look into the Swinging Door Algorithm and see if it can be implemented
 
     @FXML
     private void onDragEntered(DragEvent event) {
@@ -180,12 +181,10 @@ public class TraceViewerController {
 
         Process process = processBuilder.start();
 
+
+        //TODO REMOVE THIS
         new Thread(() -> {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    System.out.println("Successfully generated XML/DAT file");
-                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

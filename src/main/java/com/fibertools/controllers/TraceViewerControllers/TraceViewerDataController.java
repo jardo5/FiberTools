@@ -8,6 +8,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,12 +23,17 @@ import javafx.scene.layout.GridPane;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 
 import java.nio.file.Paths;
 import java.security.Key;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class TraceViewerDataController implements Initializable {
@@ -74,14 +83,79 @@ public class TraceViewerDataController implements Initializable {
     public TableColumn orlStartColumn; //KeyEvents, Summary
     public TableColumn orlEndColumn; //KeyEvents, Summary
 
-
-    private String fileName;
+    private String fileName = "default";
     private File xmlFile;
+    private File datFile;
+    
+
+    public CategoryAxis traceChartX;
+    public NumberAxis traceChartY;
+
+    @FXML
+    private LineChart<String, Number> traceChart;
+    private XYChart.Series<String, Number> series;
+
+
+    //TODO Attempt to find a more efficient way to parse the .dat file and display it as a graph
+    private void loadChartData(String fileName) {
+        String line;
+        int nthLine = 10; // Only plot every 10th line
+        int lineCount = 0;
+        String datFileName = fileName.substring(0, fileName.length() - 4) + "-trace.dat";
+        File datFile = Paths.get("src/main/sorData", datFileName).toFile();
+
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/sorData/EXAMPLE-trace.dat"))) {
+            while ((line = reader.readLine()) != null) {
+                lineCount++;
+                if (lineCount % nthLine != 0) continue; // Skip lines that are not the 10th line
+
+                try {
+                    String[] parts = line.split("\t| {4}"); // All .dat files x/y are split by tab or four spaces
+                    if (parts.length == 2) {
+                        double distanceKM = Double.parseDouble(parts[0]);
+                        double distanceFT = MeasurementConversions.KMtoFT(distanceKM); // Convert KM to FT
+                        double power = Double.parseDouble(parts[1]);
+                        series.getData().add(new XYChart.Data<>(String.format("%d", (int) distanceFT), power));
+
+                    } else {
+                        System.out.println("Unexpected data format: " + line);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error processing line: " + line);
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (datFile.exists()) {
+                datFile.delete();
+            }
+        }
+    }
+
+
+
+
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //Create Line Chart
+        series = new XYChart.Series<>();
+        traceChart.getData().add(series);
+
+        //Improves performance of chart
+        series.getNode().setStyle("-fx-stroke: black; -fx-stroke-width: 1px;");
+        traceChart.setCreateSymbols(false);
+
+        loadChartData(fileName);
+
+
+
+
         //Events Table
         eventColumn.setCellValueFactory(new PropertyValueFactory<>("index"));
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -126,7 +200,6 @@ public class TraceViewerDataController implements Initializable {
         //Rename file to [example]-dump.xml
         String xmlFileName = fileName.substring(0, fileName.length() - 4) + "-dump.xml";
         File xmlFile = Paths.get("src/main/sorData", xmlFileName).toFile();
-        System.out.println("XML file path: " + xmlFile.getAbsolutePath());
 
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Sor.class);
