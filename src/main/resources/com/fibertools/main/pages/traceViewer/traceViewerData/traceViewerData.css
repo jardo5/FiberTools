@@ -40,3 +40,9 @@
 .tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
     -fx-border-color: transparent;
 }
+
+.hyperlink {
+    -fx-text-fill: #e5e4e2;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}

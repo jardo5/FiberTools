@@ -6,6 +6,7 @@ import com.fibertools.utils.KeyEventsParser;
 import com.fibertools.utils.MeasurementConversions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -27,10 +28,13 @@ import javafx.scene.shape.Line;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import java.nio.file.Paths;
@@ -103,49 +107,6 @@ public class TraceViewerDataController implements Initializable {
 
     private XYChart.Series<Number, Number> selectedLineSeries = new XYChart.Series<>();
 
-
-
-    //TODO Attempt to find a more efficient way to parse the .dat file and display it as a graph
-    private void loadChartData(String fileName) {
-        String line;
-        int nthLine = 10; // Only plot every 10th line
-        int lineCount = 0;
-        String datFileName = fileName.substring(0, fileName.length() - 4) + "-trace.dat";
-        File datFile = Paths.get("src/main/sorData", datFileName).toFile();
-
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/sorData/EXAMPLE-trace.dat"))) {
-            while ((line = reader.readLine()) != null) {
-                lineCount++;
-                if (lineCount % nthLine != 0) continue; // Skip lines that are not the 10th line
-
-                try {
-                    String[] parts = line.split("\t| {4}"); // All .dat files x/y are split by tab or four spaces
-                    if (parts.length == 2) {
-                        double distanceKM = Double.parseDouble(parts[0]);
-                        double distanceFT = MeasurementConversions.KMtoFT(distanceKM); // Convert KM to FT
-                        double power = Double.parseDouble(parts[1]);
-                        series.getData().add(new XYChart.Data<>(distanceFT, power));
-
-                    } else {
-                        System.out.println("Unexpected data format: " + line);
-                    }
-                } catch (Exception e) {
-                    System.out.println("Error processing line: " + line);
-                    e.printStackTrace();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (datFile.exists()) {
-                datFile.delete();
-            }
-        }
-    }
-
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Create Line Chart
@@ -198,6 +159,47 @@ public class TraceViewerDataController implements Initializable {
         //End of Summary Table
     }
 
+
+    //Trace
+    //TODO Attempt to find a more efficient way to parse the .dat file and display it as a graph
+    private void loadChartData(String fileName) {
+        String line;
+        int nthLine = 10; // Only plot every 10th line
+        int lineCount = 0;
+        String datFileName = fileName.substring(0, fileName.length() - 4) + "-trace.dat";
+        File datFile = Paths.get("src/main/sorData", datFileName).toFile();
+
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/sorData/EXAMPLE-trace.dat"))) {
+            while ((line = reader.readLine()) != null) {
+                lineCount++;
+                if (lineCount % nthLine != 0) continue; // Skip lines that are not the 10th line
+
+                try {
+                    String[] parts = line.split("\t| {4}"); // All .dat files x/y are split by tab or four spaces
+                    if (parts.length == 2) {
+                        double distanceKM = Double.parseDouble(parts[0]);
+                        double distanceFT = MeasurementConversions.KMtoFT(distanceKM); // Convert KM to FT
+                        double power = Double.parseDouble(parts[1]);
+                        series.getData().add(new XYChart.Data<>(distanceFT, power));
+
+                    } else {
+                        System.out.println("Unexpected data format: " + line);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error processing line: " + line);
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (datFile.exists()) {
+                datFile.delete();
+            }
+        }
+    }
+
     private void drawLineOnTraceChart(double distance) {
         // Clear the previously drawn lines
         selectedLineSeries.getData().clear();
@@ -225,9 +227,19 @@ public class TraceViewerDataController implements Initializable {
 
         return maxY;
     }
+    //End of Trace
 
+    private void setTextField(TextField textField, String text){
+        text = text == null ? null : text.trim();
 
-
+        if(text != null && !text.isEmpty()){
+            textField.setText(text);
+            textField.setStyle("-fx-background-color: #FBFAF5;");
+        } else {
+            textField.setText("null");
+            textField.setStyle("-fx-background-color: #d2cece;");
+        }
+    }
 
     //Summary Tab
     public void populateSummaryTable(String fileName){
@@ -235,6 +247,7 @@ public class TraceViewerDataController implements Initializable {
         summaries.addAll(KeyEventsParser.parseSummary(fileName));
         summaryTable.setItems(summaries);
     }
+    //End of Summary Tab
 
     //Events Tab
     public void populateEventsTable(String fileName){
@@ -324,16 +337,34 @@ public class TraceViewerDataController implements Initializable {
         }
     }
     //End of General Params Tab
+    
+    //Credits Tab
+    public void openBlog(ActionEvent actionEvent) {
+        openPage("https://morethanfootnotes.blogspot.com/2015/07/the-otdr-optical-time-domain.html?view=sidebar");
+    }
 
-    private void setTextField(TextField textField, String text){
-        text = text == null ? null : text.trim();
 
-        if(text != null && !text.isEmpty()){
-            textField.setText(text);
-            textField.setStyle("-fx-background-color: #FBFAF5;");
-        } else {
-            textField.setText("null");
-            textField.setStyle("-fx-background-color: #d2cece;");
+    public void openGitHub1(ActionEvent actionEvent) {
+        openPage("https://github.com/sid5432/pyOTDR");
+    }
+
+    public void openGitHub2(ActionEvent actionEvent) {
+        openPage("https://github.com/JamesHarrison/otdrs");
+    }
+
+    public void openOnlineOTDR(ActionEvent actionEvent) {
+        openPage("https://onlineotdr.com/");
+    }
+
+    public void openEXFO(ActionEvent actionEvent) {
+        openPage("https://documents.exfo.com/Products/UserGuides/User_Guide_OTDR_English_(1068770).pdf");
+    }
+
+    private void openPage(String url){
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
         }
     }
 }

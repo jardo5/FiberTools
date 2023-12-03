@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
@@ -16,6 +15,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Hyperlink?>
 <BorderPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@traceViewerData.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.TraceViewerControllers.TraceViewerDataController">
     <bottom>
         <TabPane prefHeight="200.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
@@ -170,6 +171,17 @@
                         </TableView>
                     </content>
                 </Tab>
+            <Tab closable="false" text="Credits">
+                <content>
+                    <AnchorPane>
+                        <Hyperlink layoutX="10.0" layoutY="10.0" text="Blog By Sidney Li" onAction="#openBlog"/>
+                        <Hyperlink layoutX="10.0" layoutY="40.0" text="pyOTDR CLI By sid5432" onAction="#openGitHub1" />
+                        <Hyperlink layoutX="10.0" layoutY="70.0" text="otdrs CLI By James Harrison" onAction="#openGitHub2" />
+                        <Hyperlink layoutX="10.0" layoutY="100.0" text="Online OTDR By ?" onAction="#openOnlineOTDR" />
+                        <Hyperlink layoutX="10.0" layoutY="130.0" text="OTDR User Guide (PDF) By EXFO" onAction="#openEXFO" />
+                    </AnchorPane>
+                </content>
+            </Tab>
             </tabs>
         </TabPane>
     </bottom>
