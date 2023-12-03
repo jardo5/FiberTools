@@ -19,6 +19,7 @@
 ![SceneBuilder](https://img.shields.io/badge/SceneBuilder-007ACC.svg?style=for-the-badge&logo=Java&logoColor=white)
 
 [![JavaFX](https://img.shields.io/badge/JavaFX-17%2B-green)](https://openjfx.io/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
 <span style="color:#6E8FD9">FiberTools</span> is an open-source JavaFX application designed to assist with fiber optic network data storage and calculations.
