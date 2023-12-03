@@ -27,11 +27,14 @@ public class TraceViewerController {
     @FXML
     public StackPane confirmationTextStackPane;
 
+
+
     @FXML
     private StackPane innerMiddleStackPane;
 
     @FXML
     private Text statusMessage;
+    public Text warningBottomText;
 
     private File droppedFile;
 
@@ -143,6 +146,7 @@ public class TraceViewerController {
     private void switchButtons() {
         generateButton.setVisible(false);
         viewButton.setVisible(true);
+        warningBottomText.setVisible(true);
     }
 
     @FXML

@@ -21,7 +21,7 @@
                                <FontIcon id="cloudFontIcon" iconLiteral="fas-cloud-upload-alt" iconSize="100" />
                               <Text id="dropText" fill="#e5e4e2" strokeType="OUTSIDE" strokeWidth="0.0" text="Drag &amp; Drop" textAlignment="CENTER" />
                               <Text id="dropText" fill="#e5e4e2" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" textAlignment="CENTER" underline="true" />
-                              <MFXButton id="customButton" fx:id="browseButton" onAction="#onBrowseClicked" visible="true" text="Browse" />
+                              <MFXButton id="customButton" fx:id="browseButton" onAction="#onBrowseClicked" text="Browse" visible="true" />
                            </children>
                         </VBox>
                      </children>
@@ -34,8 +34,17 @@
     <bottom>
       <StackPane id="bottomStackPane" prefHeight="150.0" stylesheets="@traceViewer.css">
          <children>
-              <MFXButton id="customAddButton" fx:id="generateButton" onAction="#onGenerateClicked" text="Generate" />
-             <MFXButton id="customAddButton" fx:id="viewButton" text="View" onAction="#onViewClicked" visible="false" />
+            <VBox alignment="CENTER">
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                          <MFXButton id="customAddButton" fx:id="generateButton" onAction="#onGenerateClicked" text="Generate" />
+                         <MFXButton id="customAddButton" fx:id="viewButton" onAction="#onViewClicked" text="View" visible="false" />
+                     </children>
+                  </StackPane>
+                  <Text fx:id="warningBottomText" visible="false" fill="#D97B6E" strokeType="OUTSIDE" strokeWidth="0.0" text="WARNING: NOT ALL INFORMATION WILL BE ACCURATE" />
+               </children>
+            </VBox>
          </children>
       </StackPane>
     </bottom>
