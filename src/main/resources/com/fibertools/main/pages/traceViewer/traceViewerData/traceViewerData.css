@@ -1,0 +1,48 @@
+@import url(../../../common.css);
+
+.tab-pane, .tab-header-background {
+    -fx-background-color: #2a3338;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #808080;
+
+}
+
+
+
+.tab {
+    -fx-background-color: #323d43;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #808080;
+    -fx-table-cell-border-color:transparent;
+    -fx-background-radius: 5 5 5 5;
+    -fx-spacing: 10;
+    -fx-background-insets: 0 2 0 2;
+
+}
+
+.tab:selected {
+    -fx-background-color: #3282b8;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #808080;
+    -fx-table-cell-border-color:transparent;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5 5 5 5;
+    -fx-spacing: 10;
+
+}
+
+.tab-label {
+    -fx-text-fill: #e5e4e2;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+.hyperlink {
+    -fx-text-fill: #e5e4e2;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}

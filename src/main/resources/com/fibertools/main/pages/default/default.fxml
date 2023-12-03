@@ -27,7 +27,7 @@
                                  </font>
                               </Label>
                               <ComboBox id="customComboBox" fx:id="defaultComboBox" editable="false" />
-            
+
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">

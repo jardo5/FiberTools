@@ -3,14 +3,20 @@ package com.fibertools.utils;
 import com.fibertools.controllers.EmployeeControllers.ModifyEmployeeController;
 import com.fibertools.controllers.InventoryControllers.ModifyInventoryController;
 import com.fibertools.controllers.SpliceRecordControllers.ModifySpliceRecordController;
+import com.fibertools.controllers.TraceViewerControllers.TraceViewerDataController;
 import com.fibertools.models.Employees;
 import com.fibertools.models.Inventory;
 import com.fibertools.models.SpliceRecords;
+import com.fibertools.models.TaceViewerModels.GenParams;
+import com.fibertools.models.TaceViewerModels.Sor;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class FXMLLoaderUtils {
@@ -25,6 +31,13 @@ public class FXMLLoaderUtils {
             e.printStackTrace();
         }
     }
+
+
+    //Loads TraceViewerDataController with selected Sor files data
+
+
+
+
 
     //Loads ModifyInventoryController with selected Inventory item
     public static void loadModifyController(BorderPane contents, String fxmlFileName, Inventory selectedItem) {
@@ -77,4 +90,18 @@ public class FXMLLoaderUtils {
         }
     }
 
+    public static void loadViewDataController(String fxmlFile, String fileName) {
+        try {
+            FXMLLoader loader = new FXMLLoader(FXMLLoaderUtils.class.getResource(fxmlFile));
+            Parent root = loader.load();
+            TraceViewerDataController traceViewerDataController = loader.getController();
+            traceViewerDataController.populateFieldsFromSorFile(String.valueOf(new File(fileName)));
+            Stage stage = new Stage();
+            stage.setTitle("Trace Viewer");
+            stage.setScene(new Scene(root, 1200, 800));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

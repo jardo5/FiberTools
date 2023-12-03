@@ -33,8 +33,6 @@ public class MainController {
     public VBox calculatorsDropdown;
 
 
-    //TODO Finish Splice Records CRUD
-    //TODO Start Working on Trace Viewer
     //TODO Start Working on Report Creator
     //TODO Start Working on Conversions (Fiber to Color, Color to Fiber, etc.)
     //TODO Start Working on Reports
@@ -46,8 +44,6 @@ public class MainController {
     @FXML
     private void initialize() {
         FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/default/default.fxml");
-
-        //TODO: Make this all its own function
 
         //Allows InventoryController to access contents BorderPane
         InventoryController inventoryController = new InventoryController();
@@ -115,7 +111,7 @@ public class MainController {
 
     // Side Menu Buttons Loaders
     public void onClickTraceViewerButton(ActionEvent actionEvent) {
-        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceviewer.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/traceViewer/traceViewer.fxml");
     }
 
     public void onClickReportButton(ActionEvent actionEvent) {
