@@ -1,13 +1,11 @@
 package com.fibertools.utils;
 
 import com.fibertools.models.TaceViewerModels.KeyEvents;
-import com.fibertools.models.TaceViewerModels.KeyEvents.Event;
 import com.fibertools.models.TaceViewerModels.KeyEvents.Summary;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-
 <!-- TODO: Fix the constrained size columns -->
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <BorderPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@inventory.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.InventoryControllers.InventoryController">
    <center>
       <TableView id="inventoryTable" fx:id="inventoryTable" prefHeight="600.0" prefWidth="750.0" BorderPane.alignment="CENTER_LEFT">

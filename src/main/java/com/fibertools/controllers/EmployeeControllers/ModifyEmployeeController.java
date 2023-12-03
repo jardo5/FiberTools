@@ -14,7 +14,6 @@ import javafx.scene.layout.BorderPane;
 
 import static com.fibertools.controllers.EmployeeControllers.AddEmployeeController.errorAlert;
 
-//TODO: Fix ComboBoxes that show empty when trying to save a modifying an employee
 
 public class ModifyEmployeeController {
 

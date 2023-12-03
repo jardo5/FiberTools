@@ -9,21 +9,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -36,12 +30,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-
 import java.nio.file.Paths;
-import java.security.Key;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class TraceViewerDataController implements Initializable {
@@ -91,7 +81,7 @@ public class TraceViewerDataController implements Initializable {
     public TableColumn orlStartColumn; //KeyEvents, Summary
     public TableColumn orlEndColumn; //KeyEvents, Summary
 
-    private String fileName = "default";
+    private final String fileName = "default";
     private File xmlFile;
     private File datFile;
 

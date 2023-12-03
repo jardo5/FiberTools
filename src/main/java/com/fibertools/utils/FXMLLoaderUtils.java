@@ -7,8 +7,6 @@ import com.fibertools.controllers.TraceViewerControllers.TraceViewerDataControll
 import com.fibertools.models.Employees;
 import com.fibertools.models.Inventory;
 import com.fibertools.models.SpliceRecords;
-import com.fibertools.models.TaceViewerModels.GenParams;
-import com.fibertools.models.TaceViewerModels.Sor;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;

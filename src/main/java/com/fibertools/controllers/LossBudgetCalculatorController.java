@@ -1,52 +1,32 @@
 package com.fibertools.controllers;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXComboBox;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import java.io.IOException;
-
-import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 import static com.fibertools.controllers.EmployeeControllers.AddEmployeeController.errorAlert;
 
 public class LossBudgetCalculatorController {
     public BorderPane content;
-
-    public void setContents(BorderPane contents) {
-        this.content = contents;
-    }
-
-
     public ComboBox lossBudgetTypeComboBox;
     public ComboBox lossBudgetMeasurementComboBox;
-
     public TextField lossBudgetCableLength;
     public TextField lossBudgetConnectors;
     public TextField lossBudgetSplices;
     public TextField lossBudgetTotalLoss;
     public MFXButton lossBudgetCalculateButton;
-
     public MFXButton lossBudgetCredits;
+
+    public void setContents(BorderPane contents) {
+        this.content = contents;
+    }
 
     public void initialize() {
         lossBudgetTypeComboBox.getItems().addAll(
@@ -56,7 +36,6 @@ public class LossBudgetCalculatorController {
                 "Multi Mode 50-125um 1300nm",
                 "Multi Mode 62.5-125um 850nm",
                 "Multi Mode 62.5-125um 1300nm");
-
 
 
         lossBudgetMeasurementComboBox.getItems().addAll(

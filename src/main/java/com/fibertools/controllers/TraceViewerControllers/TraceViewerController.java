@@ -1,7 +1,6 @@
 package com.fibertools.controllers.TraceViewerControllers;
 
 
-import com.fibertools.models.TaceViewerModels.GenParams;
 import com.fibertools.utils.FXMLLoaderUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.animation.FadeTransition;

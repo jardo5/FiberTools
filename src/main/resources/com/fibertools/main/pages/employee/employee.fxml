@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<!-- TODO: Fix the constrained size columns -->
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<?import javafx.scene.text.Text?>
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-
-<!-- TODO: Fix the constrained size columns -->
 <BorderPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@employee.css" fx:controller="com.fibertools.controllers.EmployeeControllers.EmployeeController" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
         <center>
             <TableView id="employeeTable" fx:id="employeeTable" prefHeight="600.0" prefWidth="750.0" BorderPane.alignment="CENTER_LEFT">
