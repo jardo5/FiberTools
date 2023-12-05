@@ -52,9 +52,6 @@ public class TraceViewerController {
     }
 
 
-//TODO Attempt to find a way to parse the .dat file and display it as a graph with proper units and with effenecity
-    //TODO IF NOT POSSIBLE look into the Swinging Door Algorithm and see if it can be implemented
-
     @FXML
     private void onDragEntered(DragEvent event) {
         innerMiddleStackPane.setStyle("-fx-background-color: #3282b8;"); // Color when file is dragged over

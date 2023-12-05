@@ -5,139 +5,162 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@traceViewerData.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.TraceViewerControllers.TraceViewerDataController">
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<BorderPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@traceViewerData.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.fibertools.controllers.TraceViewerControllers.TraceViewerDataController">
     <bottom>
         <TabPane prefHeight="200.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
                 <Tab closable="false" text="General Params">
-               <HBox>
-                  <children>
-                          <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="300.0" vgap="5.0">
-                              <columnConstraints>
-                                  <ColumnConstraints />
-                                  <ColumnConstraints />
-                              </columnConstraints>
-                              <rowConstraints>
-                                  <RowConstraints percentHeight="20.0" />
-                                  <RowConstraints percentHeight="20.0" />
-                                  <RowConstraints percentHeight="20.0" />
-                                  <RowConstraints percentHeight="20.0" />
-                                  <RowConstraints percentHeight="20.0" />
-
-                              </rowConstraints>
-                              <children>
-                                  <Label text="Language" GridPane.rowIndex="0" />
-                                  <Label text="Date Time" GridPane.rowIndex="1" />
-                                  <Label text="File Name" GridPane.rowIndex="2" />
-                                  <Label text="Unit" GridPane.rowIndex="3" />
-                                  <Label text="Range(ft)" GridPane.rowIndex="4" />
-                                  <TextField id="customTextField" fx:id="languageTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                  <TextField id="customTextField" fx:id="dateTimeTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                  <TextField id="customTextField" fx:id="fileNameTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                  <TextField id="customTextField" fx:id="unitTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                  <TextField id="customTextField" fx:id="rangeTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              </children>
-                        <padding>
-                           <Insets bottom="5.0" top="5.0" />
-                        </padding>
-                          </GridPane>
-
-
-                     <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="300.0" vgap="5.0">
-                        <columnConstraints>
-                           <ColumnConstraints />
-                           <ColumnConstraints />
-                        </columnConstraints>
-                        <rowConstraints>
-                           <RowConstraints percentHeight="20.0" />
-                           <RowConstraints percentHeight="20.0" />
-                           <RowConstraints percentHeight="20.0" />
-                           <RowConstraints percentHeight="20.0" />
-                           <RowConstraints percentHeight="20.0" />
-                        </rowConstraints>
+                    <HBox>
                         <children>
-                           <Label text="Operator" GridPane.rowIndex="0" />
-                           <Label text="Cable ID" GridPane.rowIndex="1" />
-                           <Label text="Fiber ID" GridPane.rowIndex="2" />
-                           <Label text="Location A" GridPane.rowIndex="3" />
-                            <Label text="Location B" GridPane.rowIndex="4" />
-                           <TextField id="customTextField" fx:id="operatorTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                           <TextField id="customTextField" fx:id="cableIDTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                           <TextField id="customTextField" fx:id="fiberIDTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                            <TextField id="customTextField" fx:id="locationATextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                            <TextField id="customTextField" fx:id="locationBTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                            <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity"
+                                      prefHeight="170.0" prefWidth="300.0" vgap="5.0">
+                                <columnConstraints>
+                                    <ColumnConstraints/>
+                                    <ColumnConstraints/>
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints percentHeight="20.0"/>
+                                    <RowConstraints percentHeight="20.0"/>
+                                    <RowConstraints percentHeight="20.0"/>
+                                    <RowConstraints percentHeight="20.0"/>
+                                    <RowConstraints percentHeight="20.0"/>
+
+                                </rowConstraints>
+                                <children>
+                                    <Label text="Language" GridPane.rowIndex="0"/>
+                                    <Label text="Date Time" GridPane.rowIndex="1"/>
+                                    <Label text="File Name" GridPane.rowIndex="2"/>
+                                    <Label text="Unit" GridPane.rowIndex="3"/>
+                                    <Label text="Range(ft)" GridPane.rowIndex="4"/>
+                                    <TextField id="customTextField" fx:id="languageTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                    <TextField id="customTextField" fx:id="dateTimeTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <TextField id="customTextField" fx:id="fileNameTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                    <TextField id="customTextField" fx:id="unitTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                    <TextField id="customTextField" fx:id="rangeTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                </children>
+                                <padding>
+                                    <Insets bottom="5.0" top="5.0"/>
+                                </padding>
+                            </GridPane>
+
+
+                            <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity"
+                                      prefHeight="170.0" prefWidth="300.0" vgap="5.0">
+                                <columnConstraints>
+                                    <ColumnConstraints/>
+                                    <ColumnConstraints/>
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints percentHeight="20.0"/>
+                                    <RowConstraints percentHeight="20.0"/>
+                                    <RowConstraints percentHeight="20.0"/>
+                                    <RowConstraints percentHeight="20.0"/>
+                                    <RowConstraints percentHeight="20.0"/>
+                                </rowConstraints>
+                                <children>
+                                    <Label text="Operator" GridPane.rowIndex="0"/>
+                                    <Label text="Cable ID" GridPane.rowIndex="1"/>
+                                    <Label text="Fiber ID" GridPane.rowIndex="2"/>
+                                    <Label text="Location A" GridPane.rowIndex="3"/>
+                                    <Label text="Location B" GridPane.rowIndex="4"/>
+                                    <TextField id="customTextField" fx:id="operatorTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                    <TextField id="customTextField" fx:id="cableIDTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <TextField id="customTextField" fx:id="fiberIDTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                    <TextField id="customTextField" fx:id="locationATextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                    <TextField id="customTextField" fx:id="locationBTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                </children>
+                                <HBox.margin>
+                                    <Insets/>
+                                </HBox.margin>
+                                <padding>
+                                    <Insets bottom="5.0" top="5.0"/>
+                                </padding>
+                            </GridPane>
+
+
+                            <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity"
+                                      prefHeight="170.0" prefWidth="300.0" vgap="5.0">
+                                <columnConstraints>
+                                    <ColumnConstraints/>
+                                    <ColumnConstraints/>
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints percentHeight="33.0"/>
+                                    <RowConstraints percentHeight="33.0"/>
+                                    <RowConstraints percentHeight="33.0"/>
+                                </rowConstraints>
+                                <children>
+                                    <Label text="Wavelength" GridPane.rowIndex="0"/>
+                                    <Label text="Pulse Width" GridPane.rowIndex="1"/>
+                                    <Label text="Comments" GridPane.rowIndex="2"/>
+                                    <TextField id="customTextField" fx:id="wavelengthTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                    <TextField id="customTextField" fx:id="pulseWidthTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <TextField id="customTextField" fx:id="commentsTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                </children>
+                            </GridPane>
+
+                            <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity"
+                                      prefHeight="170.0" prefWidth="300.0" vgap="5.0">
+                                <columnConstraints>
+                                    <ColumnConstraints/>
+                                    <ColumnConstraints/>
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints percentHeight="33.0"/>
+                                    <RowConstraints percentHeight="33.0"/>
+                                    <RowConstraints percentHeight="33.0"/>
+                                </rowConstraints>
+                                <children>
+                                    <Label text="Company" GridPane.rowIndex="0"/>
+                                    <Label text="Model Number" GridPane.rowIndex="1"/>
+                                    <Label text="Serial Number" GridPane.rowIndex="2"/>
+                                    <TextField id="customTextField" fx:id="companyTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                    <TextField id="customTextField" fx:id="otdrModelNumberTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <TextField id="customTextField" fx:id="otdrSerialNumberTextField" editable="false"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                </children>
+                            </GridPane>
                         </children>
-                        <HBox.margin>
-                           <Insets />
-                        </HBox.margin>
-                        <padding>
-                           <Insets bottom="5.0" top="5.0" />
-                        </padding>
-                     </GridPane>
-
-
-                      <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="300.0" vgap="5.0">
-                          <columnConstraints>
-                              <ColumnConstraints />
-                              <ColumnConstraints />
-                          </columnConstraints>
-                          <rowConstraints>
-                              <RowConstraints percentHeight="33.0" />
-                              <RowConstraints percentHeight="33.0" />
-                                <RowConstraints percentHeight="33.0" />
-                          </rowConstraints>
-                          <children>
-                              <Label text="Wavelength" GridPane.rowIndex="0" />
-                              <Label text="Pulse Width" GridPane.rowIndex="1" />
-                              <Label text="Comments" GridPane.rowIndex="2" />
-                              <TextField id="customTextField" fx:id="wavelengthTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                              <TextField id="customTextField" fx:id="pulseWidthTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <TextField id="customTextField" fx:id="commentsTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                          </children>
-                      </GridPane>
-
-                      <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="300.0" vgap="5.0">
-                          <columnConstraints>
-                              <ColumnConstraints />
-                              <ColumnConstraints />
-                          </columnConstraints>
-                          <rowConstraints>
-                              <RowConstraints percentHeight="33.0" />
-                              <RowConstraints percentHeight="33.0" />
-                              <RowConstraints percentHeight="33.0" />
-                          </rowConstraints>
-                          <children>
-                              <Label text="Company" GridPane.rowIndex="0" />
-                              <Label text="Model Number" GridPane.rowIndex="1" />
-                              <Label text="Serial Number" GridPane.rowIndex="2" />
-                              <TextField id="customTextField" fx:id="companyTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                              <TextField id="customTextField" fx:id="otdrModelNumberTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField id="customTextField" fx:id="otdrSerialNumberTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                          </children>
-                      </GridPane>
-                  </children>
-               </HBox>
+                    </HBox>
                 </Tab>
                 <Tab closable="false" text="Event Table">
                     <content>
                         <TableView id="eventsTable" fx:id="eventsTable">
                             <columns>
-                                <TableColumn fx:id="eventColumn" text="Event" />
-                                <TableColumn fx:id="typeColumn" text="Type" />
-                                <TableColumn fx:id="distanceColumn" text="Distance" />
-                                <TableColumn fx:id="slopeColumn" text="Slope" />
-                                <TableColumn fx:id="spliceLossColumn" text="Splice Loss" />
-                                <TableColumn fx:id="reflectionLossColumn" text="Refl Loss" />
-                                <TableColumn fx:id="commentsColumn" text="Comments" />
-                                <TableColumn fx:id="endOfPrevColumn" text="End of Prev" />
-                                <TableColumn fx:id="startOfCurrColumn" text="Start of Curr" />
-                                <TableColumn fx:id="endOfCurrColumn" text="End of Curr" />
-                                <TableColumn fx:id="startOfNextColumn" text="Start of Next" />
-                                <TableColumn fx:id="peakColumn" text="Peak" />
+                                <TableColumn fx:id="eventColumn" text="Event"/>
+                                <TableColumn fx:id="typeColumn" text="Type"/>
+                                <TableColumn fx:id="distanceColumn" text="Distance"/>
+                                <TableColumn fx:id="slopeColumn" text="Slope"/>
+                                <TableColumn fx:id="spliceLossColumn" text="Splice Loss"/>
+                                <TableColumn fx:id="reflectionLossColumn" text="Refl Loss"/>
+                                <TableColumn fx:id="commentsColumn" text="Comments"/>
+                                <TableColumn fx:id="endOfPrevColumn" text="End of Prev"/>
+                                <TableColumn fx:id="startOfCurrColumn" text="Start of Curr"/>
+                                <TableColumn fx:id="endOfCurrColumn" text="End of Curr"/>
+                                <TableColumn fx:id="startOfNextColumn" text="Start of Next"/>
+                                <TableColumn fx:id="peakColumn" text="Peak"/>
                             </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                            </columnResizePolicy>
                         </TableView>
                     </content>
                 </Tab>
@@ -146,41 +169,55 @@
                     <content>
                         <TableView id="eventsTable" fx:id="summaryTable">
                             <columns>
-                                <TableColumn fx:id="totalLossColumn" text="Total Loss dB" />
-                                <TableColumn fx:id="orlColumn" text="ORL" />
-                                <TableColumn fx:id="lossStartColumn" text="Loss Start (ft)" />
-                                <TableColumn fx:id="lossEndColumn" text="Loss End (ft)" />
-                                <TableColumn fx:id="orlStartColumn" text="ORL Start (ft)" />
-                                <TableColumn fx:id="orlEndColumn" text="ORL End (ft)" />
+                                <TableColumn fx:id="totalLossColumn" text="Total Loss dB"/>
+                                <TableColumn fx:id="orlColumn" text="ORL"/>
+                                <TableColumn fx:id="lossStartColumn" text="Loss Start (ft)"/>
+                                <TableColumn fx:id="lossEndColumn" text="Loss End (ft)"/>
+                                <TableColumn fx:id="orlStartColumn" text="ORL Start (ft)"/>
+                                <TableColumn fx:id="orlEndColumn" text="ORL End (ft)"/>
                             </columns>
                             <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                             </columnResizePolicy>
                         </TableView>
                     </content>
                 </Tab>
-            <Tab closable="false" text="Credits">
-                <content>
-                    <AnchorPane>
-                        <Hyperlink layoutX="10.0" layoutY="10.0" text="Blog By Sidney Li" onAction="#openBlog"/>
-                        <Hyperlink layoutX="10.0" layoutY="40.0" text="pyOTDR CLI By sid5432" onAction="#openGitHub1" />
-                        <Hyperlink layoutX="10.0" layoutY="70.0" text="otdrs CLI By James Harrison" onAction="#openGitHub2" />
-                        <Hyperlink layoutX="10.0" layoutY="100.0" text="Online OTDR By ?" onAction="#openOnlineOTDR" />
-                        <Hyperlink layoutX="10.0" layoutY="130.0" text="OTDR User Guide (PDF) By EXFO" onAction="#openEXFO" />
-                    </AnchorPane>
-                </content>
-            </Tab>
+                <Tab closable="false" text="Reports">
+                    <content>
+                        <StackPane>
+                            <MFXButton id="customAddButton" fx:id="generateReportButton" layoutX="10.0" layoutY="10.0" onAction="#onClickGenerateReportButton"
+                                       prefHeight="30.0" prefWidth="150.0" text="Generate Report"/>
+                        </StackPane>
+                    </content>
+                </Tab>
+                <Tab closable="false" text="Credits">
+                    <content>
+                        <AnchorPane>
+                            <Hyperlink layoutX="10.0" layoutY="10.0" text="Blog By Sidney Li" onAction="#openBlog"/>
+                            <Hyperlink layoutX="10.0" layoutY="40.0" text="pyOTDR CLI By sid5432"
+                                       onAction="#openGitHub1"/>
+                            <Hyperlink layoutX="10.0" layoutY="70.0" text="otdrs CLI By James Harrison"
+                                       onAction="#openGitHub2"/>
+                            <Hyperlink layoutX="10.0" layoutY="100.0" text="Online OTDR By ?"
+                                       onAction="#openOnlineOTDR"/>
+                            <Hyperlink layoutX="10.0" layoutY="130.0" text="OTDR User Guide (PDF) By EXFO"
+                                       onAction="#openEXFO"/>
+                        </AnchorPane>
+                    </content>
+                </Tab>
             </tabs>
         </TabPane>
     </bottom>
-   <center>
-      <LineChart fx:id="traceChart" animated="false" createSymbols="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" verticalGridLinesVisible="false" verticalZeroLineVisible="false" BorderPane.alignment="CENTER">
-        <xAxis>
-          <NumberAxis fx:id="traceChartX" animated="false" label="Distance (FT)" side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis fx:id="traceChartY" animated="false" label="Reflected Power" side="LEFT" />
-        </yAxis>
-      </LineChart>
-   </center>
+    <center>
+        <LineChart fx:id="traceChart" animated="false" createSymbols="false" horizontalGridLinesVisible="false"
+                   horizontalZeroLineVisible="false" legendVisible="false" verticalGridLinesVisible="false"
+                   verticalZeroLineVisible="false" BorderPane.alignment="CENTER">
+            <xAxis>
+                <NumberAxis fx:id="traceChartX" animated="false" label="Distance (FT)" side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="traceChartY" animated="false" label="Reflected Power" side="LEFT"/>
+            </yAxis>
+        </LineChart>
+    </center>
 </BorderPane>

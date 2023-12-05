@@ -4,11 +4,15 @@ package com.fibertools.controllers.TraceViewerControllers;
 import com.fibertools.models.TaceViewerModels.*;
 import com.fibertools.utils.KeyEventsParser;
 import com.fibertools.utils.MeasurementConversions;
+import com.fibertools.utils.PDFReportStructure;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.mfxcore.utils.fx.SwingFXUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -16,17 +20,21 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Line;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
+import javax.imageio.ImageIO;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -40,7 +48,6 @@ public class TraceViewerDataController implements Initializable {
     public GridPane identificationGrid;
 
     public TextField fileNameTextField;
-
     public TextField languageTextField; //GenParams
     public TextField cableIDTextField; // GenParams
     public TextField fiberIDTextField; // GenParams
@@ -86,7 +93,8 @@ public class TraceViewerDataController implements Initializable {
     private File datFile;
 
     private Line selectedLine;
-    
+
+    public MFXButton generateReportButton;
 
     public NumberAxis traceChartX;
     public NumberAxis traceChartY;
@@ -248,18 +256,15 @@ public class TraceViewerDataController implements Initializable {
     //End of Events Tab
 
     // Start of General Params Tab
-    public void populateFieldsFromSorFile(String fileName) {
-        //Rename file to [example]-dump.xml
+    public Sor populateFieldsFromSorFile(String fileName) {
+        Sor sor = null;
         String xmlFileName = fileName.substring(0, fileName.length() - 4) + "-dump.xml";
         File xmlFile = Paths.get("src/main/sorData", xmlFileName).toFile();
 
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Sor.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Sor sor = (Sor) jaxbUnmarshaller.unmarshal(xmlFile);
-            GenParams genParams = sor.getGenParams();
-            FxdParams fxdParams = sor.getFxdParams();
-            SupParams supParams = sor.getSupParams();
+            sor = (Sor) jaxbUnmarshaller.unmarshal(xmlFile);
 
             //Populate fields
             updateGenParamsFields(sor);
@@ -268,9 +273,9 @@ public class TraceViewerDataController implements Initializable {
             populateEventsTable(String.valueOf(xmlFile));
             populateSummaryTable(String.valueOf(xmlFile));
 
-
             //Delete xml file after it is read
             xmlFile.delete();
+
             //Delete .dat file with [example]-trace.dat
             String datFileName = fileName.substring(0, fileName.length() - 4) + "-trace.dat";
             File datFile = Paths.get("src/main/sorData", datFileName).toFile();
@@ -278,6 +283,8 @@ public class TraceViewerDataController implements Initializable {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+
+        return sor;
     }
 
     private void updateGenParamsFields(Sor sor){
@@ -349,11 +356,22 @@ public class TraceViewerDataController implements Initializable {
     public void openEXFO(ActionEvent actionEvent) {
         openPage("https://documents.exfo.com/Products/UserGuides/User_Guide_OTDR_English_(1068770).pdf");
     }
+    //End of Credits Tab
 
     private void openPage(String url){
         try {
             Desktop.getDesktop().browse(new URI(url));
         } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onClickGenerateReportButton(ActionEvent actionEvent) {
+        try {
+            Sor sor = populateFieldsFromSorFile(fileName); // This method should return the populated Sor object
+            PDFReportStructure reportStructure = new PDFReportStructure();
+            reportStructure.createPDFReport("TraceViewerReport.pdf", eventsTable, summaryTable, traceChart, sor);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
