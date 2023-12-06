@@ -1,11 +1,15 @@
 package com.fibertools.utils;
 
+import java.text.DecimalFormat;
+
 public class MeasurementConversions {
 
-    //Kilometer to FT
+    //Kilometer to FT and simplify to 3 decimal places
 
     public static double KMtoFT(double km) {
-        return km * 3280.84;
+        double feet = km * 3280.84;
+        DecimalFormat df = new DecimalFormat("#.###");
+        return Double.parseDouble(df.format(feet));
     }
 
     //Feet to KM

@@ -368,9 +368,8 @@ public class TraceViewerDataController implements Initializable {
 
     public void onClickGenerateReportButton(ActionEvent actionEvent) {
         try {
-            Sor sor = populateFieldsFromSorFile(fileName); // This method should return the populated Sor object
             PDFReportStructure reportStructure = new PDFReportStructure();
-            reportStructure.createPDFReport("TraceViewerReport.pdf", eventsTable, summaryTable, traceChart, sor);
+            reportStructure.createPDFReport("TraceViewerReport.pdf", eventsTable, summaryTable, traceChart);
         } catch (Exception e) {
             e.printStackTrace();
         }
