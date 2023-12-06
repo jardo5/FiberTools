@@ -10,7 +10,7 @@ module com.fibertools.fibertools {
     requires java.sql;
     requires MaterialFX;
     requires java.xml.bind;
-    requires org.apache.pdfbox;
+    requires itextpdf;
 
     opens com.fibertools.utils to java.xml.bind;
     opens com.fibertools.models.TaceViewerModels to javafx.base, java.xml.bind;

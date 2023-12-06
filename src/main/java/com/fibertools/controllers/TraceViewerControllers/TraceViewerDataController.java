@@ -5,42 +5,44 @@ import com.fibertools.models.TaceViewerModels.*;
 import com.fibertools.utils.KeyEventsParser;
 import com.fibertools.utils.MeasurementConversions;
 import com.fibertools.utils.PDFReportStructure;
-import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.mfxcore.utils.fx.SwingFXUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.SnapshotParameters;
+import javafx.scene.Node;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
-import javax.imageio.ImageIO;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+
 import java.nio.file.Paths;
+import java.security.Key;
 import java.text.DecimalFormat;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.List;
 
 public class TraceViewerDataController implements Initializable {
 
@@ -48,6 +50,7 @@ public class TraceViewerDataController implements Initializable {
     public GridPane identificationGrid;
 
     public TextField fileNameTextField;
+
     public TextField languageTextField; //GenParams
     public TextField cableIDTextField; // GenParams
     public TextField fiberIDTextField; // GenParams
@@ -79,7 +82,7 @@ public class TraceViewerDataController implements Initializable {
     public TableColumn endOfCurrColumn; //KeyEvents
     public TableColumn startOfNextColumn; //KeyEvents
     public TableColumn peakColumn; //KeyEvents
-    
+
     public TableView summaryTable; //KeyEvents, Summary
     public TableColumn totalLossColumn; //KeyEvents, Summary
     public TableColumn orlColumn; //KeyEvents, Summary
@@ -88,13 +91,12 @@ public class TraceViewerDataController implements Initializable {
     public TableColumn orlStartColumn; //KeyEvents, Summary
     public TableColumn orlEndColumn; //KeyEvents, Summary
 
-    private final String fileName = "default";
+    private String fileName = "default";
     private File xmlFile;
     private File datFile;
 
     private Line selectedLine;
 
-    public MFXButton generateReportButton;
 
     public NumberAxis traceChartX;
     public NumberAxis traceChartY;
@@ -256,15 +258,18 @@ public class TraceViewerDataController implements Initializable {
     //End of Events Tab
 
     // Start of General Params Tab
-    public Sor populateFieldsFromSorFile(String fileName) {
-        Sor sor = null;
+    public void populateFieldsFromSorFile(String fileName) {
+        //Rename file to [example]-dump.xml
         String xmlFileName = fileName.substring(0, fileName.length() - 4) + "-dump.xml";
         File xmlFile = Paths.get("src/main/sorData", xmlFileName).toFile();
 
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Sor.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            sor = (Sor) jaxbUnmarshaller.unmarshal(xmlFile);
+            Sor sor = (Sor) jaxbUnmarshaller.unmarshal(xmlFile);
+            GenParams genParams = sor.getGenParams();
+            FxdParams fxdParams = sor.getFxdParams();
+            SupParams supParams = sor.getSupParams();
 
             //Populate fields
             updateGenParamsFields(sor);
@@ -273,9 +278,9 @@ public class TraceViewerDataController implements Initializable {
             populateEventsTable(String.valueOf(xmlFile));
             populateSummaryTable(String.valueOf(xmlFile));
 
+
             //Delete xml file after it is read
             xmlFile.delete();
-
             //Delete .dat file with [example]-trace.dat
             String datFileName = fileName.substring(0, fileName.length() - 4) + "-trace.dat";
             File datFile = Paths.get("src/main/sorData", datFileName).toFile();
@@ -283,8 +288,6 @@ public class TraceViewerDataController implements Initializable {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-
-        return sor;
     }
 
     private void updateGenParamsFields(Sor sor){
@@ -334,7 +337,7 @@ public class TraceViewerDataController implements Initializable {
         }
     }
     //End of General Params Tab
-    
+
     //Credits Tab
     public void openBlog(ActionEvent actionEvent) {
         openPage("https://morethanfootnotes.blogspot.com/2015/07/the-otdr-optical-time-domain.html?view=sidebar");
@@ -366,10 +369,56 @@ public class TraceViewerDataController implements Initializable {
         }
     }
 
+    public Map<String, String> getGenParamsData() {
+        Map<String, String> genParams = new HashMap<>();
+        genParams.put("File Name", fileNameTextField.getText());
+        genParams.put("Language", languageTextField.getText());
+        genParams.put("Cable ID", cableIDTextField.getText());
+        genParams.put("Fiber ID", fiberIDTextField.getText());
+        genParams.put("Location A", locationATextField.getText());
+        genParams.put("Location B", locationBTextField.getText());
+        genParams.put("Operator", operatorTextField.getText());
+        genParams.put("Comments", commentsTextField.getText());
+        genParams.put("Wavelength", wavelengthTextField.getText());
+        return genParams;
+    }
+
+    public Map<String, String> getSupParamsData() {
+        Map<String, String> supParams = new HashMap<>();
+        supParams.put("Company", companyTextField.getText());
+        supParams.put("OTDR Model Number", otdrModelNumberTextField.getText());
+        supParams.put("OTDR Serial Number", otdrSerialNumberTextField.getText());
+        return supParams;
+    }
+
+    public Map<String, String> getFxdParamsData() {
+        Map<String, String> fxdParams = new HashMap<>();
+        fxdParams.put("Date/Time", dateTimeTextField.getText());
+        fxdParams.put("Unit", unitTextField.getText());
+        fxdParams.put("Pulse Width", pulseWidthTextField.getText());
+        fxdParams.put("Range", rangeTextField.getText());
+        return fxdParams;
+    }
+
+    public Map<String, String> getSummaryData() {
+        Map<String, String> summaryData = new HashMap<>();
+        summaryData.put("Total Loss", totalLossColumn.getText());
+        summaryData.put("ORL", orlColumn.getText());
+        summaryData.put("Loss Start", lossStartColumn.getText());
+        summaryData.put("Loss End", lossEndColumn.getText());
+        summaryData.put("ORL Start", orlStartColumn.getText());
+        summaryData.put("ORL End", orlEndColumn.getText());
+        return summaryData;
+    }
+
     public void onClickGenerateReportButton(ActionEvent actionEvent) {
         try {
+            Map<String, String> genParamsData = getGenParamsData();
+            Map<String, String> getSupParamsData = getSupParamsData();
+            Map<String, String> getFxdParamsData = getFxdParamsData();
+            Map<String, String> getSummaryData = getSummaryData();
             PDFReportStructure reportStructure = new PDFReportStructure();
-            reportStructure.createPDFReport("TraceViewerReport.pdf", eventsTable, summaryTable, traceChart);
+            reportStructure.createReport("TraceViewerReport.pdf", genParamsData, getSupParamsData, getFxdParamsData, getSummaryData,  traceChart);
         } catch (Exception e) {
             e.printStackTrace();
         }
