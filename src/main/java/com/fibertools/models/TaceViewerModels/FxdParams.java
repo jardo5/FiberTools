@@ -1,6 +1,9 @@
 package com.fibertools.models.TaceViewerModels;
 
 import javax.xml.bind.annotation.XmlElement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class FxdParams {
     private String dateTime;
@@ -35,7 +38,8 @@ public class FxdParams {
     // Getters and Setters
     @XmlElement(name = "date_time")
     public String getDateTime() {
-        return dateTime;
+        String cleanedDateTime = dateTime.replaceAll("\\(\\d+ sec\\)", ""); //Removed the (xxxxxxxxxx sec) from the date time
+        return cleanedDateTime;
     }
 
     public void setDateTime(String dateTime) {
