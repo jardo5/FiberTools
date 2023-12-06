@@ -23,18 +23,6 @@ public class PDFReportStructure {
 
     String tableLabel = "General Parameters";
 
-    private PdfPTable createLabelTable(String labelText) {
-        PdfPTable labelTable = new PdfPTable(1);
-        PdfPCell labelCell = new PdfPCell(new Phrase(labelText, new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
-        labelCell.setBorder(Rectangle.NO_BORDER);
-        labelCell.setBackgroundColor(new BaseColor(220, 220, 220)); // Optional background color
-
-        labelCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-
-        labelTable.addCell(labelCell);
-        return labelTable;
-    }
-
     String[] eventHeaders = {"Event, Distance, Splice Loss, Refl Loss"};
 
     public void createReport(String dest, Map<String, String> genParamsData, Map<String, String> getSupParamsData, Map<String, String> getFxdParamsData, Map<String, String> getSummaryData, LineChart<Number, Number> traceChart) throws FileNotFoundException, DocumentException {
@@ -77,7 +65,17 @@ public class PDFReportStructure {
 
 
 
+    private PdfPTable createLabelTable(String labelText) {
+        PdfPTable labelTable = new PdfPTable(1);
+        PdfPCell labelCell = new PdfPCell(new Phrase(labelText, new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
+        labelCell.setBorder(Rectangle.NO_BORDER);
+        labelCell.setBackgroundColor(new BaseColor(220, 220, 220)); // Optional background color
 
+        labelCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+        labelTable.addCell(labelCell);
+        return labelTable;
+    }
 
     private void addGenParamsToPdf(PdfPCell cell, Map<String, String> genParams) throws DocumentException {
         PdfPTable genParamsTable = new PdfPTable(2); // Two columns: Key, Value
@@ -135,7 +133,6 @@ public class PDFReportStructure {
 
         cell.addElement(supFxdParamsTable);
     }
-
 
 
     private Image getChartImage(LineChart<Number, Number> traceChart) throws IOException, BadElementException {
