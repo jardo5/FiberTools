@@ -52,6 +52,10 @@ public class KeyEvents {
         }
 
         public String getType() {
+            if (type != null && !type.isEmpty()) {
+                String[] parts = type.split(" "); // Split the string by spaces
+                return parts[0]; // Return the first part, assuming the desired part is always before the first space
+            }
             return type;
         }
 
