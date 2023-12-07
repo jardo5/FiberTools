@@ -30,14 +30,20 @@ public class PDFReportStructure {
         PdfWriter.getInstance(document, new FileOutputStream(dest));
         document.open();
 
+        PdfPTable sorFileNameTable = createLabelTable(genParamsData.get("File Name"));
         PdfPTable labelTable = createLabelTable(tableLabel);
+        document.add(sorFileNameTable);
+        //Add gap
+        document.add(new Paragraph(" "));
         document.add(labelTable);
+
 
 
         PdfPTable parentTable = new PdfPTable(3);
         parentTable.setWidthPercentage(100);
 
         float[] columnWidths = {49f, 2f, 49f};
+        float fixedHeight = 25;
 
 
         parentTable.setWidths(columnWidths);
@@ -45,7 +51,7 @@ public class PDFReportStructure {
         // Add GenParams data to the left column
         PdfPCell genParamsCell = new PdfPCell();
         genParamsCell.setBorder(Rectangle.NO_BORDER);
-        addGenParamsToPdf(genParamsCell, genParamsData);
+        addGenParamsToPdf(genParamsCell, genParamsData, fixedHeight);
         parentTable.addCell(genParamsCell);
 
         // Add an empty cell as a gap
@@ -56,13 +62,12 @@ public class PDFReportStructure {
         // Add SupParams and FxdParams data to the right column
         PdfPCell supFxdParamsCell = new PdfPCell();
         supFxdParamsCell.setBorder(Rectangle.NO_BORDER);
-        addSupParamsAndFxdParamsToPdf(supFxdParamsCell, getSupParamsData, getFxdParamsData);
+        addSupParamsAndFxdParamsToPdf(supFxdParamsCell, getSupParamsData, getFxdParamsData, fixedHeight);
         parentTable.addCell(supFxdParamsCell);
 
         document.add(parentTable);
         document.close();
     }
-
 
 
     private PdfPTable createLabelTable(String labelText) {
@@ -77,62 +82,96 @@ public class PDFReportStructure {
         return labelTable;
     }
 
-    private void addGenParamsToPdf(PdfPCell cell, Map<String, String> genParams) throws DocumentException {
-        PdfPTable genParamsTable = new PdfPTable(2); // Two columns: Key, Value
+    private void addGenParamsToPdf(PdfPCell cell, Map<String, String> genParams, float fixedHeight) throws DocumentException {
+        PdfPTable genParamsTable = new PdfPTable(2);
         genParamsTable.setWidthPercentage(100);
         float[] columnWidths = {1, 1};
 
-        for (Map.Entry<String, String> entry : genParams.entrySet()) {
-            PdfPCell keyCell = new PdfPCell(new Phrase(entry.getKey()));
-            PdfPCell valueCell = new PdfPCell(new Phrase(entry.getValue()));
+        // Define the order of the rows
+        String[] order = {"Fiber ID", "Cable ID", "Location A", "Location B", "Wavelength", "Operator", "Comments"};
 
+        // Loop through the order array and add the cells accordingly
+        for (String key : order) {
+            PdfPCell keyCell = new PdfPCell(new Phrase(key));
+            PdfPCell valueCell = new PdfPCell(new Phrase(genParams.getOrDefault(key, "")));
 
-            keyCell.setFixedHeight(20);
+            keyCell.setFixedHeight(fixedHeight);
+            valueCell.setFixedHeight(fixedHeight);
             keyCell.setPaddingLeft(5);
 
             genParamsTable.addCell(keyCell);
             genParamsTable.addCell(valueCell);
         }
 
-
         genParamsTable.setWidths(columnWidths);
-
         cell.addElement(genParamsTable);
     }
 
-    private void addSupParamsAndFxdParamsToPdf(PdfPCell cell, Map<String, String> supParams, Map<String, String> fxdParams) throws DocumentException {
+
+
+
+    private void addSupParamsAndFxdParamsToPdf(PdfPCell cell, Map<String, String> supParams, Map<String, String> fxdParams, float fixedHeight) throws DocumentException {
         PdfPTable supFxdParamsTable = new PdfPTable(2);
         supFxdParamsTable.setWidthPercentage(100);
         float[] columnWidths = {1, 1};
 
-        for (Map.Entry<String, String> entry : supParams.entrySet()) {
-            PdfPCell keyCell = new PdfPCell(new Phrase(entry.getKey()));
-            PdfPCell valueCell = new PdfPCell(new Phrase(entry.getValue()));
+        PdfPCell companyCell = new PdfPCell(new Phrase("Company"));
+        PdfPCell companyValueCell = new PdfPCell(new Phrase(supParams.getOrDefault("Company", "")));
+        companyCell.setFixedHeight(fixedHeight);
+        companyValueCell.setFixedHeight(fixedHeight);
 
-            keyCell.setFixedHeight(20);
-            keyCell.setPaddingLeft(5);
+        PdfPCell rangeCell = new PdfPCell(new Phrase("Range"));
+        PdfPCell rangeValueCell = new PdfPCell(new Phrase(fxdParams.getOrDefault("Range", "")));
+        rangeCell.setFixedHeight(fixedHeight);
+        rangeValueCell.setFixedHeight(fixedHeight);
 
-            supFxdParamsTable.addCell(keyCell);
-            supFxdParamsTable.addCell(valueCell);
-        }
+        PdfPCell pulseWidthCell = new PdfPCell(new Phrase("Pulse Width"));
+        PdfPCell pulseWidthValueCell = new PdfPCell(new Phrase(fxdParams.getOrDefault("Pulse Width", "")));
+        pulseWidthCell.setFixedHeight(fixedHeight);
+        pulseWidthValueCell.setFixedHeight(fixedHeight);
 
-        for (Map.Entry<String, String> entry : fxdParams.entrySet()) {
-            PdfPCell keyCell = new PdfPCell(new Phrase(entry.getKey()));
-            PdfPCell valueCell = new PdfPCell(new Phrase(entry.getValue()));
+        PdfPCell dateTimeCell = new PdfPCell(new Phrase("Date/Time"));
+        PdfPCell dateTimeValueCell = new PdfPCell(new Phrase(fxdParams.getOrDefault("Date/Time", "")));
+        dateTimeCell.setFixedHeight(fixedHeight);
+        dateTimeValueCell.setFixedHeight(fixedHeight);
 
+        PdfPCell modelNumberCell = new PdfPCell(new Phrase("OTDR Model Number"));
+        PdfPCell modelNumberValueCell = new PdfPCell(new Phrase(supParams.getOrDefault("OTDR Model Number", "")));
+        modelNumberCell.setFixedHeight(fixedHeight);
+        modelNumberValueCell.setFixedHeight(fixedHeight);
 
-            keyCell.setFixedHeight(20);
-            keyCell.setPaddingLeft(5);
+        PdfPCell serialNumberCell = new PdfPCell(new Phrase("OTDR Serial Number"));
+        PdfPCell serialNumberValueCell = new PdfPCell(new Phrase(supParams.getOrDefault("OTDR Serial Number", "")));
+        serialNumberCell.setFixedHeight(fixedHeight);
+        serialNumberValueCell.setFixedHeight(fixedHeight);
 
-            supFxdParamsTable.addCell(keyCell);
-            supFxdParamsTable.addCell(valueCell);
-        }
+        // Add cells to table in desired order
+        supFxdParamsTable.addCell(companyCell);
+        supFxdParamsTable.addCell(companyValueCell);
+        supFxdParamsTable.addCell(rangeCell);
+        supFxdParamsTable.addCell(rangeValueCell);
+        supFxdParamsTable.addCell(pulseWidthCell);
+        supFxdParamsTable.addCell(pulseWidthValueCell);
+        supFxdParamsTable.addCell(dateTimeCell);
+        supFxdParamsTable.addCell(dateTimeValueCell);
+        supFxdParamsTable.addCell(modelNumberCell);
+        supFxdParamsTable.addCell(modelNumberValueCell);
+        supFxdParamsTable.addCell(serialNumberCell);
+        supFxdParamsTable.addCell(serialNumberValueCell);
 
+        PdfPCell emptyCell1 = new PdfPCell(new Phrase(""));
+        PdfPCell emptyCell2 = new PdfPCell(new Phrase(""));
+        emptyCell1.setFixedHeight(fixedHeight);
+        emptyCell2.setFixedHeight(fixedHeight);
+
+        supFxdParamsTable.addCell(emptyCell1);
+        supFxdParamsTable.addCell(emptyCell2);
 
         supFxdParamsTable.setWidths(columnWidths);
-
         cell.addElement(supFxdParamsTable);
     }
+
+
 
 
     private Image getChartImage(LineChart<Number, Number> traceChart) throws IOException, BadElementException {
