@@ -116,7 +116,7 @@ public class MainController {
 
 
     public void onClickConversionsButton(ActionEvent actionEvent) {
-        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/conversions.fxml");
+        FXMLLoaderUtils.loadContent(contents, "/com/fibertools/main/pages/conversions/conversions.fxml");
     }
 
     public void onClickCalculatorsButton(ActionEvent actionEvent) {

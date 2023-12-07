@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane fx:controller="com.fibertools.controllers.ConversionsController" fx:id="contents" stylesheets="@conversions.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <TextField id="customTextField" fx:id="fiberNumberTextField" prefWidth="120.0" promptText="Fiber Number" />
+                        <ComboBox id="customComboBox" fx:id="tubeColorComboBox" prefWidth="120.0" promptText="Tube Color" visibleRowCount="4" />
+                        <ComboBox id="customComboBox" fx:id="fiberColorComboBox" prefWidth="120.0" promptText="Fiber Color" visibleRowCount="4" />
+                     </children>
+                  </HBox>
+                  <MFXButton id="customAddButton" fx:id="calculateButton" onAction="#onClickCalculateButton" text="Calculate" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
