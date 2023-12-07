@@ -409,14 +409,33 @@ public class TraceViewerDataController implements Initializable {
         return summaryData;
     }
 
+    public List<Map<String, String>> getEventData() {
+        List<Map<String, String>> allEventData = new ArrayList<>();
+
+        // Assuming eventsTable has items and columns are properly set up
+        int numRows = eventsTable.getItems().size();
+        for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
+            Map<String, String> rowData = new HashMap<>();
+            rowData.put("Event", eventColumn.getCellData(rowIndex).toString());
+            rowData.put("Distance", distanceColumn.getCellData(rowIndex).toString());
+            rowData.put("Splice Loss", spliceLossColumn.getCellData(rowIndex).toString());
+            rowData.put("Reflection Loss", reflectionLossColumn.getCellData(rowIndex).toString());
+
+            allEventData.add(rowData);
+        }
+
+        return allEventData;
+    }
+
     public void onClickGenerateReportButton(ActionEvent actionEvent) {
         try {
             Map<String, String> genParamsData = getGenParamsData();
             Map<String, String> getSupParamsData = getSupParamsData();
             Map<String, String> getFxdParamsData = getFxdParamsData();
             Map<String, String> getSummaryData = getSummaryData();
+            List<Map<String, String>> getEventData = getEventData();
             PDFReportStructure reportStructure = new PDFReportStructure();
-            reportStructure.createReport("TraceViewerReport.pdf", genParamsData, getSupParamsData, getFxdParamsData, getSummaryData,  traceChart);
+            reportStructure.createReport("TraceViewerReportExample.pdf", genParamsData, getSupParamsData, getFxdParamsData, getSummaryData,  traceChart, getEventData);
         } catch (Exception e) {
             e.printStackTrace();
         }

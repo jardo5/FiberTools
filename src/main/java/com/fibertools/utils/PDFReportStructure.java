@@ -7,7 +7,6 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import io.github.palexdev.mfxcore.utils.fx.SwingFXUtils;
 import javafx.scene.chart.LineChart;
-import javafx.scene.control.TableView;
 
 import javafx.scene.image.WritableImage;
 
@@ -17,26 +16,28 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class PDFReportStructure {
 
     String tableLabel = "General Parameters";
 
-    String summaryLabel = "Summary";
-
-    String[] eventHeaders = {"Event, Distance, Splice Loss, Refl Loss"};
-
-    public void createReport(String dest, Map<String, String> genParamsData, Map<String, String> getSupParamsData, Map<String, String> getFxdParamsData, Map<String, String> getSummaryData, LineChart<Number, Number> traceChart) throws FileNotFoundException, DocumentException {
+    public void createReport(String dest, Map<String, String> genParamsData, Map<String, String> getSupParamsData, Map<String, String> getFxdParamsData, Map<String, String> getSummaryData, LineChart<Number, Number> traceChart, List<Map<String, String>> getEventData) throws IOException, DocumentException {
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream(dest));
         document.open();
 
+        addHeader(document);
+        document.add(new Paragraph(" ")); // Gap
+
         PdfPTable sorFileNameTable = createLabelTable(genParamsData.get("File Name"));
         PdfPTable labelTable = createLabelTable(tableLabel);
         document.add(sorFileNameTable);
-        //Add gap
-        document.add(new Paragraph(" "));
+
+        document.add(new Paragraph(" ")); // Gap
         document.add(labelTable);
 
 
@@ -45,7 +46,7 @@ public class PDFReportStructure {
         parentTable.setWidthPercentage(100);
 
         float[] columnWidths = {49f, 2f, 49f};
-        float fixedHeight = 25;
+        float fixedHeight = 20;
 
 
         parentTable.setWidths(columnWidths);
@@ -82,10 +83,52 @@ public class PDFReportStructure {
         summaryTableWrapper.addCell(summaryCell);
         document.add(summaryTableWrapper);
 
+        //Add Trace Chart
+        if (traceChart != null) {
+            try {
+                Image chartImage = getChartImage(traceChart);
+                chartImage.scaleToFit(500, 500);
+                document.add(chartImage);
+            } catch (BadElementException | IOException ex) {
+                System.err.println("Error adding chart image: " + ex.getMessage());
+            }
+        }
 
+        //Add Event Table
+        document.add(new Paragraph(" ")); // Add a small vertical space
+        PdfPTable labelEventTable = createLabelTable("Event Table");
+        document.add(labelEventTable); // Add the event table label
+
+        PdfPCell eventCell = new PdfPCell();
+        eventCell.setBorder(Rectangle.NO_BORDER);
+        addEventTableToPdf(eventCell, getEventData, fixedHeight);
+        PdfPTable eventTableWrapper = new PdfPTable(1); // Wrapper table with a single cell
+        eventTableWrapper.setWidthPercentage(100);
+        eventTableWrapper.addCell(eventCell);
+        document.add(eventTableWrapper);
 
 
         document.close();
+    }
+
+    private void addHeader(Document document) throws IOException, DocumentException {
+        // Load logo image
+        Image logo = Image.getInstance(getClass().getResource("/media/fiberToolsLogo.png").getPath());
+        logo.setAbsolutePosition(document.getPageSize().getWidth() - 60f, document.getPageSize().getHeight() - 60f); // Adjust position
+        logo.scaleAbsolute(50, 50); // Adjust size as needed
+
+        // Add logo to document
+        document.add(logo);
+
+        // Add title and current date/time
+        Paragraph title = new Paragraph("Fiber Report", new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD));
+        title.setAlignment(Element.ALIGN_CENTER);
+        document.add(title);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Paragraph dateTime = new Paragraph(sdf.format(new Date()), new Font(Font.FontFamily.HELVETICA, 12));
+        dateTime.setAlignment(Element.ALIGN_CENTER);
+        document.add(dateTime);
     }
 
 
@@ -208,11 +251,6 @@ public class PDFReportStructure {
         cell.addElement(summaryTable);
     }
 
-
-
-
-
-
     private Image getChartImage(LineChart<Number, Number> traceChart) throws IOException, BadElementException {
         WritableImage writableImage = new WritableImage((int)traceChart.getWidth(), (int)traceChart.getHeight());
         traceChart.snapshot(null, writableImage);
@@ -220,5 +258,27 @@ public class PDFReportStructure {
         ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
         ImageIO.write(bufferedImage, "png", byteOutput);
         return Image.getInstance(byteOutput.toByteArray());
+    }
+
+    private void addEventTableToPdf(PdfPCell cell, List<Map<String, String>> eventData, float fixedHeight) throws DocumentException {
+        // Define the desired order of the columns
+        String[] columnOrder = {"Event", "Distance", "Splice Loss", "Reflection Loss"};
+        PdfPTable eventTable = new PdfPTable(columnOrder.length); // Create a table with the number of columns
+        eventTable.setWidthPercentage(100);
+
+        // Adding headers in the desired order
+        for (String header : columnOrder) {
+            eventTable.addCell(new PdfPCell(new Phrase(header, new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD))));
+        }
+
+        // Adding row data in the desired order
+        for (Map<String, String> row : eventData) {
+            for (String key : columnOrder) {
+                String value = row.getOrDefault(key, ""); // Get the value for each column
+                eventTable.addCell(new PdfPCell(new Phrase(value)));
+            }
+        }
+
+        cell.addElement(eventTable);
     }
 }
