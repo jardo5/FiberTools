@@ -23,6 +23,8 @@ public class PDFReportStructure {
 
     String tableLabel = "General Parameters";
 
+    String summaryLabel = "Summary";
+
     String[] eventHeaders = {"Event, Distance, Splice Loss, Refl Loss"};
 
     public void createReport(String dest, Map<String, String> genParamsData, Map<String, String> getSupParamsData, Map<String, String> getFxdParamsData, Map<String, String> getSummaryData, LineChart<Number, Number> traceChart) throws FileNotFoundException, DocumentException {
@@ -66,6 +68,23 @@ public class PDFReportStructure {
         parentTable.addCell(supFxdParamsCell);
 
         document.add(parentTable);
+
+        document.add(new Paragraph(" ")); // Add a small vertical space
+        PdfPTable labelSummaryTable = createLabelTable("Summary");
+        document.add(labelSummaryTable); // Add the summary label
+
+        //Add Summary Table
+        PdfPCell summaryCell = new PdfPCell();
+        summaryCell.setBorder(Rectangle.NO_BORDER);
+        addSummaryTableToPdf(summaryCell, getSummaryData, fixedHeight);
+        PdfPTable summaryTableWrapper = new PdfPTable(1); // Wrapper table with a single cell
+        summaryTableWrapper.setWidthPercentage(100);
+        summaryTableWrapper.addCell(summaryCell);
+        document.add(summaryTableWrapper);
+
+
+
+
         document.close();
     }
 
@@ -106,8 +125,6 @@ public class PDFReportStructure {
         genParamsTable.setWidths(columnWidths);
         cell.addElement(genParamsTable);
     }
-
-
 
 
     private void addSupParamsAndFxdParamsToPdf(PdfPCell cell, Map<String, String> supParams, Map<String, String> fxdParams, float fixedHeight) throws DocumentException {
@@ -170,6 +187,28 @@ public class PDFReportStructure {
         supFxdParamsTable.setWidths(columnWidths);
         cell.addElement(supFxdParamsTable);
     }
+
+    private void addSummaryTableToPdf(PdfPCell cell, Map<String, String> summaryData, float fixedHeight) throws DocumentException {
+        PdfPTable summaryTable = new PdfPTable(2); // 2 columns for key-value pairs
+        summaryTable.setWidthPercentage(100);
+        float[] columnWidths = {1, 1};
+
+        for (Map.Entry<String, String> entry : summaryData.entrySet()) {
+            PdfPCell keyCell = new PdfPCell(new Phrase(entry.getKey()));
+            PdfPCell valueCell = new PdfPCell(new Phrase(entry.getValue()));
+
+            keyCell.setFixedHeight(fixedHeight);
+            valueCell.setFixedHeight(fixedHeight);
+
+            summaryTable.addCell(keyCell);
+            summaryTable.addCell(valueCell);
+        }
+
+        summaryTable.setWidths(columnWidths);
+        cell.addElement(summaryTable);
+    }
+
+
 
 
 

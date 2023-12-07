@@ -402,12 +402,10 @@ public class TraceViewerDataController implements Initializable {
 
     public Map<String, String> getSummaryData() {
         Map<String, String> summaryData = new HashMap<>();
-        summaryData.put("Total Loss", totalLossColumn.getText());
-        summaryData.put("ORL", orlColumn.getText());
-        summaryData.put("Loss Start", lossStartColumn.getText());
-        summaryData.put("Loss End", lossEndColumn.getText());
-        summaryData.put("ORL Start", orlStartColumn.getText());
-        summaryData.put("ORL End", orlEndColumn.getText());
+        summaryData.put("Total Loss", totalLossColumn.getCellData(0) + " dB");
+        summaryData.put("ORL", orlColumn.getCellData(0) + " dB");
+        summaryData.put("Loss Start", lossStartColumn.getCellData(0) + " ft");
+        summaryData.put("Loss End", lossEndColumn.getCellData(0) + " ft");
         return summaryData;
     }
 
