@@ -30,7 +30,9 @@ import java.util.ResourceBundle;
 import java.util.Arrays; // Import statement for Arrays
 
 public class ConversionsController implements Initializable {
-    public MFXButton calculateButton;
+    public MFXButton calculateCtoFButton;
+    public MFXButton calculateFtoCButton;
+    public MFXButton resetButton;
 
     public Rectangle tubeColorBox;
     public Line tubeColorLine;
@@ -117,13 +119,13 @@ public class ConversionsController implements Initializable {
     }
 
     @FXML
-    private void onClickCalculateButton(ActionEvent event) {
+    private void onClickCalculateCtoFButton(ActionEvent event) {
         Integer fiberCount = selectFiberCountComboBox.getValue();
         Integer fibersPerTube = selectFiberInTubeCountComboBox.getValue();
         String tubeColor = tubeColorComboBox.getValue();
         String fiberColor = fiberColorComboBox.getValue();
 
-        if (fiberCount == null || fibersPerTube == null || tubeColor == null || fiberColor == null) {
+        if (fiberCount == null && fibersPerTube == null && tubeColor == null && fiberColor == null) {
             //Error Message
             showError("Please select all options.");
             return;
@@ -146,13 +148,20 @@ public class ConversionsController implements Initializable {
     }
 
     @FXML
-    private void onFiberNumberEntered(ActionEvent event) {
+    private void onClickCalculateFtoCButton(ActionEvent event) {
         Integer fiberCount = selectFiberCountComboBox.getValue();
         Integer fibersPerTube = selectFiberInTubeCountComboBox.getValue();
         Integer fiberNumber = tryParse(fiberNumberTextField.getText());
 
         if (fiberCount == null || fibersPerTube == null || fiberNumber == null) {
-            showError("Please select all options.");
+            // Error handling: Invalid input
+            showError("Please select all options and enter a valid Fiber Number.");
+            return;
+        }
+
+        if (fiberNumber < 1 || fiberNumber > fiberCount * fibersPerTube) {
+            // Error handling: Fiber number out of range
+            showError("Fiber Number is out of range.");
             return;
         }
 

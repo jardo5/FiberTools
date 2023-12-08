@@ -23,7 +23,7 @@
          <HBox alignment="CENTER" spacing="15">
             <VBox alignment="CENTER" spacing="15.0">
                <children>
-                  <TextField id="customTextField" fx:id="fiberNumberTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onFiberNumberEntered" prefHeight="26.0" prefWidth="150.0" promptText="Fiber Number" />
+                  <TextField id="customTextField" fx:id="fiberNumberTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="150.0" promptText="Fiber Number" />
                   <Text id="orText" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -38,7 +38,10 @@
             </VBox>
          </HBox>
          <HBox alignment="CENTER" spacing="10">
-            <MFXButton id="customAddButton" fx:id="calculateButton" onAction="#onClickCalculateButton" text="Calculate" />
+            <MFXButton id="customAddButton" fx:id="calculateCtoFButton" onAction="#onClickCalculateCtoFButton" text="Calculate Color to Fiber" />
+            <MFXButton id="customAddButton" fx:id="calculateFtoCButton" onAction="#onClickCalculateFtoCButton" text="Calculate Fiber to Color" />
+         </HBox>
+         <HBox alignment="CENTER" spacing="10">
             <MFXButton id="customModifyButton" fx:id="resetButton" onAction="#onResetButtonClicked" text="Reset" />
          </HBox>
          <HBox alignment="CENTER" spacing="10">

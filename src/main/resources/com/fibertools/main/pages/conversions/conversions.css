@@ -1,5 +1,15 @@
 @import url(../../common.css);
 
+#customAddButton {
+    -fx-pref-width: 175;
+    -fx-pref-height: 35;
+}
+
+#customModifyButton {
+    -fx-pref-width: 100;
+    -fx-pref-height: 35;
+}
+
 #errorText{
     -fx-font-size: 12px;
     -fx-text-fill: #e5e4e2;
