@@ -7,13 +7,11 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import io.github.palexdev.mfxcore.utils.fx.SwingFXUtils;
 import javafx.scene.chart.LineChart;
-
 import javafx.scene.image.WritableImage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -39,7 +37,6 @@ public class PDFReportStructure {
 
         document.add(new Paragraph(" ")); // Gap
         document.add(labelTable);
-
 
 
         PdfPTable parentTable = new PdfPTable(3);
@@ -252,7 +249,7 @@ public class PDFReportStructure {
     }
 
     private Image getChartImage(LineChart<Number, Number> traceChart) throws IOException, BadElementException {
-        WritableImage writableImage = new WritableImage((int)traceChart.getWidth(), (int)traceChart.getHeight());
+        WritableImage writableImage = new WritableImage((int) traceChart.getWidth(), (int) traceChart.getHeight());
         traceChart.snapshot(null, writableImage);
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(writableImage, null);
         ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();

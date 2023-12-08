@@ -5,56 +5,57 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="600.0" prefWidth="750.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.DefaultController">
-   <children>
-      <StackPane layoutX="-1.0" layoutY="-2.0" prefHeight="600.0" prefWidth="750.0">
-         <children>
-            <VBox alignment="CENTER" StackPane.alignment="CENTER">
-               <children>
-                  <HBox alignment="CENTER" spacing="50.0">
-                     <children>
-                        <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                           <children>
-                              <Label prefWidth="150.0" text="Type">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox id="customComboBox" fx:id="defaultComboBox" editable="false" />
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="750.0" stylesheets="@default.css"
+            xmlns="http://javafx.com/javafx/19" fx:controller="com.fibertools.controllers.DefaultController">
+    <children>
+        <StackPane layoutX="-1.0" layoutY="-2.0" prefHeight="600.0" prefWidth="750.0">
+            <children>
+                <VBox alignment="CENTER" StackPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" spacing="50.0">
+                            <children>
+                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
+                                    <children>
+                                        <Label prefWidth="150.0" text="Type">
+                                            <font>
+                                                <Font size="10.0"/>
+                                            </font>
+                                        </Label>
+                                        <ComboBox id="customComboBox" fx:id="defaultComboBox" editable="false"/>
 
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                           <children>
-                              <Label prefWidth="150.0" text="Price">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </Label>
-                              <TextField id="customTextField" prefWidth="150.0" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                           <children>
-                              <Label prefWidth="150.0" text="ID">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </Label>
-                              <TextField id="customTextFieldNonEditable" editable="false" prefWidth="150.0" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
-                     <children>
-                        <MFXButton id="customButton" mnemonicParsing="false" text="Button" />
-                     </children>
-                  </HBox>
-                  <MFXTableView prefHeight="229.0" prefWidth="343.0" />
-               </children>
-            </VBox>
-         </children>
-      </StackPane>
-   </children>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
+                                    <children>
+                                        <Label prefWidth="150.0" text="Price">
+                                            <font>
+                                                <Font size="10.0"/>
+                                            </font>
+                                        </Label>
+                                        <TextField id="customTextField" prefWidth="150.0"/>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
+                                    <children>
+                                        <Label prefWidth="150.0" text="ID">
+                                            <font>
+                                                <Font size="10.0"/>
+                                            </font>
+                                        </Label>
+                                        <TextField id="customTextFieldNonEditable" editable="false" prefWidth="150.0"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                            <children>
+                                <MFXButton id="customButton" mnemonicParsing="false" text="Button"/>
+                            </children>
+                        </HBox>
+                        <MFXTableView prefHeight="229.0" prefWidth="343.0"/>
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+    </children>
 </AnchorPane>

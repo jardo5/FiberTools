@@ -17,8 +17,8 @@ public abstract class JDBC {
                     "?connectionTimeZone=SERVER&createDatabaseIfNotExist=true";
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String userName = "root";
-    public static Connection connection;
     private static final String password = System.getenv("DB_PASSWORD");
+    public static Connection connection;
 
     public static void openConnection() {
         try {
@@ -355,7 +355,7 @@ public abstract class JDBC {
     //Fiber Records Table
 
     //splice_id foreign key references splice_records(splice_id)
-    private static void createFiberRecordsTable(){
+    private static void createFiberRecordsTable() {
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE 'fibers'");
@@ -409,11 +409,10 @@ public abstract class JDBC {
     }
 
     private static void insertSampleFiberRecord() {
-        insertFiberRecord(1,73231.0, 4.52, .7, 1.6, "Example Notes", 1);
+        insertFiberRecord(1, 73231.0, 4.52, .7, 1.6, "Example Notes", 1);
     }
 
     //End Fiber Records Table
-
 
 
     public static void closeConnection() {

@@ -23,6 +23,9 @@ public class Main extends Application {
         launch();
         JDBC.closeConnection();
 
+        System.out.println(System.getProperty("java.version"));
+        System.out.println(System.getProperty("javafx.version"));
+
     }
 
     @Override

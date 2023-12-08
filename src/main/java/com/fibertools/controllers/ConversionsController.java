@@ -24,31 +24,32 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Arrays; // Import statement for Arrays
 
 public class ConversionsController implements Initializable {
+    private final Map<String, String> colorHexMap = new HashMap<>();
+    private final String[] solidColors = {
+            "Blue", "Orange", "Green", "Brown", "Slate", "White",
+            "Red", "Black", "Yellow", "Violet", "Rose", "Aqua"
+    };
+    private final String[] dashedColors = {
+            "-Blue", "-Orange", "-Green", "-Brown", "-Slate", "-White",
+            "-Red", "-Black", "-Yellow", "-Violet", "-Rose", "-Aqua"
+    };
+    private final Integer[] fiberInTubeOptions = {12, 24}; // Options for fibers in a tube
     public MFXButton calculateCtoFButton;
     public MFXButton calculateFtoCButton;
     public MFXButton resetButton;
-
     public Rectangle tubeColorBox;
     public Line tubeColorLine;
-
     public Rectangle fiberColorBox;
     public Line fiberColorLine;
-
     public BorderPane contents;
-
     public StackPane errorTextStackPane;
     public Text statusMessage;
-
-    public void setContents(BorderPane contents) {
-        this.contents = contents;
-    }
-
     @FXML
     private TextField fiberNumberTextField;
     @FXML
@@ -60,20 +61,9 @@ public class ConversionsController implements Initializable {
     @FXML
     private ComboBox<Integer> selectFiberInTubeCountComboBox;
 
-    private final Map<String, String> colorHexMap = new HashMap<>();
-
-
-    private final String[] solidColors = {
-            "Blue", "Orange", "Green", "Brown", "Slate", "White",
-            "Red", "Black", "Yellow", "Violet", "Rose", "Aqua"
-    };
-
-    private final String[] dashedColors = {
-            "-Blue", "-Orange", "-Green", "-Brown", "-Slate", "-White",
-            "-Red", "-Black", "-Yellow", "-Violet", "-Rose", "-Aqua"
-    };
-
-    private final Integer[] fiberInTubeOptions = { 12, 24 }; // Options for fibers in a tube
+    public void setContents(BorderPane contents) {
+        this.contents = contents;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -289,15 +279,15 @@ public class ConversionsController implements Initializable {
 
     @FXML
     private void onResetButtonClicked(ActionEvent event) {
-        selectFiberCountComboBox.setValue(144); // Reset to default fiber count
-        selectFiberInTubeCountComboBox.setValue(12); // Reset to default fibers per tube
-        tubeColorComboBox.setValue(null); // Clear tube color selection
-        fiberColorComboBox.setValue(null); // Clear fiber color selection
-        fiberNumberTextField.clear(); // Clear fiber number text field
-        tubeColorBox.setVisible(false); // Hide tube color box
-        fiberColorBox.setVisible(false); // Hide fiber color box
-        tubeColorLine.setVisible(false); // Hide tube color line
-        fiberColorLine.setVisible(false); // Hide fiber color line
+        selectFiberCountComboBox.setValue(144);
+        selectFiberInTubeCountComboBox.setValue(12);
+        tubeColorComboBox.setValue(null);
+        fiberColorComboBox.setValue(null);
+        fiberNumberTextField.clear();
+        tubeColorBox.setVisible(false);
+        fiberColorBox.setVisible(false);
+        tubeColorLine.setVisible(false);
+        fiberColorLine.setVisible(false);
     }
 
     private void updateStatusMessage(String message) {

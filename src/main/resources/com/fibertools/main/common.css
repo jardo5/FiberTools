@@ -40,11 +40,13 @@
     -fx-padding: 1;
     -fx-background-color: transparent;
 }
+
 #customComboBox .scroll-bar:horizontal {
     -fx-pref-width: 0;
     -fx-pref-height: 0;
     -fx-opacity: 0;
 }
+
 /* End of ComboBox Default Styling */
 
 
@@ -143,7 +145,7 @@
     -fx-background-color: #2a3338;
     -fx-border-width: 0 0 1 0;
     -fx-border-color: #808080;
-    -fx-table-cell-border-color:transparent;
+    -fx-table-cell-border-color: transparent;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
@@ -171,14 +173,14 @@
     -fx-background-color: #2a3338;
     -fx-border-width: 0 0 1 0;
     -fx-border-color: #808080;
-    -fx-table-cell-border-color:transparent;
+    -fx-table-cell-border-color: transparent;
 }
 
 .table-row-cell:odd {
     -fx-background-color: #323d43;
     -fx-border-width: 0 0 1 0;
     -fx-border-color: #808080;
-    -fx-table-cell-border-color:transparent;
+    -fx-table-cell-border-color: transparent;
 }
 
 .table-row-cell:hover {
@@ -189,8 +191,8 @@
     -fx-background-color: #3282b8;
 }
 
-.table-view .column-header .label{
-    -fx-alignment:CENTER_LEFT
+.table-view .column-header .label {
+    -fx-alignment: CENTER_LEFT
 }
 
 /* End of TableView Default Styling */

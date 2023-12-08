@@ -51,6 +51,11 @@ public class KeyEvents {
             return index;
         }
 
+        // Setters
+        public void setIndex(int index) {
+            this.index = index;
+        }
+
         public String getType() {
             if (type != null && !type.isEmpty()) {
                 String[] parts = type.split(" "); // Split the string by spaces
@@ -59,89 +64,84 @@ public class KeyEvents {
             return type;
         }
 
-        public double getDistance() {
-            return distance;
-        }
-
-        public double getSlope() {
-            return slope;
-        }
-
-        public double getSpliceLoss() {
-            return spliceLoss;
-        }
-
-        public double getReflLoss() {
-            return reflLoss;
-        }
-
-        public String getComments() {
-            return comments;
-        }
-
-        public double getEndOfPrev() {
-            return endOfPrev;
-        }
-
-        public double getStartOfCurr() {
-            return startOfCurr;
-        }
-
-        public double getEndOfCurr() {
-            return endOfCurr;
-        }
-
-        public double getStartOfNext() {
-            return startOfNext;
-        }
-
-        public double getPeak() {
-            return peak;
-        }
-
-        // Setters
-        public void setIndex(int index) {
-            this.index = index;
-        }
-
         public void setType(String type) {
             this.type = type;
+        }
+
+        public double getDistance() {
+            return distance;
         }
 
         public void setDistance(double distance) {
             this.distance = MeasurementConversions.KMtoFT(distance); // Convert to feet
         }
 
+        public double getSlope() {
+            return slope;
+        }
+
         public void setSlope(double slope) {
             this.slope = slope;
+        }
+
+        public double getSpliceLoss() {
+            return spliceLoss;
         }
 
         public void setSpliceLoss(double spliceLoss) {
             this.spliceLoss = spliceLoss;
         }
 
+        public double getReflLoss() {
+            return reflLoss;
+        }
+
         public void setReflLoss(double reflLoss) {
             this.reflLoss = reflLoss;
+        }
+
+        public String getComments() {
+            return comments;
         }
 
         public void setComments(String comments) {
             this.comments = comments;
         }
 
+        public double getEndOfPrev() {
+            return endOfPrev;
+        }
+
         public void setEndOfPrev(double endOfPrev) {
             this.endOfPrev = endOfPrev;
+        }
+
+        public double getStartOfCurr() {
+            return startOfCurr;
         }
 
         public void setStartOfCurr(double startOfCurr) {
             this.startOfCurr = startOfCurr;
         }
 
+        public double getEndOfCurr() {
+            return endOfCurr;
+        }
+
         public void setEndOfCurr(double endOfCurr) {
             this.endOfCurr = endOfCurr;
         }
 
+        public double getStartOfNext() {
+            return startOfNext;
+        }
+
         public void setStartOfNext(double startOfNext) {
             this.startOfNext = startOfNext;
+        }
+
+        public double getPeak() {
+            return peak;
         }
 
         public void setPeak(double peak) {
@@ -164,6 +164,11 @@ public class KeyEvents {
             return totalLoss;
         }
 
+        // Setters
+        public void setTotalLoss(double totalLoss) {
+            this.totalLoss = totalLoss;
+        }
+
         public double getOrl() {
             return ORL;
         }
@@ -172,8 +177,16 @@ public class KeyEvents {
             return lossStart;
         }
 
+        public void setLossStart(double lossStart) {
+            this.lossStart = lossStart;
+        }
+
         public double getLossEnd() {
             return lossEnd;
+        }
+
+        public void setLossEnd(double lossEnd) {
+            this.lossEnd = MeasurementConversions.KMtoFT(lossEnd); // Convert to feet
         }
 
         public double getOrlStart() {
@@ -184,21 +197,8 @@ public class KeyEvents {
             return ORLEnd;
         }
 
-        // Setters
-        public void setTotalLoss(double totalLoss) {
-            this.totalLoss = totalLoss;
-        }
-
         public void setORL(double ORL) {
             this.ORL = ORL;
-        }
-
-        public void setLossStart(double lossStart) {
-            this.lossStart = lossStart;
-        }
-
-        public void setLossEnd(double lossEnd) {
-            this.lossEnd = MeasurementConversions.KMtoFT(lossEnd); // Convert to feet
         }
 
         public void setORLStart(double ORLStart) {

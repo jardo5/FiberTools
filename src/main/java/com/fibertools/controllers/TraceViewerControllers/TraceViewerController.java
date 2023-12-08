@@ -25,27 +25,18 @@ public class TraceViewerController {
 
     @FXML
     public StackPane confirmationTextStackPane;
-
-
-
+    public Text warningBottomText;
+    public BorderPane contents;
     @FXML
     private StackPane innerMiddleStackPane;
-
     @FXML
     private Text statusMessage;
-    public Text warningBottomText;
-
     private File droppedFile;
-
     private String fileName;
-
     @FXML
     private MFXButton generateButton;
-
     @FXML
     private MFXButton viewButton;
-
-    public BorderPane contents;
 
     public void setContents(BorderPane contents) {
         this.contents = contents;
@@ -199,8 +190,7 @@ public class TraceViewerController {
     }
 
 
-
-     public void onViewClicked(ActionEvent actionEvent) {
+    public void onViewClicked(ActionEvent actionEvent) {
         fileName = droppedFile.getName();
         System.out.println(fileName);
         FXMLLoaderUtils.loadViewDataController("/com/fibertools/main/pages/traceViewer/traceViewerData/traceViewerData.fxml", fileName);

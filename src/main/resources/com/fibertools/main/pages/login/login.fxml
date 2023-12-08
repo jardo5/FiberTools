@@ -7,33 +7,37 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.LoginController">
-   <center>
-      <VBox alignment="CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="450.0" spacing="15.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="93.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../media/fiberOpticLogin.png" />
-               </image>
-            </ImageView>
-            <VBox>
-               <children>
-                  <Label text="Username" />
-                  <TextField fx:id="usernameField" />
-               </children>
-            </VBox>
-            <VBox>
-               <children>
-                  <Label text="Password" />
-                  <PasswordField id="customTextField" fx:id="passwordField" />
-               </children>
-            </VBox>
-            <StackPane prefHeight="50.0" prefWidth="750.0">
-               <children>
-                  <MFXButton id="customButton" fx:id="loginPageLoginButton" mnemonicParsing="false" onAction="#onClickLogin" text="Login" />
-               </children>
-            </StackPane>
-         </children>
-      </VBox>
-   </center>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="750.0" stylesheets="@login.css"
+            xmlns="http://javafx.com/javafx/19" fx:controller="com.fibertools.controllers.LoginController">
+    <center>
+        <VBox alignment="CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0"
+              prefWidth="450.0" spacing="15.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="93.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../../media/fiberOpticLogin.png"/>
+                    </image>
+                </ImageView>
+                <VBox>
+                    <children>
+                        <Label text="Username"/>
+                        <TextField fx:id="usernameField"/>
+                    </children>
+                </VBox>
+                <VBox>
+                    <children>
+                        <Label text="Password"/>
+                        <PasswordField id="customTextField" fx:id="passwordField"/>
+                    </children>
+                </VBox>
+                <StackPane prefHeight="50.0" prefWidth="750.0">
+                    <children>
+                        <MFXButton id="customButton" fx:id="loginPageLoginButton" mnemonicParsing="false"
+                                   onAction="#onClickLogin" text="Login"/>
+                    </children>
+                </StackPane>
+            </children>
+        </VBox>
+    </center>
 </BorderPane>

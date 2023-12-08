@@ -1,9 +1,6 @@
 package com.fibertools.models.TaceViewerModels;
 
 import javax.xml.bind.annotation.XmlElement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class FxdParams {
     private String dateTime;

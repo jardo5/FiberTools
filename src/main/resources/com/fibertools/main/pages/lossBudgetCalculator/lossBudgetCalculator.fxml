@@ -4,57 +4,69 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane fx:id="content" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@lossBudgetCalculator.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.LossBudgetCalculatorController">
-   <center>
-      <VBox alignment="CENTER" prefWidth="750.0" spacing="15.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" spacing="15.0">
-               <children>
-                  <ComboBox id="customComboBox" fx:id="lossBudgetTypeComboBox" editable="false" prefHeight="30.0" prefWidth="200.0" promptText="Choose Fiber Cable Type" visibleRowCount="4" />
-                  <ComboBox id="customComboBox" fx:id="lossBudgetMeasurementComboBox" editable="false" prefHeight="30.0" prefWidth="200.0" promptText="Select Measurement Unit" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" spacing="15.0">
-               <children>
-                  <VBox alignment="CENTER" fillWidth="false" prefHeight="1.0">
-                     <children>
-                        <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="200.0" text="Total Cable Length" />
-                        <TextField id="customTextField" fx:id="lossBudgetCableLength" alignment="TOP_LEFT" maxWidth="-Infinity" prefWidth="200.0" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" fillWidth="false">
-                     <children>
-                        <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="200.0" text="Connectors" />
-                        <TextField id="customTextField" fx:id="lossBudgetConnectors" alignment="TOP_LEFT" maxWidth="-Infinity" prefHeight="1.0" prefWidth="200.0" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="1.0">
-               <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="200.0" text="Splices" />
-                  <TextField id="customTextField" fx:id="lossBudgetSplices" alignment="TOP_LEFT" maxWidth="-Infinity" prefWidth="200.0" />
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="1.0">
-               <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="200.0" text="Total Estimated Loss" />
-                  <TextField id="customTextField" fx:id="lossBudgetTotalLoss" alignment="TOP_LEFT" editable="false" maxWidth="-Infinity" prefWidth="200.0" />
-               </children>
-            </VBox>
-            <MFXButton id="customButton" fx:id="lossBudgetCalculateButton" onAction="#onClickLossBudgetCalculateButton" text="Calculate">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </MFXButton>
-         </children>
-      </VBox>
-   </center>
-   <bottom>
-      <StackPane prefHeight="49.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <MFXButton id="customButton" fx:id="lossBudgetCredits" onAction="#onClickLossBudgetCredits" text="Credits" />
-         </children>
-      </StackPane>
-   </bottom>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="content" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0"
+            stylesheets="@lossBudgetCalculator.css" xmlns="http://javafx.com/javafx/19"
+            fx:controller="com.fibertools.controllers.LossBudgetCalculatorController">
+    <center>
+        <VBox alignment="CENTER" prefWidth="750.0" spacing="15.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER" spacing="15.0">
+                    <children>
+                        <ComboBox id="customComboBox" fx:id="lossBudgetTypeComboBox" editable="false" prefHeight="30.0"
+                                  prefWidth="200.0" promptText="Choose Fiber Cable Type" visibleRowCount="4"/>
+                        <ComboBox id="customComboBox" fx:id="lossBudgetMeasurementComboBox" editable="false"
+                                  prefHeight="30.0" prefWidth="200.0" promptText="Select Measurement Unit"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" spacing="15.0">
+                    <children>
+                        <VBox alignment="CENTER" fillWidth="false" prefHeight="1.0">
+                            <children>
+                                <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="200.0"
+                                       text="Total Cable Length"/>
+                                <TextField id="customTextField" fx:id="lossBudgetCableLength" alignment="TOP_LEFT"
+                                           maxWidth="-Infinity" prefWidth="200.0"/>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" fillWidth="false">
+                            <children>
+                                <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="200.0" text="Connectors"/>
+                                <TextField id="customTextField" fx:id="lossBudgetConnectors" alignment="TOP_LEFT"
+                                           maxWidth="-Infinity" prefHeight="1.0" prefWidth="200.0"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <VBox alignment="CENTER" fillWidth="false" prefHeight="1.0">
+                    <children>
+                        <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="200.0" text="Splices"/>
+                        <TextField id="customTextField" fx:id="lossBudgetSplices" alignment="TOP_LEFT"
+                                   maxWidth="-Infinity" prefWidth="200.0"/>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" fillWidth="false" prefHeight="1.0">
+                    <children>
+                        <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="200.0" text="Total Estimated Loss"/>
+                        <TextField id="customTextField" fx:id="lossBudgetTotalLoss" alignment="TOP_LEFT"
+                                   editable="false" maxWidth="-Infinity" prefWidth="200.0"/>
+                    </children>
+                </VBox>
+                <MFXButton id="customButton" fx:id="lossBudgetCalculateButton"
+                           onAction="#onClickLossBudgetCalculateButton" text="Calculate">
+                    <VBox.margin>
+                        <Insets top="15.0"/>
+                    </VBox.margin>
+                </MFXButton>
+            </children>
+        </VBox>
+    </center>
+    <bottom>
+        <StackPane prefHeight="49.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <MFXButton id="customButton" fx:id="lossBudgetCredits" onAction="#onClickLossBudgetCredits"
+                           text="Credits"/>
+            </children>
+        </StackPane>
+    </bottom>
 </BorderPane>

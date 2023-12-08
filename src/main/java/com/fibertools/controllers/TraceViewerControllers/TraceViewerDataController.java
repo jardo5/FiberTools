@@ -10,21 +10,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -37,20 +31,17 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-
 import java.nio.file.Paths;
-import java.security.Key;
 import java.text.DecimalFormat;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 
 public class TraceViewerDataController implements Initializable {
 
+    private final String fileName = "default";
     @FXML
     public GridPane identificationGrid;
-
     public TextField fileNameTextField;
-
     public TextField languageTextField; //GenParams
     public TextField cableIDTextField; // GenParams
     public TextField fiberIDTextField; // GenParams
@@ -59,16 +50,13 @@ public class TraceViewerDataController implements Initializable {
     public TextField operatorTextField; //GenParams
     public TextField commentsTextField; //GenParams
     public TextField wavelengthTextField; //GenParams
-
     public TextField companyTextField; //SupParams
     public TextField otdrModelNumberTextField; //SupParams
     public TextField otdrSerialNumberTextField; //SupParams
-
     public TextField dateTimeTextField; //FxdParams
     public TextField unitTextField; //FxdParams
     public TextField pulseWidthTextField; //FxdParams
     public TextField rangeTextField; //FxdParams
-
     public TableView eventsTable; //KeyEvents
     public TableColumn eventColumn; //KeyEvents
     public TableColumn typeColumn; //KeyEvents
@@ -82,7 +70,6 @@ public class TraceViewerDataController implements Initializable {
     public TableColumn endOfCurrColumn; //KeyEvents
     public TableColumn startOfNextColumn; //KeyEvents
     public TableColumn peakColumn; //KeyEvents
-
     public TableView summaryTable; //KeyEvents, Summary
     public TableColumn totalLossColumn; //KeyEvents, Summary
     public TableColumn orlColumn; //KeyEvents, Summary
@@ -90,17 +77,11 @@ public class TraceViewerDataController implements Initializable {
     public TableColumn lossEndColumn; //KeyEvents, Summary
     public TableColumn orlStartColumn; //KeyEvents, Summary
     public TableColumn orlEndColumn; //KeyEvents, Summary
-
-    private String fileName = "default";
-    private File xmlFile;
-    private File datFile;
-
-    private Line selectedLine;
-
-
     public NumberAxis traceChartX;
     public NumberAxis traceChartY;
-
+    private File xmlFile;
+    private File datFile;
+    private Line selectedLine;
     @FXML
     private LineChart<Number, Number> traceChart;
     private XYChart.Series<Number, Number> series;
@@ -130,9 +111,6 @@ public class TraceViewerDataController implements Initializable {
         // Create a series for drawing lines
         selectedLineSeries = new XYChart.Series<>();
         traceChart.getData().add(selectedLineSeries);
-
-
-
 
 
         //Events Table
@@ -229,10 +207,10 @@ public class TraceViewerDataController implements Initializable {
     }
     //End of Trace
 
-    private void setTextField(TextField textField, String text){
+    private void setTextField(TextField textField, String text) {
         text = text == null ? null : text.trim();
 
-        if(text != null && !text.isEmpty()){
+        if (text != null && !text.isEmpty()) {
             textField.setText(text);
             textField.setStyle("-fx-background-color: #FBFAF5;");
         } else {
@@ -242,7 +220,7 @@ public class TraceViewerDataController implements Initializable {
     }
 
     //Summary Tab
-    public void populateSummaryTable(String fileName){
+    public void populateSummaryTable(String fileName) {
         ObservableList<KeyEvents.Summary> summaries = FXCollections.observableArrayList();
         summaries.addAll(KeyEventsParser.parseSummary(fileName));
         summaryTable.setItems(summaries);
@@ -250,7 +228,7 @@ public class TraceViewerDataController implements Initializable {
     //End of Summary Tab
 
     //Events Tab
-    public void populateEventsTable(String fileName){
+    public void populateEventsTable(String fileName) {
         ObservableList<KeyEvents.Event> events = FXCollections.observableArrayList();
         events.addAll(KeyEventsParser.parseAllKeyEvents(fileName));
         eventsTable.setItems(events);
@@ -290,9 +268,9 @@ public class TraceViewerDataController implements Initializable {
         }
     }
 
-    private void updateGenParamsFields(Sor sor){
+    private void updateGenParamsFields(Sor sor) {
         try {
-            if(sor.getGenParams() != null){
+            if (sor.getGenParams() != null) {
                 setTextField(fileNameTextField, sor.getFilename());
                 setTextField(languageTextField, sor.getGenParams().getLanguage());
                 setTextField(cableIDTextField, sor.getGenParams().getCableID());
@@ -303,26 +281,26 @@ public class TraceViewerDataController implements Initializable {
                 setTextField(commentsTextField, sor.getGenParams().getComments());
                 setTextField(wavelengthTextField, sor.getGenParams().getWavelength());
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Null pointer exception");
         }
     }
 
-    private void updateSupParamsFields(Sor sor){
+    private void updateSupParamsFields(Sor sor) {
         try {
-            if(sor.getSupParams() != null){
+            if (sor.getSupParams() != null) {
                 setTextField(companyTextField, sor.getSupParams().getSupplier());
                 setTextField(otdrModelNumberTextField, sor.getSupParams().getModelNumber());
                 setTextField(otdrSerialNumberTextField, sor.getSupParams().getSerialNumber());
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Null pointer exception");
         }
     }
 
-    private void updateFxdParamsFields(Sor sor){
+    private void updateFxdParamsFields(Sor sor) {
         try {
-            if(sor.getFxdParams() != null){
+            if (sor.getFxdParams() != null) {
                 setTextField(dateTimeTextField, sor.getFxdParams().getDateTime());
                 setTextField(unitTextField, sor.getFxdParams().getUnit());
                 setTextField(pulseWidthTextField, sor.getFxdParams().getPulseWidth());
@@ -332,7 +310,7 @@ public class TraceViewerDataController implements Initializable {
                 setTextField(rangeTextField, df.format(sor.getFxdParams().getRange() * 3280.84));
 
             }
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Null pointer exception");
         }
     }
@@ -361,7 +339,7 @@ public class TraceViewerDataController implements Initializable {
     }
     //End of Credits Tab
 
-    private void openPage(String url){
+    private void openPage(String url) {
         try {
             Desktop.getDesktop().browse(new URI(url));
         } catch (IOException | URISyntaxException e) {
@@ -435,7 +413,7 @@ public class TraceViewerDataController implements Initializable {
             Map<String, String> getSummaryData = getSummaryData();
             List<Map<String, String>> getEventData = getEventData();
             PDFReportStructure reportStructure = new PDFReportStructure();
-            reportStructure.createReport("TraceViewerReportExample.pdf", genParamsData, getSupParamsData, getFxdParamsData, getSummaryData,  traceChart, getEventData);
+            reportStructure.createReport("TraceViewerReportExample.pdf", genParamsData, getSupParamsData, getFxdParamsData, getSummaryData, traceChart, getEventData);
         } catch (Exception e) {
             e.printStackTrace();
         }

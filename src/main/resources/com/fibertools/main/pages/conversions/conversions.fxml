@@ -2,84 +2,97 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" id="contents" fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0"
+            stylesheets="@conversions.css" xmlns="http://javafx.com/javafx/19"
+            fx:controller="com.fibertools.controllers.ConversionsController">
+    <center>
+        <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="550.0" prefWidth="750.0"
+              spacing="15.0">
+            <HBox alignment="CENTER" spacing="15">
+                <ComboBox id="customComboBox" fx:id="selectFiberCountComboBox" prefWidth="120" promptText="Fiber Count"
+                          visibleRowCount="3"/>
+                <ComboBox id="customComboBox" fx:id="selectFiberInTubeCountComboBox" prefWidth="120"
+                          promptText="Fiber Count In Tube" visibleRowCount="2"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="15">
+                <VBox alignment="CENTER" spacing="15.0">
+                    <children>
+                        <TextField id="customTextField" fx:id="fiberNumberTextField" maxHeight="-Infinity"
+                                   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0"
+                                   prefWidth="150.0" promptText="Fiber Number"/>
+                        <Text id="orText" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" textAlignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Text>
+                        <HBox spacing="15.0">
+                            <children>
+                                <ComboBox id="customComboBox" fx:id="tubeColorComboBox" prefWidth="120"
+                                          promptText="Tube Color" visibleRowCount="4"/>
+                                <ComboBox id="customComboBox" fx:id="fiberColorComboBox" prefWidth="120"
+                                          promptText="Fiber Color" visibleRowCount="4"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10">
+                <MFXButton id="customAddButton" fx:id="calculateCtoFButton" onAction="#onClickCalculateCtoFButton"
+                           text="Calculate Color to Fiber"/>
+                <MFXButton id="customAddButton" fx:id="calculateFtoCButton" onAction="#onClickCalculateFtoCButton"
+                           text="Calculate Fiber to Color"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10">
+                <MFXButton id="customModifyButton" fx:id="resetButton" onAction="#onResetButtonClicked" text="Reset"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10">
+                <VBox alignment="CENTER" spacing="5">
+                    <StackPane>
+                        <Rectangle id="tubeColorBox" fx:id="tubeColorBox" fill="WHITE" height="30.0" stroke="BLACK"
+                                   visible="false" width="75.0"/>
+                        <Line id="tubeColorLine" fx:id="tubeColorLine" endX="75.0" endY="0" startX="0" startY="0"
+                              stroke="BLACK" strokeWidth="2" visible="false"/>
+                    </StackPane>
+                </VBox>
 
-<BorderPane id="contents" fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@conversions.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.ConversionsController">
-   <center>
-      <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="550.0" prefWidth="750.0" spacing="15.0">
-         <HBox alignment="CENTER" spacing="15">
-            <ComboBox id="customComboBox" fx:id="selectFiberCountComboBox" prefWidth="120" promptText="Fiber Count" visibleRowCount="3" />
-            <ComboBox id="customComboBox" fx:id="selectFiberInTubeCountComboBox" prefWidth="120" promptText="Fiber Count In Tube" visibleRowCount="2" />
-         </HBox>
-         <HBox alignment="CENTER" spacing="15">
-            <VBox alignment="CENTER" spacing="15.0">
-               <children>
-                  <TextField id="customTextField" fx:id="fiberNumberTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="150.0" promptText="Fiber Number" />
-                  <Text id="orText" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></Text>
-                  <HBox spacing="15.0">
-                     <children>
-                        <ComboBox id="customComboBox" fx:id="tubeColorComboBox" prefWidth="120" promptText="Tube Color" visibleRowCount="4" />
-                        <ComboBox id="customComboBox" fx:id="fiberColorComboBox" prefWidth="120" promptText="Fiber Color" visibleRowCount="4" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </HBox>
-         <HBox alignment="CENTER" spacing="10">
-            <MFXButton id="customAddButton" fx:id="calculateCtoFButton" onAction="#onClickCalculateCtoFButton" text="Calculate Color to Fiber" />
-            <MFXButton id="customAddButton" fx:id="calculateFtoCButton" onAction="#onClickCalculateFtoCButton" text="Calculate Fiber to Color" />
-         </HBox>
-         <HBox alignment="CENTER" spacing="10">
-            <MFXButton id="customModifyButton" fx:id="resetButton" onAction="#onResetButtonClicked" text="Reset" />
-         </HBox>
-         <HBox alignment="CENTER" spacing="10">
-            <VBox alignment="CENTER" spacing="5">
-               <StackPane>
-                  <Rectangle id="tubeColorBox" fx:id="tubeColorBox" fill="WHITE" height="30.0" stroke="BLACK" visible="false" width="75.0" />
-                  <Line id="tubeColorLine" fx:id="tubeColorLine" endX="75.0" endY="0" startX="0" startY="0" stroke="BLACK" strokeWidth="2" visible="false" />
-               </StackPane>
-            </VBox>
-
-            <VBox alignment="CENTER" spacing="5">
-               <StackPane>
-                  <Rectangle id="fiberColorBox" fx:id="fiberColorBox" fill="WHITE" height="30.0" stroke="BLACK" visible="false" width="75.0" />
-                  <Line id="fiberColorLine" fx:id="fiberColorLine" endX="75.0" endY="0" startX="0" startY="0" stroke="BLACK" strokeWidth="2" visible="false" />
-               </StackPane>
-            </VBox>
-         </HBox>
-      </VBox>
-   </center>
-   <bottom>
-      <StackPane prefHeight="50.0" prefWidth="750.0" BorderPane.alignment="CENTER">
-         <children>
-            <StackPane id="errorTextStackPane" fx:id="errorTextStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" visible="false">
-               <children>
-                  <Text id="errorConfirmationText" fx:id="statusMessage" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <StackPane.margin>
-                        <Insets />
-                     </StackPane.margin>
-                  </Text>
-               </children>
-               <StackPane.margin>
-                  <Insets />
-               </StackPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-               </padding>
-            </StackPane>
-         </children>
-      </StackPane>
-   </bottom>
+                <VBox alignment="CENTER" spacing="5">
+                    <StackPane>
+                        <Rectangle id="fiberColorBox" fx:id="fiberColorBox" fill="WHITE" height="30.0" stroke="BLACK"
+                                   visible="false" width="75.0"/>
+                        <Line id="fiberColorLine" fx:id="fiberColorLine" endX="75.0" endY="0" startX="0" startY="0"
+                              stroke="BLACK" strokeWidth="2" visible="false"/>
+                    </StackPane>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+    <bottom>
+        <StackPane prefHeight="50.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+            <children>
+                <StackPane id="errorTextStackPane" fx:id="errorTextStackPane" maxHeight="-Infinity" maxWidth="-Infinity"
+                           minWidth="-Infinity" visible="false">
+                    <children>
+                        <Text id="errorConfirmationText" fx:id="statusMessage" strokeType="OUTSIDE" strokeWidth="0.0">
+                            <StackPane.margin>
+                                <Insets/>
+                            </StackPane.margin>
+                        </Text>
+                    </children>
+                    <StackPane.margin>
+                        <Insets/>
+                    </StackPane.margin>
+                    <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+                    </padding>
+                </StackPane>
+            </children>
+        </StackPane>
+    </bottom>
 </BorderPane>

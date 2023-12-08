@@ -10,7 +10,7 @@
     -fx-pref-height: 35;
 }
 
-#errorText{
+#errorText {
     -fx-font-size: 12px;
     -fx-text-fill: #e5e4e2;
 }

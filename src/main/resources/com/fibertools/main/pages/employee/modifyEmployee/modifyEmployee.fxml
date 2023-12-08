@@ -6,142 +6,178 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<BorderPane fx:id="contents" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.EmployeeControllers.ModifyEmployeeController">
-   <center>
-      <Pane prefHeight="600.0" prefWidth="750.0" stylesheets="@modifyEmployee.css">
-         <children>
-            <StackPane layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="350.0">
-               <children>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
-                     <top>
-                        <StackPane prefHeight="133.0" prefWidth="350.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Employee" underline="true" />
-                           </children>
-                        </StackPane>
-                     </top>
-                     <center>
-                        <StackPane prefHeight="133.0" prefWidth="150.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <VBox spacing="15.0">
-                                 <children>
-                                    <HBox alignment="CENTER" prefHeight="133.0" prefWidth="350.0" spacing="15.0">
-                                       <children>
-                                          <VBox prefHeight="200.0" prefWidth="150.0">
-                                             <children>
-                                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                                                   <children>
-                                                      <Label prefWidth="150.0" text="ID">
-                                                         <font>
-                                                            <Font size="10.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <TextField id="customTextFieldNonEditable" fx:id="modifyEmployeeID" editable="false" prefWidth="150.0" />
-                                                   </children>
-                                                </VBox>
-                                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                                                   <children>
-                                                      <Label prefWidth="150.0" text="Phone">
-                                                         <font>
-                                                            <Font size="10.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <TextField id="customTextField" fx:id="modifyEmployeePhone" prefWidth="150.0" />
-                                                   </children>
-                                                </VBox>
-                                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                                                   <children>
-                                                      <Label prefWidth="150.0" text="Address">
-                                                         <font>
-                                                            <Font size="10.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <TextField id="customTextField" fx:id="modifyEmployeeAddress" prefWidth="150.0" />
-                                                   </children>
-                                                </VBox>
-                                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                                                   <children>
-                                                      <Label prefWidth="150.0" text="Position">
-                                                         <font>
-                                                            <Font size="10.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <ComboBox id="customComboBox" fx:id="modifyEmployeePosition" visibleRowCount="5" />
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </VBox>
-                                          <VBox prefHeight="200.0" prefWidth="150.0">
-                                             <children>
-                                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                                                   <children>
-                                                      <Label prefWidth="150.0" text="Name">
-                                                         <font>
-                                                            <Font size="10.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <TextField id="customTextField" fx:id="modifyEmployeeName" prefWidth="150.0" />
-                                                   </children>
-                                                </VBox>
-                                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                                                   <children>
-                                                      <Label prefWidth="150.0" text="Email">
-                                                         <font>
-                                                            <Font size="10.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <TextField id="customTextField" fx:id="modifyEmployeeEmail" prefWidth="150.0" />
-                                                   </children>
-                                                </VBox>
-                                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                                                   <children>
-                                                      <Label prefWidth="150.0" text="Rate">
-                                                         <font>
-                                                            <Font size="10.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <TextField id="customTextField" fx:id="modifyEmployeeRate" prefWidth="150.0" />
-                                                   </children>
-                                                </VBox>
-                                                <VBox alignment="CENTER" fillWidth="false" prefWidth="150.0">
-                                                   <children>
-                                                      <Label prefWidth="150.0" text="Assigned Job">
-                                                         <font>
-                                                            <Font size="10.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <ComboBox id="customComboBox" fx:id="modifyEmployeeAssignedJob" prefWidth="150.0" visibleRowCount="5" />
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </StackPane>
-                     </center>
-                     <bottom>
-                        <StackPane prefHeight="137.0" prefWidth="350.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <VBox prefHeight="124.0" prefWidth="350.0">
-                                 <children>
-                                    <HBox alignment="CENTER" prefHeight="133.0" prefWidth="350.0" spacing="15.0">
-                                       <children>
-                                          <MFXButton id="customAddButton" fx:id="modifyEmployeeAddButton" minHeight="27.0" minWidth="70.0" onAction="#onClickModifyEmployeeSaveButton" text="Add Item" />
-                                          <MFXButton id="customCancelButton" fx:id="modifyEmployeeCancelButton" minHeight="27.0" minWidth="70.0" onAction="#onClickModifyEmployeeCancelButton" text="Cancel" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </StackPane>
-                     </bottom>
-                  </BorderPane>
-               </children>
-            </StackPane>
-         </children>
-      </Pane>
-   </center>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="contents" xmlns="http://javafx.com/javafx/19"
+            fx:controller="com.fibertools.controllers.EmployeeControllers.ModifyEmployeeController">
+    <center>
+        <Pane prefHeight="600.0" prefWidth="750.0" stylesheets="@modifyEmployee.css">
+            <children>
+                <StackPane layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="350.0">
+                    <children>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                            <top>
+                                <StackPane prefHeight="133.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Employee"
+                                              underline="true"/>
+                                    </children>
+                                </StackPane>
+                            </top>
+                            <center>
+                                <StackPane prefHeight="133.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <VBox spacing="15.0">
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="133.0" prefWidth="350.0"
+                                                      spacing="15.0">
+                                                    <children>
+                                                        <VBox prefHeight="200.0" prefWidth="150.0">
+                                                            <children>
+                                                                <VBox alignment="CENTER" fillWidth="false"
+                                                                      prefWidth="150.0">
+                                                                    <children>
+                                                                        <Label prefWidth="150.0" text="ID">
+                                                                            <font>
+                                                                                <Font size="10.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField id="customTextFieldNonEditable"
+                                                                                   fx:id="modifyEmployeeID"
+                                                                                   editable="false" prefWidth="150.0"/>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox alignment="CENTER" fillWidth="false"
+                                                                      prefWidth="150.0">
+                                                                    <children>
+                                                                        <Label prefWidth="150.0" text="Phone">
+                                                                            <font>
+                                                                                <Font size="10.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField id="customTextField"
+                                                                                   fx:id="modifyEmployeePhone"
+                                                                                   prefWidth="150.0"/>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox alignment="CENTER" fillWidth="false"
+                                                                      prefWidth="150.0">
+                                                                    <children>
+                                                                        <Label prefWidth="150.0" text="Address">
+                                                                            <font>
+                                                                                <Font size="10.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField id="customTextField"
+                                                                                   fx:id="modifyEmployeeAddress"
+                                                                                   prefWidth="150.0"/>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox alignment="CENTER" fillWidth="false"
+                                                                      prefWidth="150.0">
+                                                                    <children>
+                                                                        <Label prefWidth="150.0" text="Position">
+                                                                            <font>
+                                                                                <Font size="10.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <ComboBox id="customComboBox"
+                                                                                  fx:id="modifyEmployeePosition"
+                                                                                  visibleRowCount="5"/>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox prefHeight="200.0" prefWidth="150.0">
+                                                            <children>
+                                                                <VBox alignment="CENTER" fillWidth="false"
+                                                                      prefWidth="150.0">
+                                                                    <children>
+                                                                        <Label prefWidth="150.0" text="Name">
+                                                                            <font>
+                                                                                <Font size="10.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField id="customTextField"
+                                                                                   fx:id="modifyEmployeeName"
+                                                                                   prefWidth="150.0"/>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox alignment="CENTER" fillWidth="false"
+                                                                      prefWidth="150.0">
+                                                                    <children>
+                                                                        <Label prefWidth="150.0" text="Email">
+                                                                            <font>
+                                                                                <Font size="10.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField id="customTextField"
+                                                                                   fx:id="modifyEmployeeEmail"
+                                                                                   prefWidth="150.0"/>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox alignment="CENTER" fillWidth="false"
+                                                                      prefWidth="150.0">
+                                                                    <children>
+                                                                        <Label prefWidth="150.0" text="Rate">
+                                                                            <font>
+                                                                                <Font size="10.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField id="customTextField"
+                                                                                   fx:id="modifyEmployeeRate"
+                                                                                   prefWidth="150.0"/>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox alignment="CENTER" fillWidth="false"
+                                                                      prefWidth="150.0">
+                                                                    <children>
+                                                                        <Label prefWidth="150.0" text="Assigned Job">
+                                                                            <font>
+                                                                                <Font size="10.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <ComboBox id="customComboBox"
+                                                                                  fx:id="modifyEmployeeAssignedJob"
+                                                                                  prefWidth="150.0"
+                                                                                  visibleRowCount="5"/>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </StackPane>
+                            </center>
+                            <bottom>
+                                <StackPane prefHeight="137.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <VBox prefHeight="124.0" prefWidth="350.0">
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="133.0" prefWidth="350.0"
+                                                      spacing="15.0">
+                                                    <children>
+                                                        <MFXButton id="customAddButton" fx:id="modifyEmployeeAddButton"
+                                                                   minHeight="27.0" minWidth="70.0"
+                                                                   onAction="#onClickModifyEmployeeSaveButton"
+                                                                   text="Add Item"/>
+                                                        <MFXButton id="customCancelButton"
+                                                                   fx:id="modifyEmployeeCancelButton" minHeight="27.0"
+                                                                   minWidth="70.0"
+                                                                   onAction="#onClickModifyEmployeeCancelButton"
+                                                                   text="Cancel"/>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </StackPane>
+                            </bottom>
+                        </BorderPane>
+                    </children>
+                </StackPane>
+            </children>
+        </Pane>
+    </center>
 </BorderPane>

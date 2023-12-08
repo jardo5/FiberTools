@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<BorderPane fx:id="mainScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fibertools.controllers.MainController">
+<?import java.net.URL?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx/19" fx:controller="com.fibertools.controllers.MainController">
     <stylesheets>
-        <URL value="@main.css" />
+        <URL value="@main.css"/>
     </stylesheets>
     <left>
         <VBox fx:id="sideBar" prefHeight="600.0" prefWidth="250.0" BorderPane.alignment="CENTER">
@@ -22,35 +20,43 @@
                     <children>
                         <ImageView fitHeight="100.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../media/fiberToolsLogo.png" />
+                                <Image url="@../../../media/fiberToolsLogo.png"/>
                             </image>
                         </ImageView>
                         <StackPane prefHeight="100.0" prefWidth="100.0">
                             <children>
-                                <Text fill="#141313" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fiber Tools" textAlignment="CENTER" wrappingWidth="146.0">
+                                <Text fill="#141313" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
+                                      text="Fiber Tools" textAlignment="CENTER" wrappingWidth="146.0">
                                     <font>
-                                        <Font name="Helvetica Neue" size="23.0" />
+                                        <Font name="Helvetica Neue" size="23.0"/>
                                     </font>
                                 </Text>
                             </children>
                         </StackPane>
                     </children>
                 </HBox>
-                <Button fx:id="traceViewerButton" onAction="#onClickTraceViewerButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Trace Viewer &amp; Reports">
+                <Button fx:id="traceViewerButton" onAction="#onClickTraceViewerButton" prefHeight="30.0"
+                        prefWidth="250.0" styleClass="sideBarOptions" text="Trace Viewer &amp; Reports">
                 </Button>
-                <Button fx:id="conversionsButton" onAction="#onClickConversionsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Conversions">
+                <Button fx:id="conversionsButton" onAction="#onClickConversionsButton" prefHeight="30.0"
+                        prefWidth="250.0" styleClass="sideBarOptions" text="Conversions">
                 </Button>
-                <Button fx:id="calculatorsButton" onAction="#onClickCalculatorsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Loss Budget Calculator">
+                <Button fx:id="calculatorsButton" onAction="#onClickCalculatorsButton" prefHeight="30.0"
+                        prefWidth="250.0" styleClass="sideBarOptions" text="Loss Budget Calculator">
                 </Button>
-                <Button fx:id="spliceRecordsButton" onAction="#onClickSpliceRecordsButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Splice Records">
+                <Button fx:id="spliceRecordsButton" onAction="#onClickSpliceRecordsButton" prefHeight="30.0"
+                        prefWidth="250.0" styleClass="sideBarOptions" text="Splice Records">
                 </Button>
-                <Button fx:id="inventoryButton" onAction="#onClickInventoryButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Inventory">
+                <Button fx:id="inventoryButton" onAction="#onClickInventoryButton" prefHeight="30.0" prefWidth="250.0"
+                        styleClass="sideBarOptions" text="Inventory">
                 </Button>
-                <Button fx:id="schedulingButton" onAction="#onClickEmployeeButton" prefHeight="30.0" prefWidth="250.0" styleClass="sideBarOptions" text="Employees">
+                <Button fx:id="schedulingButton" onAction="#onClickEmployeeButton" prefHeight="30.0" prefWidth="250.0"
+                        styleClass="sideBarOptions" text="Employees">
                 </Button>
                 <StackPane prefHeight="150.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onClickLoginButton" prefHeight="50.0" prefWidth="100.0" text="Login" />
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onClickLoginButton"
+                                prefHeight="50.0" prefWidth="100.0" text="Login"/>
                     </children>
                 </StackPane>
             </children>

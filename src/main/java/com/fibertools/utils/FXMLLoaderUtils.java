@@ -34,9 +34,6 @@ public class FXMLLoaderUtils {
     //Loads TraceViewerDataController with selected Sor files data
 
 
-
-
-
     //Loads ModifyInventoryController with selected Inventory item
     public static void loadModifyController(BorderPane contents, String fxmlFileName, Inventory selectedItem) {
         try {

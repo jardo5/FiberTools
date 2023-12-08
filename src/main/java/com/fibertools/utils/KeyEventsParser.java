@@ -97,6 +97,7 @@ public class KeyEventsParser {
         System.out.println("Peak: " + event.getPeak());
         System.out.println();
     }
+
     //End of Events
     //Summary
     public static Summary parseSummary(String filePath) {
@@ -140,7 +141,7 @@ public class KeyEventsParser {
     }
 
 
-     private static void printSummaryToConsole(Summary summary) {
+    private static void printSummaryToConsole(Summary summary) {
         System.out.println("Summary:");
         System.out.println("Total Loss: " + summary.getTotalLoss());
         System.out.println("ORL: " + summary.getOrl());
