@@ -1,1 +1,27 @@
 @import url(../../common.css);
+
+#errorText{
+    -fx-font-size: 12px;
+    -fx-text-fill: #e5e4e2;
+}
+
+/* Hidden Until File is Dragged & Dropped */
+#errorTextStackPane {
+    -fx-text-fill: BLACK;
+    -fx-border-radius: 55;
+    -fx-border-color: #e5e4e2;
+    -fx-border-width: .25;
+    -fx-background-radius: 55;
+}
+
+#fiberColorBox, #tubeColorBox {
+    -fx-arc-height: 5;
+    -fx-arc-width: 5;
+}
+
+#orText {
+    -fx-fill: #e5e4e2;
+    -fx-font-size: 18px;
+
+}
+
