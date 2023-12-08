@@ -28,7 +28,7 @@ network data storage and calculations.
 - **CRUD** abilities for storage of Inventory, Employee, Splice Records, and Individual Fibers.
 - **OTDR Style** trace viewer & table for splice records. **.SOR Files only**
 - **Report Creator** for splice records. **.PDF Files only**
-  - **Conversion** between Color to Fiber and Fiber to Color.
+- **Conversion** between Color to Fiber and Fiber to Color.
 - **Calculations** for a loss budget. Allows for multiple different types of cable and units of measurement.
 
 ## <span style="color:#6E8FD9">Dependencies</span>
@@ -132,6 +132,7 @@ network data storage and calculations.
     - [ ] Add unit tests.
     - [ ] Test on different operating systems.
     - [ ] Performance testing.
+    - [ ] External UX/UI testing.
 
 
 ### <span style="color:#6E8FD9">Note</span>
