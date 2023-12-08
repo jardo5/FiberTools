@@ -28,7 +28,7 @@ network data storage and calculations.
 - **CRUD** abilities for storage of Inventory, Employee, Splice Records, and Individual Fibers.
 - **OTDR Style** trace viewer & table for splice records. **.SOR Files only**
 - **Report Creator** for splice records. **.PDF Files only**
-- **Conversion** between dBm, mW, and uW & Fiber to Color Code.
+  - **Conversion** between Color to Fiber and Fiber to Color.
 - **Calculations** for a loss budget. Allows for multiple different types of cable and units of measurement.
 
 ## <span style="color:#6E8FD9">Dependencies</span>
@@ -79,19 +79,62 @@ network data storage and calculations.
     pip3 install pyOTDR
    ```
 
-1. Clone the repository:
+2. Clone the repository:
 
    ```bash
    git clone https://github.com/jardo5/FiberTools.git
     ```
-2. Navigate to the project directory:
+3. Navigate to the project directory:
 
    ```bash
    cd FiberTools
    ```
-3. Build and Run the project:
+4. Set up the MySQL database:
 
    ```bash
-   mvn clean javafx:run
+   Navigate to the JBDC: com/fibertools/dao/JDBC.java.
+   Edit necessary fields for your database
    ```
-   </h1>
+   
+5. **Temporary Step** Set up pyOTDR:
+    ```bash
+    Due to current limitations, pyOTDR must be installed & set up manually.
+    Navigate to the line 165/166 in com/fibertools/controllers/TraceViewerControllers/TraceViewerController.java.
+    Change the path to the pyOTDR executable.
+    ```
+   
+6. Run the Project:
+
+   ```bash
+   Tables and sample data are automatically created.
+   Default login is user/user. Please Change this.
+   ```
+
+### <span style="color:#6E8FD9">Future Road Map</span>
+1. **Database**
+    - [ ] Future normalization.
+   
+2. **Trace Viewer**
+   - [ ] Either integrate pyOTDR or create a Java port.
+   - [ ] Add support for multiple trace formats.
+   - [ ] Add support for multiple .SOR files at same time.
+   - [ ] Further, improve performance.
+
+3. **Report Creator**
+    - [ ] Add support for multiple report formats.
+    - [ ] Add GUI for custom report creation.
+   
+4. **User Interface**
+    - [ ] Add support for multiple themes.
+    - [ ] Add support for different languages.
+    - [ ] Add support for different units of measurement.
+5. **Testing**
+    - [ ] Add unit tests.
+    - [ ] Test on different operating systems.
+    - [ ] Performance testing.
+
+
+### <span style="color:#6E8FD9">Note</span>
+This project is still in development. If you have any suggestions or find any bugs, please feel free to open an issue.
+Or if you would like to contribute, please open a pull request.
+</h1>
